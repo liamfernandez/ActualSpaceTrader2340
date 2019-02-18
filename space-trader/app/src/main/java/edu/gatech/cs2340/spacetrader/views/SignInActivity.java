@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         /**
          * Grab the dialog widgets so we can get info for later
@@ -50,11 +50,11 @@ public class SignInActivity extends AppCompatActivity {
 
         Integer[] skillPoints = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, skillPoints);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         skill1Spinner.setAdapter(adapter);
-//        skill2Spinner.setAdapter(adapter);
-//        skill3Spinner.setAdapter(adapter);
-//        skill4Spinner.setAdapter(adapter);
+        skill2Spinner.setAdapter(adapter);
+        skill3Spinner.setAdapter(adapter);
+        skill4Spinner.setAdapter(adapter);
 
 
     }

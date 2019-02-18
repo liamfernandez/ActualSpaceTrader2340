@@ -20,8 +20,19 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
+    <RelativeLayout android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <Button
+            android:id="@+id/PlayGameBtn"
+            android:layout_width="141dp"
+            android:text="Start a New game"
+            android:layout_height="144dp"
+            android:layout_centerInParent="true"></Button>
+
+    </RelativeLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>
