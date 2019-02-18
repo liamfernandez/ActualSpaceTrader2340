@@ -27,14 +27,6 @@ public class SignInActivity extends AppCompatActivity {
     private Spinner skill3Spinner;
     private Spinner skill4Spinner;
 
-//    //Helper method for populating the skill spinners
-//    public static Integer[] getSkillPointsAllowed(int numOfPoints) {
-//        Integer[] skillPoints = new Integer[numOfPoints];
-//        for (int i = 1; i <= numOfPoints; i++) {
-//            skillPoints[i] = i;
-//        }
-//        return skillPoints;
-//    }
 
     // MAKING A PLAYER THAT WE WILL LATER SAVE TO THE APPLICATION
     private Player player;
@@ -56,10 +48,13 @@ public class SignInActivity extends AppCompatActivity {
         Button button = findViewById(R.id.button_submit_signIn);
 
 
-        Integer[] skillPoints = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+        Integer[] skillPoints = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, skillPoints);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         skill1Spinner.setAdapter(adapter);
+//        skill2Spinner.setAdapter(adapter);
+//        skill3Spinner.setAdapter(adapter);
+//        skill4Spinner.setAdapter(adapter);
 
 
     }
