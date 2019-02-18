@@ -9,6 +9,7 @@ public class Player {
     private int skill2;
     private int skill3;
     private int skill4;
+    private Spaceship spaceship;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         name = n;
@@ -17,13 +18,14 @@ public class Player {
         skill3 = s3;
         skill4 = s4;
         credit = 1000;
+        spaceship = Spaceship.Gnat;
     }
 
     @Override
     public String toString() {
-        return name + "has " + skill1 + " points in skill 1, " + skill2
+        return name + " has " + skill1 + " points in skill 1, " + skill2
                 + " points in skill 2, " + skill3 + " points in skill 3, "
-                + skill4 + " points in skill4";
+                + skill4 + " points in skill4 with a " + spaceship;
     }
 
     /**

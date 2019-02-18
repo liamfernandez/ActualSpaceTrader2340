@@ -24,7 +24,7 @@ public class SignInActivity extends AppCompatActivity {
      WIDGETS FOR BINDING AND GETTING INFORMATION
     */
     private EditText nameField;
-    private SeekBar difficultySlider;
+    private Spinner difficultySpinner;
     private Spinner skill1Spinner;
     private Spinner skill2Spinner;
     private Spinner skill3Spinner;
@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
          * Grab the dialog widgets so we can get info for later
          */
         nameField =  findViewById(R.id.editText_name);
-        difficultySlider = findViewById(R.id.seekBar_difficulty);
+        difficultySpinner = findViewById(R.id.difficultySpinner);
         skill1Spinner = (Spinner) findViewById(R.id.spinner_skill_1);
         skill2Spinner = findViewById(R.id.spinner_skill_2);
         skill3Spinner = findViewById(R.id.spinner_skill_3);
@@ -52,6 +52,11 @@ public class SignInActivity extends AppCompatActivity {
 
 
         Integer[] skillPoints = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+        String[] difficulties = {"Beginner", "Easy", "Normal", "Hard", "Impossible"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, difficulties);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        difficultySpinner.setAdapter(adapter1);
+
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, skillPoints);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         skill1Spinner.setAdapter(adapter);
