@@ -14,7 +14,7 @@ public class PlayerInteractor extends Interactor {
         return getRepository().getAllPlayers();
     }
 
-    public void addStudent (Player p) {
+    public void addPlayerToBackEnd (Player p) {
         getRepository().addPlayer(p);
     }
 

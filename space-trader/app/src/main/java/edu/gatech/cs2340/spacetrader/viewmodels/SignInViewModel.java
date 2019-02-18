@@ -18,6 +18,10 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     public void addPlayer(Player player) {
-        interactor.addStudent(player);
+        interactor.addPlayerToBackEnd(player);
+    }
+
+    //Helper method to validate that the player has the correct amount of skill points allocated
+    public void validatePlayer(Player player) { //implementation for paul
     }
 }
