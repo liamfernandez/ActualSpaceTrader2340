@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -19,12 +20,21 @@ public class SignInActivity extends AppCompatActivity {
     /*
      WIDGETS FOR BINDING AND GETTING INFORMATION
     */
-    private EditText nameFeild;
+    private EditText nameField;
     private SeekBar difficultySlider;
     private Spinner skill1Spinner;
     private Spinner skill2Spinner;
     private Spinner skill3Spinner;
     private Spinner skill4Spinner;
+
+//    //Helper method for populating the skill spinners
+//    public static Integer[] getSkillPointsAllowed(int numOfPoints) {
+//        Integer[] skillPoints = new Integer[numOfPoints];
+//        for (int i = 1; i <= numOfPoints; i++) {
+//            skillPoints[i] = i;
+//        }
+//        return skillPoints;
+//    }
 
     // MAKING A PLAYER THAT WE WILL LATER SAVE TO THE APPLICATION
     private Player player;
@@ -37,13 +47,20 @@ public class SignInActivity extends AppCompatActivity {
         /**
          * Grab the dialog widgets so we can get info for later
          */
-        nameFeild = (EditText) findViewById(R.id.editText_name);
-        difficultySlider = (SeekBar) findViewById(R.id.seekBar_difficulty);
+        nameField =  findViewById(R.id.editText_name);
+        difficultySlider = findViewById(R.id.seekBar_difficulty);
         skill1Spinner = (Spinner) findViewById(R.id.spinner_skill_1);
-        skill2Spinner = (Spinner) findViewById(R.id.spinner_skill_2);
-        skill3Spinner = (Spinner) findViewById(R.id.spinner_skill_3);
-        skill4Spinner = (Spinner) findViewById(R.id.spinner_skill_4);
+        skill2Spinner = findViewById(R.id.spinner_skill_2);
+        skill3Spinner = findViewById(R.id.spinner_skill_3);
+        skill4Spinner = findViewById(R.id.spinner_skill_4);
         Button button = findViewById(R.id.button_submit_signIn);
+
+
+        Integer[] skillPoints = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, skillPoints);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        skill1Spinner.setAdapter(adapter);
+
 
     }
 
