@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.spacetrader.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -7,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.view.View;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Player;
@@ -56,7 +59,34 @@ public class SignInActivity extends AppCompatActivity {
         skill3Spinner.setAdapter(adapter);
         skill4Spinner.setAdapter(adapter);
 
+        player = new Player("name", 0, 0, 0, 0);
+        viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
+    }
+
+    /**
+     * Button handler for the submit a player button
+     *
+     * @param view the button that was pressed
+     */
+    public void createPlayer(View view) {
+
+        player.setName(nameField.getText().toString());
+        player.setSkill1(Integer.parseInt(skill1Spinner.getSelectedItem().toString()));
+        player.setSkill2(Integer.parseInt(skill2Spinner.getSelectedItem().toString()));
+        player.setSkill3(Integer.parseInt(skill3Spinner.getSelectedItem().toString()));
+        player.setSkill4(Integer.parseInt(skill4Spinner.getSelectedItem().toString()));
+
+        String response = viewModel.addPlayer(player);
+        Toast.makeText(this, "Result: " + response, Toast.LENGTH_LONG).show();
 
     }
 
+    /**
+     * Button handler for the exit button
+     *
+     * @param view the button that was pressed
+     */
+    public void onExit(View view) {
+        finish();
+    }
 }

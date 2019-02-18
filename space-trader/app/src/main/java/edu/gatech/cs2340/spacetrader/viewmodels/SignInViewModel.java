@@ -17,11 +17,24 @@ public class SignInViewModel extends AndroidViewModel {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
-    public void addPlayer(Player player) {
-        interactor.addPlayerToBackEnd(player);
+    public String addPlayer(Player player) {
+        if (validatePlayer(player)) {
+            interactor.addPlayerToBackEnd(player);
+            return "Player Created";
+        } else {
+            return "Need 16 total skill points";
+        }
     }
 
-    //Helper method to validate that the player has the correct amount of skill points allocated
-    public void validatePlayer(Player player) { //implementation for paul
+    public boolean validatePlayer(Player player) {
+        int sumSkills = 0;
+        sumSkills += player.getSkill1();
+        sumSkills += player.getSkill2();
+        sumSkills += player.getSkill3();
+        sumSkills += player.getSkill4();
+        if (sumSkills == 16) {
+            return true;
+        }
+        return false;
     }
 }

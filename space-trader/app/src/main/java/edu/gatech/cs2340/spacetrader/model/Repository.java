@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class Repository {
     public void addPlayer(Player p) {
         p.setId(Repository.getNextUniqueID());
         allPlayers.add(p);
+        Log.d("APP", "Interactor: added player: " + p);
+
     }
 
 }

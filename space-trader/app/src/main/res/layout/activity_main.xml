@@ -23,14 +23,14 @@
     <RelativeLayout android:id="@+id/RelativeLayout01"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <Button
             android:id="@+id/PlayGameBtn"
             android:layout_width="141dp"
-            android:text="Start a New game"
             android:layout_height="144dp"
-            android:layout_centerInParent="true"></Button>
+            android:layout_centerInParent="true"
+            android:text="Start a New game"></Button>
 
     </RelativeLayout>
 
