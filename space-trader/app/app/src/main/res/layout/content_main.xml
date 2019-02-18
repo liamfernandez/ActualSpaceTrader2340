@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.SignInActivity">
+    tools:context=".views.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <EditText
         android:id="@+id/text_skill2"
@@ -13,9 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="none"
-        android:editable="false"
-        android:text="    Pilot Skill"
+        android:inputType="textPersonName"
+        android:text="Assign Values to skill 2"
         app:layout_constraintBottom_toTopOf="@+id/text_skill3"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -26,9 +26,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="none"
-        android:editable="false"
-        android:text="    Fighter Skill"
+        android:inputType="textPersonName"
+        android:text="Assign Values to skill 1"
         app:layout_constraintBottom_toTopOf="@+id/text_skill2"
         app:layout_constraintEnd_toStartOf="@+id/spinner_skill_1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,9 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="none"
-        android:editable="false"
-        android:text="    Trader Skill"
+        android:inputType="textPersonName"
+        android:text="Assign Values to skill 3"
         app:layout_constraintBottom_toTopOf="@+id/text_skill4"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -66,9 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="none"
-        android:editable="false"
-        android:text="    Engineer Skill"
+        android:inputType="textPersonName"
+        android:text="Assign Values to skill 4"
         app:layout_constraintBottom_toTopOf="@+id/button_submit_signIn"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -77,7 +74,6 @@
         android:layout_width="172dp"
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
-        android:dropDownWidth="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/button_submit_signIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -88,7 +84,6 @@
         android:layout_width="172dp"
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
-        android:dropDownWidth="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/spinner_skill_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -98,8 +93,7 @@
         android:id="@+id/spinner_skill_1"
         android:layout_width="172dp"
         android:layout_height="43dp"
-        android:layout_marginEnd="20dp"
-        android:dropDownWidth="wrap_content"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner_skill_2"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -108,7 +102,6 @@
         android:layout_width="173dp"
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
-        android:dropDownWidth="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/spinner_skill_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -118,12 +111,12 @@
         android:id="@+id/text_values_label"
         android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="4dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:inputType="none"
-        android:editable="false"
-        android:text="Allocate Skill points-- Must use all 16 available"
+        android:inputType="textPersonName"
+        android:text="Assign values to skills, maximum of 14 total"
         app:layout_constraintBottom_toTopOf="@+id/text_skill1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -142,12 +135,12 @@
     <EditText
         android:id="@+id/editText_name"
         android:layout_width="170dp"
-        android:layout_height="0dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:hint="Name Here"
-        android:text="Enter Here "
+        android:text="nameHere"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/text_difficulty_label"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,17 +160,16 @@
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/text_difficulty_label"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Select difficulty Below"
-        android:textColor="#000000"
+        android:text="Select difficulty"
         app:layout_constraintBottom_toTopOf="@+id/seekBar_difficulty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
