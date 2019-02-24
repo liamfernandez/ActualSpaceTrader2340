@@ -1,17 +1,13 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public class Player {
+public class Player extends Character{
     private int id;
     private int credit;
-    private String name;
     private int dificulty;
-    private int skill1;
-    private int skill2;
-    private int skill3;
-    private int skill4;
     private Spaceship spaceship;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
+        super(n,s1, s2, s3, s4);
         name = n;
         skill1 = s1;
         skill2 = s2;
