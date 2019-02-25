@@ -36,5 +36,4 @@ public class Model {
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Player");
     }
-
 }

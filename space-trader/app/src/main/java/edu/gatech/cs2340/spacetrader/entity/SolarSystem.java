@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
+import android.support.annotation.NonNull;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class SolarSystem {
@@ -9,13 +12,19 @@ public class SolarSystem {
     private Map<Integer, Planet> planets;
 
     /**
-     * Constructor for Planet
+     * Constructor for Solar System
      *
      * @param planetMap Takes a map of planets with key being
      *                  their position in the SolarSystem from the star
+     * @param xCord the x coordinate of the SolarSystem in the universe
+     * @param yCord the y coordinate of the SolarSystem in the universe
+     * @param name the name of the solarSystem
      */
-    public SolarSystem(Map<Integer, Planet> planetMap) {
+    public SolarSystem(Map<Integer, Planet> planetMap, int xCord, int yCord, String name) {
         planets = planetMap;
+        this.xCord = xCord;
+        this.yCord = yCord;
+        this.name = name;
     }
 
     /**
@@ -58,5 +67,29 @@ public class SolarSystem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * the tostring method
+     * @return the string representation of a Solar System
+     */
+    @Override
+    @NonNull
+    public String toString() {
+        StringBuilder rep = new StringBuilder();
+        rep.append(name);
+        rep.append(" is located at (");
+        rep.append(xCord);
+        rep.append(",");
+        rep.append(yCord);
+        rep.append(") and has ");
+        rep.append(planets.size());
+        rep.append(" planets: ");
+        for (Planet p : planets.values()) {
+            rep.append(p.toString());
+            rep.append(", ");
+        }
+        rep.append(".");
+        return rep.toString();
     }
 }
