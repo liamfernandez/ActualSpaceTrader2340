@@ -18,15 +18,21 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     public String addPlayer(Player player) {
-        if (validatePlayer(player)) {
+        boolean validPoints = validatePlayer(player);
+        boolean validName = validatePlayerName(player);
+        if (validPoints && validName) {
             interactor.addPlayerToBackEnd(player);
             return "Player Created";
+        } else if (validName) {
+            return "Need 16 total skill points.";
+        } else if (validPoints) {
+            return "Need to input a name";
         } else {
-            return "Need 16 total skill points";
+            return "Need to input a name as well as assign 16 skill points.";
         }
     }
 
-    public boolean validatePlayer(Player player) {
+    private boolean validatePlayer(Player player) {
         int sumSkills = 0;
         sumSkills += player.getSkill1();
         sumSkills += player.getSkill2();
@@ -36,5 +42,9 @@ public class SignInViewModel extends AndroidViewModel {
             return true;
         }
         return false;
+    }
+
+    private boolean validatePlayerName(Player player) {
+        return !(player.getName().equals(""));
     }
 }

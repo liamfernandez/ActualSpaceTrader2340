@@ -133,8 +133,8 @@
         android:id="@+id/textView_nameLabel"
         android:layout_width="114dp"
         android:layout_height="43dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="96dp"
         android:text="Name: "
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/text_difficulty_label"
@@ -143,30 +143,19 @@
     <EditText
         android:id="@+id/editText_name"
         android:layout_width="170dp"
-        android:layout_height="0dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="96dp"
         android:hint="Name Here"
-        android:text="Enter Here "
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/text_difficulty_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView_nameLabel" />
-
-    <SeekBar
-        android:id="@+id/seekBar_difficulty"
-        android:layout_width="356dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="56dp"
-        android:backgroundTint="@color/design_default_color_primary_dark"
-        app:layout_constraintBottom_toTopOf="@+id/text_values_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView_nameLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/text_difficulty_label"
@@ -174,13 +163,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Select difficulty Below"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar_difficulty"
+        app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -193,5 +182,17 @@
         android:text="Exit"
         app:layout_constraintBottom_toTopOf="@+id/editText_name"
         app:layout_constraintStart_toStartOf="@+id/editText_name" />
+
+    <Spinner
+        android:id="@+id/difficultySpinner"
+        android:layout_width="395dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:dropDownWidth="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.377"
+        tools:layout_editor_absoluteX="8dp" />
 
 </android.support.constraint.ConstraintLayout>
