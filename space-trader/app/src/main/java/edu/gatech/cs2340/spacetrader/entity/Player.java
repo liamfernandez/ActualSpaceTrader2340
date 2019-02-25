@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-//test blah blah blah
 public class Player extends Character{
     private int id;
     private int credit;
