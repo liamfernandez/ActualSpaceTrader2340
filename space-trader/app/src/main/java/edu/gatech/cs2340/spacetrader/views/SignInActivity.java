@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -83,7 +84,10 @@ public class SignInActivity extends AppCompatActivity {
 
         String response = viewModel.addPlayer(player);
         Toast.makeText(this, "Result: " + response, Toast.LENGTH_LONG).show();
-
+        if (response.equals("Player Created")) {
+            Intent intent = new Intent(SignInActivity.this, InitialSolarActivity.class);
+            startActivity(intent);
+        }
     }
 
     /**
