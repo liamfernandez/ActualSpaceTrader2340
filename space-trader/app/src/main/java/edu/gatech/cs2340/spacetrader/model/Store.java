@@ -5,10 +5,13 @@ import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Resources;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Store {
 
-    private static Item[] allItems = {};
+    private static Item[] allItems = Item.values();
 
     /**
      * Utility class for getting the market
@@ -48,6 +51,30 @@ public class Store {
 
         return price * (1.0 + randomAdjustmentPercentage);
 
+    }
+
+    /**
+     * A utility method to get a list of the
+     * items that should be sold at that planet's
+     * market
+     * @param planet The planet that we're calculating the supply for
+     * @return the items to be sold at that planet's market
+     */
+    public static List<Item> getMarketItems(Planet planet) {
+        List<Item> marketSupply = new ArrayList<>();
+        int techLevel = planet.getTechLevel().getLevel();
+        for (Item x: allItems) {
+            if (techLevel >= x.getMTLP()) {
+                int amountToAdd = 4;
+                if (techLevel == x.getTTP()) {
+                    amountToAdd = 8; //if TTP is matched then double the amount to add
+                }
+                for (int i = 0; i < amountToAdd; i++) {
+                    marketSupply.add(x);
+                }
+            }
+        }
+        return marketSupply;
     }
 
     /**
