@@ -4,12 +4,7 @@ public class Planet {
 
     private Resources resource;
     private TechLevel techLevel;
-    private Market market;
 
-    public Market getMarket() {
-        return market;
-    }
-    
     public Resources getResource() {
         return resource;
     }
