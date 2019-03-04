@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import android.util.Pair;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.entity.Item;

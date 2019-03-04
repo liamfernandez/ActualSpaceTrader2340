@@ -8,8 +8,6 @@ import android.util.Pair;
 public abstract class DisplayableSeller {
     protected HashMap<Item, Pair<Integer, Double>> itemsMarketSells;
 
-    public abstract HashMap<Item, Pair<Integer, Double>> stockSeller();
-
     public HashMap<Item, Pair<Integer, Double>> getItemsSold() {
         return itemsMarketSells;
     }
