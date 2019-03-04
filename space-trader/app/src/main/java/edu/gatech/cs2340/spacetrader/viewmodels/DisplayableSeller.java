@@ -27,7 +27,7 @@ public abstract class DisplayableSeller {
     }
 
     public int getQuantityForSale(Item item) {
-        if (hasItem(s)) {
+        if (hasItem(item)) {
             return itemsMarketSells.get(item).first;
         } else {
             return 0;
