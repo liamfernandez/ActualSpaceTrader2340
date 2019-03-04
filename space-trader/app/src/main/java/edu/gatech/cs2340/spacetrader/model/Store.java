@@ -56,6 +56,21 @@ public class Store {
     }
 
     /**
+     * This will return the different items Space Traders can buy or sell
+     * @return a list of the items
+     */
+    public static List<Pair<Item, Double>> getTraderItems() {
+        List<Pair<Item, Double>> tradeItems =
+                new ArrayList<Pair<Item,Double>>();
+        for(Item x : allItems) {
+            for (int i = 0; i < 2; i++) {
+                tradeItems.add(new Pair<Item, Double>(x, getSpaceTradePrice(x)));
+            }
+        }
+        return tradeItems;
+    }
+
+    /**
      * A utility method to get a list of the
      * items that should be sold at that planet's
      * market
