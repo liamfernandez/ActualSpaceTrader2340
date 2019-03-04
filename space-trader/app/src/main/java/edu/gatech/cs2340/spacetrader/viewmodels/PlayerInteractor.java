@@ -76,9 +76,9 @@ public class PlayerInteractor extends Interactor {
     /**
      * Method to make player purchase an item.
      * Will confirm the player has sufficient funds, and
-     * the seller actually has enough stock. Purchase executed by:
+     * the seller actually has enough in stock. Purchase executed by:
      * 1) Removing item(s) from seller
-     * 2) Adding item(s) to seller
+     * 2) Adding item(s) to player inventory
      * 3) Adjusting player credit accordingly
      *
      * If seller has insufficient stock, sale will not
@@ -88,9 +88,14 @@ public class PlayerInteractor extends Interactor {
      * @param item Item they are purchasing
      * @param seller Seller of the item
      */
-    public void purchaseItem(Player player, Item item, DisplayableSeller seller) {
-        if (seller.hasItem(item) && seller.getQuantityForSale( item) > 0) {
-            
+    public void purchaseItem(Player player, Item item, int quantity, DisplayableSeller seller) {
+        if (seller.getQuantityForSale(item) >= quantity
+                && seller.getPrice(item) * quantity <= player.getCredit()) {
+            for (int i = 0; i < quantity; i++) {
+                seller.remove(item);
+            }
+            player.getInventory().add(item, quantity);
+            player.editCredit(-1 * seller.getPrice(item) * quantity);
         }
     }
 }
