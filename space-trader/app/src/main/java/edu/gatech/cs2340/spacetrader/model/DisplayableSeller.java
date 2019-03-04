@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetrader.viewmodels;
+package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.HashMap;
 

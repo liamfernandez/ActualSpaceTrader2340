@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.spacetrader.viewmodels;
+package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.List;
 
@@ -6,9 +6,6 @@ import edu.gatech.cs2340.spacetrader.entity.Inventory;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Player;
-import edu.gatech.cs2340.spacetrader.model.Interactor;
-import edu.gatech.cs2340.spacetrader.model.Repository;
-import edu.gatech.cs2340.spacetrader.model.Store;
 
 public class PlayerInteractor extends Interactor {
 

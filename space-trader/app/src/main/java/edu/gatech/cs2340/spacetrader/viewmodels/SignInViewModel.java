@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.model.Model;
+import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
 
 
 public class SignInViewModel extends AndroidViewModel {

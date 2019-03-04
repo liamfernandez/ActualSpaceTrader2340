@@ -1,7 +1,4 @@
-package edu.gatech.cs2340.spacetrader.viewmodels;
-
-import edu.gatech.cs2340.spacetrader.entity.Planet;
-import edu.gatech.cs2340.spacetrader.model.Store;
+package edu.gatech.cs2340.spacetrader.model;
 
 public class TraderSeller extends DisplayableSeller {
 
