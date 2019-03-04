@@ -58,7 +58,7 @@ public class Store {
 
     /**
      * This will return the different items Space Traders can buy or sell
-     * @return a list of the items
+     * @return a hashMap of the items
      */
     public static HashMap<Item, Pair<Integer, Double>> getTraderItems() {
         HashMap<Item, Pair<Integer, Double>> tradeItems = new HashMap<>();
