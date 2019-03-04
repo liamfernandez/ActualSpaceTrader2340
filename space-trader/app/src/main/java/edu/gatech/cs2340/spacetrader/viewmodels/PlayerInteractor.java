@@ -37,35 +37,39 @@ public class PlayerInteractor extends Interactor {
      * @param item Item to be sold
      * @param quantity Quantity of Item to be sold
      * @param planet Planet item being sold on
+     * @return true if sale executed, false if sale invalid
      */
 
-    public void sellItem(Player player, Item item, int quantity, Planet planet) {
+    public boolean sellItem(Player player, Item item, int quantity, Planet planet) {
         if (planet != null && planet.getTechLevel().getLevel() < item.getMTLP()) {
-            return;
+            return false;
         }
         Inventory inventory = player.getInventory();
         if (!inventory.contains(item)) {
-            return;
+            return false;
         } else if (inventory.getQuantity(item) < quantity) {
-            return;
+            return false;
         } else {
             inventory.remove(item, quantity);
             if (planet == null) {
                 player.editCredit(Store.getSpaceTradePrice(item));
+                return true;
             } else {
                 player.editCredit(Store.getMarketPrice(item, planet) * quantity);
+                return true;
             }
         }
     }
 
-    public static void main (String[] args) {
+    /*public static void main (String[] args) {
         Player p= new Player("Lauren", 0, 0, 0, 0);
         Item i = Item.FOOD;
         int q = 1;
         System.out.println(p.getInventory().getQuantity(i));
         PlayerInteractor play = new PlayerInteractor(new Repository());
         System.out.println(p.getInventory().getQuantity(i));
-    }
+    }*/
+
     /**
      * Overloaded method for selling to a spacetrader
      *
@@ -78,8 +82,8 @@ public class PlayerInteractor extends Interactor {
      * @param item Item to be sold
      * @param quantity Quantity of Item to be sold
      */
-    public void sellItem(Player player, Item item, int quantity) {
-        sellItem(player, item, quantity, null);
+    public boolean sellItem(Player player, Item item, int quantity) {
+        return sellItem(player, item, quantity, null);
     }
 
     /**
@@ -97,7 +101,7 @@ public class PlayerInteractor extends Interactor {
      * @param item Item they are purchasing
      * @param seller Seller of the item
      */
-    public void purchaseItem(Player player, Item item, int quantity, DisplayableSeller seller) {
+    public boolean purchaseItem(Player player, Item item, int quantity, DisplayableSeller seller) {
         if (seller.getQuantityForSale(item) >= quantity
                 && seller.getPrice(item) * quantity <= player.getCredit()) {
             for (int i = 0; i < quantity; i++) {
@@ -105,6 +109,9 @@ public class PlayerInteractor extends Interactor {
             }
             player.getInventory().add(item, quantity);
             player.editCredit(-1 * seller.getPrice(item) * quantity);
+            return true;
+        } else {
+            return false;
         }
     }
 }

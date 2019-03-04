@@ -13,6 +13,15 @@ public abstract class DisplayableSeller {
     }
 
     /**
+     * Getter method which returns items for sale
+     *
+     * @return Hash map where key is Item, value is Pair(quantity, price per item);
+     */
+    public HashMap<Item, Pair<Integer, Double>> getItemsForSale() {
+        return itemsMarketSells;
+    }
+
+    /**
      * Removes one item from seller's for sale list
      *
      * Eg. if 4 of Item s are for sale, only 3 will be
