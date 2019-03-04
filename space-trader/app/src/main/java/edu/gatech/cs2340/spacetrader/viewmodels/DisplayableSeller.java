@@ -6,7 +6,7 @@ import edu.gatech.cs2340.spacetrader.entity.Item;
 import android.util.Pair;
 
 public abstract class DisplayableSeller {
-    private HashMap<Item, Pair<Integer, Double>> itemsMarketSells;
+    protected HashMap<Item, Pair<Integer, Double>> itemsMarketSells;
 
     public abstract HashMap<Item, Pair<Integer, Double>> stockSeller();
 
@@ -24,5 +24,13 @@ public abstract class DisplayableSeller {
 
     public boolean hasItem(Item s) {
         return itemsMarketSells.get(s).first > 0;
+    }
+
+    public int getQuantityForSale(Item item) {
+        if (hasItem(s)) {
+            return itemsMarketSells.get(item).first;
+        } else {
+            return 0;
+        }
     }
 }
