@@ -5,6 +5,9 @@ import java.util.HashMap;
 public class Inventory {
     private HashMap<Item, Integer> map;
 
+    public Inventory() {
+        map = new HashMap<>();
+    }
     /**
      * Add item to inventory
      *
