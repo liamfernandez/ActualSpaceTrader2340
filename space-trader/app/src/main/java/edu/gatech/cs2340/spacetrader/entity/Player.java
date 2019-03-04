@@ -2,9 +2,10 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 public class Player extends Character{
     private int id;
-    private int credit;
+    private double credit;
     private int dificulty;
     private Spaceship spaceship;
+    private Inventory inventory;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
@@ -70,5 +71,32 @@ public class Player extends Character{
 
     public int getSkill4() {
         return skill4;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    /**
+     * Edits the value of the player's credit
+     *
+     * @param moneyToAdd Will add this amount to credit
+     * @return The player's credit after edit
+     */
+    public double editCredit(double moneyToAdd) {
+        credit = credit + moneyToAdd;
+        return credit;
+    }
+
+    /**
+     *
+     * @return Player's credit
+     */
+    public double getCredit() {
+        return this.credit;
     }
 }
