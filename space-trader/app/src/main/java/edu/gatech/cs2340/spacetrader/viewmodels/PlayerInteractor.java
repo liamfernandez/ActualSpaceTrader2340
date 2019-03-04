@@ -38,6 +38,8 @@ public class PlayerInteractor extends Interactor {
      * @param quantity Quantity of Item to be sold
      * @param planet Planet item being sold on
      */
+
+    //TEST THE FUCK OUT OF THIS METHOD
     public void sellItem(Player player, Item item, int quantity, Planet planet) {
         if (planet != null && planet.getTechLevel().getLevel() < item.getMTLP()) {
             return;
