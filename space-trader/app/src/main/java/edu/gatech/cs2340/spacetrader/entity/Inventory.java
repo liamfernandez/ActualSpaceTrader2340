@@ -28,4 +28,15 @@ public class Inventory {
         }
 
     }
+
+    public boolean contains(Item i) {
+        return map.containsKey(i);
+    }
+
+    public int getQuantity(Item i) {
+        if (!contains(i)) {
+            return 0;
+        }
+        return map.get(i);
+    }
 }
