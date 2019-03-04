@@ -60,13 +60,11 @@ public class Store {
      * This will return the different items Space Traders can buy or sell
      * @return a list of the items
      */
-    public static List<Pair<Item, Double>> getTraderItems() {
-        List<Pair<Item, Double>> tradeItems =
-                new ArrayList<Pair<Item,Double>>();
+    public static HashMap<Item, Pair<Integer, Double>> getTraderItems() {
+        HashMap<Item, Pair<Integer, Double>> tradeItems = new HashMap<>();
         for(Item x : allItems) {
-            for (int i = 0; i < 2; i++) {
-                tradeItems.add(new Pair<Item, Double>(x, getSpaceTradePrice(x)));
-            }
+            int amountToAdd = 2;
+            tradeItems.put(x, new Pair<Integer, Double>(amountToAdd, getSpaceTradePrice(x)));
         }
         return tradeItems;
     }
