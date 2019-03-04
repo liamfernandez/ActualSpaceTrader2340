@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import android.util.Pair;
+
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.entity.Item;
@@ -58,10 +60,10 @@ public class Store {
      * items that should be sold at that planet's
      * market
      * @param planet The planet that we're calculating the supply for
-     * @return the items to be sold at that planet's market
+     * @return A list of Pairs containing items and associated prices
      */
-    public static List<Item> getMarketItems(Planet planet) {
-        List<Item> marketSupply = new ArrayList<>();
+    public static List<Pair<Item, Double>> getMarketItems(Planet planet) {
+        List<Pair<Item,Double>> marketSupply = new ArrayList<Pair<Item,Double>>();
         int techLevel = planet.getTechLevel().getLevel();
         for (Item x: allItems) {
             if (techLevel >= x.getMTLP()) {
@@ -70,7 +72,7 @@ public class Store {
                     amountToAdd = 8; //if TTP is matched then double the amount to add
                 }
                 for (int i = 0; i < amountToAdd; i++) {
-                    marketSupply.add(x);
+                    marketSupply.add(new Pair<Item, Double>(x, getMarketPrice(x, planet)));
                 }
             }
         }
