@@ -16,6 +16,7 @@ public class Player extends Character{
         skill4 = s4;
         credit = 1000;
         spaceship = Spaceship.Gnat;
+        inventory = new Inventory();
     }
 
     @Override

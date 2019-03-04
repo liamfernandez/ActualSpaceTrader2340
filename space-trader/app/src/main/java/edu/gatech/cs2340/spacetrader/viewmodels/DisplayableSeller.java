@@ -12,6 +12,14 @@ public abstract class DisplayableSeller {
         return itemsMarketSells;
     }
 
+    /**
+     * Removes one item from seller's for sale list
+     *
+     * Eg. if 4 of Item s are for sale, only 3 will be
+     * after calling this method
+     *
+     * @param s Item desired to remove one of
+     */
     public void remove(Item s) {
         Pair<Integer, Double> oldPair = itemsMarketSells.get(s);
         Integer newSupplyLevel = oldPair.first;
@@ -20,10 +28,21 @@ public abstract class DisplayableSeller {
         itemsMarketSells.replace(s, newPair);
     }
 
+    /**
+     *
+     * @param s item to check if is for sale
+     * @return true if item s is for sale; false otherwise
+     */
     public boolean hasItem(Item s) {
         return itemsMarketSells.get(s).first > 0;
     }
 
+    /**
+     * Get quantity of item Item for sale
+     *
+     * @param item Item desired
+     * @return Quantity for sale
+     */
     public int getQuantityForSale(Item item) {
         if (hasItem(item)) {
             return itemsMarketSells.get(item).first;

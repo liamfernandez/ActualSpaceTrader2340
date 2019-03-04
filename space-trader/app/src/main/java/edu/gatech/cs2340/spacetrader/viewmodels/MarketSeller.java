@@ -11,6 +11,12 @@ import java.util.HashMap;
 public class MarketSeller extends DisplayableSeller{
      private Planet planet;
 
+    /**
+     * Populates market with items legal to sell on planet
+     * at prices appropriate for planet
+     *
+     * @param p Planet of the seller
+     */
      public MarketSeller(Planet p) {
          planet = p;
          itemsMarketSells = Store.getMarketItems(planet);
