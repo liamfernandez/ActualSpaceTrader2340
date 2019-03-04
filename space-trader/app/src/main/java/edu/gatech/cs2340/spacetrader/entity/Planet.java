@@ -28,5 +28,20 @@ public class Planet {
     @NonNull
     public String toString() {
         return name + " (techlevel: " + techLevel + ", resources: " + resources +")";
+
+    public Resources getResource() {
+        return resources;
+    }
+
+    public void setResource(Resources resource) {
+        this.resources = resource;
+    }
+
+    public TechLevel getTechLevel() {
+        return techLevel;
+    }
+
+    public void setTechLevel(TechLevel techLevel) {
+        this.techLevel = techLevel;
     }
 }
