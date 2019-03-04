@@ -61,14 +61,6 @@ public class PlayerInteractor extends Interactor {
         }
     }
 
-    /*public static void main (String[] args) {
-        Player p= new Player("Lauren", 0, 0, 0, 0);
-        Item i = Item.FOOD;
-        int q = 1;
-        System.out.println(p.getInventory().getQuantity(i));
-        PlayerInteractor play = new PlayerInteractor(new Repository());
-        System.out.println(p.getInventory().getQuantity(i));
-    }*/
 
     /**
      * Overloaded method for selling to a spacetrader
