@@ -27,7 +27,8 @@ public class Planet {
     @Override
     @NonNull
     public String toString() {
-        return name + " (techlevel: " + techLevel + ", resources: " + resources +")";
+        return name + " (techlevel: " + techLevel + ", resources: " + resources + ")";
+    }
 
     public Resources getResource() {
         return resources;
@@ -37,7 +38,7 @@ public class Planet {
         this.resources = resource;
     }
 
-    public TechLevel getTechLevel() {
+    public TechLevel getTechLevel(){
         return techLevel;
     }
 
