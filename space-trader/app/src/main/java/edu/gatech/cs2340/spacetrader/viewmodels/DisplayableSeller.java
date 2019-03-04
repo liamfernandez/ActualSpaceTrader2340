@@ -33,4 +33,20 @@ public abstract class DisplayableSeller {
             return 0;
         }
     }
+
+    /**
+     * Gets the sale price of the item item
+     *
+     * If the item is not for sale, will return -1
+     *
+     * @param item Item to get price
+     * @return -1 if item not for sale. Price otherwise
+     */
+    public double getPrice(Item item) {
+        if (itemsMarketSells.containsKey(item)) {
+            return itemsMarketSells.get(item).second;
+        } else {
+            return -1;
+        }
+    }
 }
