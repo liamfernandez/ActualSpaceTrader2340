@@ -3,6 +3,8 @@ package edu.gatech.cs2340.spacetrader.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.gatech.cs2340.spacetrader.viewmodels.PlayerInteractor;
+
 public class Model {
 
     /** the data repository */
