@@ -57,7 +57,7 @@ public class PlayerInteractor extends Interactor {
             }
         }
     }
-    
+
     /**
      * Overloaded method for selling to a spacetrader
      *
