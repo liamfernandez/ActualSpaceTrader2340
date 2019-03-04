@@ -3,9 +3,14 @@ package edu.gatech.cs2340.spacetrader.model;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Player;
+import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
+import edu.gatech.cs2340.spacetrader.entity.Universe;
 
 public class Repository {
     private static int next_id = 1;
@@ -16,9 +21,11 @@ public class Repository {
 
     /** all the Players known in the application */
     private List<Player> allPlayers;
+    private Universe universe;
 
     public Repository() {
         allPlayers = new ArrayList<>();
+        universe = new Universe();
     }
 
     /**

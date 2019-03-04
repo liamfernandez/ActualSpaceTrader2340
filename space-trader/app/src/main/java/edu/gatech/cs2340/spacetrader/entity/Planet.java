@@ -1,16 +1,40 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public class Planet {
+import android.support.annotation.NonNull;
 
-    private Resources resource;
+import java.util.Random;
+
+public class Planet {
+    private String name;
     private TechLevel techLevel;
+    private Resources resources;
+    /**
+     * creates the planet object
+     * @param name the name of the planet
+     * @param techLevel the tech Level of the planet
+     * @param resources the resources of the planet
+     */
+    public Planet(String name, TechLevel techLevel, Resources resources) {
+        this.name = name;
+        this.techLevel = techLevel;
+        this.resources = resources;
+    }
+
+    /**
+     * the tostring method
+     * @return the string representation of a planet
+     */
+    @Override
+    @NonNull
+    public String toString() {
+        return name + " (techlevel: " + techLevel + ", resources: " + resources +")";
 
     public Resources getResource() {
-        return resource;
+        return resources;
     }
 
     public void setResource(Resources resource) {
-        this.resource = resource;
+        this.resources = resource;
     }
 
     public TechLevel getTechLevel() {
