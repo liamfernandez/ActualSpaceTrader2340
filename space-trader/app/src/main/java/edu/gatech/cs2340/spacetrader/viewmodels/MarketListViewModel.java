@@ -23,4 +23,12 @@ public class MarketListViewModel extends AndroidViewModel {
     public HashMap<Item, Pair<Integer, Double>> getItems() {
         return interactor.getSeller().getItemsForSale();
     }
+
+    /**
+     * lets player buy an item
+     * @param item the item the player is buying
+     */
+    public void buyItem(Item item) {
+        interactor.buyItem(item);
+    }
 }

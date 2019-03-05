@@ -70,4 +70,13 @@ public class Repository {
     public DisplayableSeller getSeller() {
         return seller;
     }
+
+    /**
+     * removes the item from the sellers stock
+     * @param item the item to remove from stock
+     */
+    public void buyItem(Item item) {
+        seller.remove(item);
+        player.addItem(item);
+    }
 }
