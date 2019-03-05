@@ -31,4 +31,12 @@ public class MarketListViewModel extends AndroidViewModel {
     public void buyItem(Item item) {
         interactor.buyItem(item);
     }
+
+    /**
+     * lets the player sell an item
+     * @param item the item the player is selling
+     */
+    public void sellItem(Item item) {
+        interactor.sellItem(item);
+    }
 }

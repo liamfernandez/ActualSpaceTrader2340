@@ -17,6 +17,14 @@ public class MarketInteractor extends Interactor {
      * @param item the item the player is buying
      */
     public void buyItem(Item item) {
-        getRepository().buyItem(item);
+        getRepository().buyItem(item, 1);
+    }
+
+    /**
+     * sells the item from the players inventory
+     * @param item the item to sell
+     */
+    public void sellItem(Item item) {
+        getRepository().sellItem(item, 1);
     }
 }
