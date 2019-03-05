@@ -18,6 +18,7 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     public String addPlayer(Player player) {
+        interactor.createUniverse();
         boolean validPoints = validatePlayer(player);
         boolean validName = validatePlayerName(player);
         if (validPoints && validName) {

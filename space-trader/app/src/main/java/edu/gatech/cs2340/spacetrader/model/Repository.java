@@ -25,7 +25,6 @@ public class Repository {
 
     public Repository() {
         allPlayers = new ArrayList<>();
-        universe = new Universe();
     }
 
     /**
@@ -47,4 +46,11 @@ public class Repository {
 
     }
 
+    /**
+     * adds the universe to the game
+     * @param newUniverse the universe to add
+     */
+    public void addUniverse(Universe newUniverse) {
+        universe = newUniverse;
+    }
 }
