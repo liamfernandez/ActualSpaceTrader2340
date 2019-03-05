@@ -17,10 +17,10 @@ public class MarketListViewModel extends AndroidViewModel {
 
     public MarketListViewModel(@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getPlayerInteractor();
+        interactor = Model.getInstance().getMarketInteractor();
     }
 
     public HashMap<Item, Pair<Integer, Double>> getItems() {
-
+        return interactor.getSeller().getItemsForSale();
     }
 }

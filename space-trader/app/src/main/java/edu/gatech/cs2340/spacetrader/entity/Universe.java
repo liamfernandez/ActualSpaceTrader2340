@@ -139,4 +139,11 @@ public class Universe {
         }
     }
 
+    /**
+     * gets the starting planet
+     */
+    public Planet getStartingPlanet() {
+        return systems.get(0).getPlanet(1);
+    }
+
 }

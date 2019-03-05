@@ -14,8 +14,8 @@ public class PlayerInteractor extends Interactor {
         super(repo);
     }
 
-    public List<Player> getAllStudents() {
-        return getRepository().getAllPlayers();
+    public Player getPlayer() {
+        return getRepository().getPlayer();
     }
 
     public void addPlayerToBackEnd (Player p) {
@@ -25,6 +25,7 @@ public class PlayerInteractor extends Interactor {
     public void createUniverse() {
         Universe newUniverse = new Universe();
         getRepository().addUniverse(newUniverse);
+        getRepository().addSeller();
     }
 
     /**

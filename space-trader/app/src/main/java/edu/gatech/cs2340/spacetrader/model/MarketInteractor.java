@@ -6,5 +6,7 @@ public class MarketInteractor extends Interactor {
         super(repo);
     }
 
-
+    public DisplayableSeller getSeller() {
+        return getRepository().getSeller();
+    }
 }

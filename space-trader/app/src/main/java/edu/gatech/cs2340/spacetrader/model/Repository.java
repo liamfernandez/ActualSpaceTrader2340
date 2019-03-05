@@ -1,12 +1,14 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import android.util.Log;
+import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
@@ -20,19 +22,19 @@ public class Repository {
     }
 
     /** all the Players known in the application */
-    private List<Player> allPlayers;
+    private Player player;
     private Universe universe;
+    private DisplayableSeller seller;
 
     public Repository() {
-        allPlayers = new ArrayList<>();
     }
 
     /**
      * get all the players
      * @return list of all students
      */
-    public List<Player> getAllPlayers() {
-        return allPlayers;
+    public Player getPlayer() {
+        return player;
     }
 
     /**
@@ -41,7 +43,8 @@ public class Repository {
      */
     public void addPlayer(Player p) {
         p.setId(Repository.getNextUniqueID());
-        allPlayers.add(p);
+        p.setCurrPlanet(universe.getStartingPlanet());
+        player = p;
         Log.d("APP", "Interactor: added player: " + p);
 
     }
@@ -52,5 +55,19 @@ public class Repository {
      */
     public void addUniverse(Universe newUniverse) {
         universe = newUniverse;
+    }
+
+    /**
+     * adds the original seller to the game
+     */
+    public void addSeller() {
+        seller = new MarketSeller(player.getCurrPlanet());
+    }
+
+    /**
+     * gets the current Displayable seller
+     */
+    public DisplayableSeller getSeller() {
+        return seller;
     }
 }

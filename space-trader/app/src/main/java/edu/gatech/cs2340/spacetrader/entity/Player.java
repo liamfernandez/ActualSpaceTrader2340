@@ -6,6 +6,7 @@ public class Player extends Character{
     private int dificulty;
     private Spaceship spaceship;
     private Inventory inventory;
+    private Planet currPlanet;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
@@ -74,6 +75,9 @@ public class Player extends Character{
         return skill4;
     }
 
+    public Planet getCurrPlanet() {
+        return currPlanet;
+    }
     public Inventory getInventory() {
         return inventory;
     }
@@ -99,5 +103,13 @@ public class Player extends Character{
      */
     public double getCredit() {
         return this.credit;
+    }
+
+    /**
+     * sets the current planet of the Player
+     * @param newCurrPlanet the new planet that the player is on
+     */
+    public void setCurrPlanet(Planet newCurrPlanet) {
+        currPlanet = newCurrPlanet;
     }
 }

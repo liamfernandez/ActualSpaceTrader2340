@@ -92,4 +92,13 @@ public class SolarSystem {
         rep.append(".");
         return rep.toString();
     }
+
+    /**
+     * gets the planet that is i units from the star
+     * @param i the number planet that we want
+     * @return the ith planet in the solar system
+     */
+    public Planet getPlanet(int i) {
+        return planets.get(i);
+    }
 }
