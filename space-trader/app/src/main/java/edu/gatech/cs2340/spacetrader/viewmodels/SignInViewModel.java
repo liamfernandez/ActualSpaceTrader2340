@@ -23,6 +23,7 @@ public class SignInViewModel extends AndroidViewModel {
         boolean validName = validatePlayerName(player);
         if (validPoints && validName) {
             interactor.addPlayerToBackEnd(player);
+            interactor.setSeller();
             return "Player Created";
         } else if (validName) {
             return "Need 16 total skill points.";

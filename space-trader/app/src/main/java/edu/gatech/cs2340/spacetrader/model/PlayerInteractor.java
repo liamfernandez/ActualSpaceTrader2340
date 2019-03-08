@@ -20,11 +20,15 @@ public class PlayerInteractor extends Interactor {
 
     public void addPlayerToBackEnd (Player p) {
         getRepository().addPlayer(p);
+
     }
 
     public void createUniverse() {
         Universe newUniverse = new Universe();
         getRepository().addUniverse(newUniverse);
-        getRepository().addSeller();
+    }
+
+    public void setSeller() {
+        getRepository().setSeller();
     }
 }

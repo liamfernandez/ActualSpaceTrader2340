@@ -61,7 +61,7 @@ public class Repository {
     /**
      * adds the original seller to the game
      */
-    public void addSeller() {
+    public void setSeller() {
         seller = new MarketSeller(player.getCurrPlanet());
     }
 

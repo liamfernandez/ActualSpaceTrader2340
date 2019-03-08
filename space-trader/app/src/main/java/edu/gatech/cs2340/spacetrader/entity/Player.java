@@ -78,6 +78,7 @@ public class Player extends Character{
     public Planet getCurrPlanet() {
         return currPlanet;
     }
+
     public Inventory getInventory() {
         return inventory;
     }

@@ -140,4 +140,8 @@ public enum Item {
     public void setMTH(int MTH) {
         this.MTH = MTH;
     }
+
+    public String getName() {
+        return name;
+    }
 }
