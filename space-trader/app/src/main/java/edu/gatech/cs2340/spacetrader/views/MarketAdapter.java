@@ -41,7 +41,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         Log.d("APP", "Binding: " + position + " " + itemList.get(position));
 
         holder.itemName.setText(item.getName());
-        holder.itemPrice.setText(item.getBasePrice());
+        holder.itemPrice.setText("" + item.getBasePrice());
     }
 
     @Override

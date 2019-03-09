@@ -36,8 +36,8 @@ public class Repository {
     }
 
     public void loadItems() {
-        addItem(new MockItem("medicine", "10"));
-        addItem(new MockItem("water", "1"));
+        addItem(new MockItem("medicine", 10));
+        addItem(new MockItem("water", 1));
     }
 
     public void addItem(MockItem item) {

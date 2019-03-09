@@ -3,9 +3,9 @@ package edu.gatech.cs2340.spacetrader.entity;
 public class MockItem {
 
     private String name;
-    private String basePrice;
+    private int basePrice;
 
-    public MockItem(String name, String basePrice) {
+    public MockItem(String name, int basePrice) {
         this.name = name;
         this.basePrice = basePrice;
     }
@@ -14,7 +14,7 @@ public class MockItem {
         return name;
     }
 
-    public String getBasePrice() {
+    public int getBasePrice() {
         return basePrice;
     }
 }
