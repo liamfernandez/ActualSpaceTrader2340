@@ -6,8 +6,10 @@ import android.support.annotation.NonNull;
 import android.util.Pair;
 
 import java.util.HashMap;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.entity.Item;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
@@ -22,6 +24,10 @@ public class MarketListViewModel extends AndroidViewModel {
 
     public HashMap<Item, Pair<Integer, Double>> getItems() {
         return interactor.getSeller().getItemsForSale();
+    }
+
+    public List<MockItem> getMockItems() {
+        return interactor.getAllItems();
     }
 
     /**

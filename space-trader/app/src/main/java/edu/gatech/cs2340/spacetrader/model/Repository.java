@@ -10,6 +10,7 @@ import java.util.Map;
 
 import edu.gatech.cs2340.spacetrader.entity.Inventory;
 import edu.gatech.cs2340.spacetrader.entity.Item;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
@@ -27,7 +28,28 @@ public class Repository {
     private Universe universe;
     private DisplayableSeller seller;
 
+    private List<MockItem> allItems;
+
     public Repository() {
+        allItems = new ArrayList<>();
+        loadItems();
+    }
+
+    public void loadItems() {
+        addItem(new MockItem("medicine", "10"));
+        addItem(new MockItem("water", "1"));
+    }
+
+    public void addItem(MockItem item) {
+        allItems.add(item);
+    }
+
+    /**
+     * get all the lists in the system
+     * @return list of all the items
+     */
+    public List<MockItem> getAllItems() {
+        return allItems;
     }
 
     /**

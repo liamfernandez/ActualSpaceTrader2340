@@ -1,6 +1,9 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.util.List;
+
 import edu.gatech.cs2340.spacetrader.entity.Item;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
 public class MarketInteractor extends Interactor {
 
@@ -26,5 +29,9 @@ public class MarketInteractor extends Interactor {
      */
     public void sellItem(Item item) {
         getRepository().sellItem(item, 1);
+    }
+
+    public List<MockItem> getAllItems() {
+        return getRepository().getAllItems();
     }
 }

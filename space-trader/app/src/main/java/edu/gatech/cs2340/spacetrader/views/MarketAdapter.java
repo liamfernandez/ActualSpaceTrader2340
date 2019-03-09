@@ -13,12 +13,13 @@ import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Item;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketViewHolder>{
 
 
     /** a copy of the list of students in the model */
-    private List<Item> itemList = new ArrayList<>();
+    private List<MockItem> itemList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -35,7 +36,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     public void onBindViewHolder(@NonNull MarketViewHolder holder, int position) {
 
         //bind the student data for one student
-        Item item = itemList.get(position);
+        MockItem item = itemList.get(position);
 
         Log.d("APP", "Binding: " + position + " " + itemList.get(position));
 
@@ -48,7 +49,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return itemList.size();
     }
 
-    public void setItemList(List<Item> items) {
+    public void setItemList(List<MockItem> items) {
         itemList = items;
         notifyDataSetChanged();
     }
@@ -67,4 +68,5 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             itemPrice = itemView.findViewById(R.id.text_Item_price);
         }
     }
+
 }

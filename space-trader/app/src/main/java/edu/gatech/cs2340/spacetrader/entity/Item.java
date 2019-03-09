@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public enum Item {
+public enum  Item {
+
     WATER("water",0, 0, 2, 30, 3, 4, Resources.DROUGHT,
             Resources.LOTSOFWATER, Resources.DESERT, 30, 50),
     FURS("furs",0, 0, 0, 250, 10, 10, Resources.COLD,
