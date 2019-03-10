@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
@@ -43,6 +45,15 @@ public class MarketMainActivity extends AppCompatActivity {
         //grab our view model instance
         viewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
 
+        Button start = findViewById(R.id.backButton);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MarketMainActivity.this, InitialSolarActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Log.d("APP", viewModel.getMockItems().toString());
     }
 
@@ -55,8 +66,22 @@ public class MarketMainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new MarketAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(MockItem item) {
-
+                boolean flag = viewModel.buyMockItem(item);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         });
+
+        adapterCargo.setOnItemClickListener(new CargoAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(MockItem item) {
+                boolean flag = viewModel.sellMockItem(item);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
     }
 }

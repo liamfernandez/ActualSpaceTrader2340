@@ -34,8 +34,12 @@ public class MarketListViewModel extends AndroidViewModel {
         return interactor.getCargoItems();
     }
 
-    public void buyMockItem(MockItem item) {
-        interactor.buyMockItem(item);
+    public boolean buyMockItem(MockItem item) {
+        return interactor.buyMockItem(item);
+    }
+
+    public boolean sellMockItem(MockItem item) {
+        return interactor.sellMockItem(item);
     }
 
     /**

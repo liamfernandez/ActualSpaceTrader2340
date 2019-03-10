@@ -35,11 +35,10 @@ public class Repository {
         allItems = new ArrayList<>();
         cargoList = new ArrayList<>();
         loadItems();
-        loadCargo(new MockItem("food", 5));
     }
 
     public void loadItems() {
-        addItem(new MockItem("medicine", 10));
+        addItem(new MockItem("medicine", 10000));
         addItem(new MockItem("water", 1));
     }
 
@@ -139,12 +138,22 @@ public class Repository {
     }
 
     public boolean buyMockItem(MockItem item) {
-        if (player.getCargoTotal() > player.getMaxItems() && player.getCredit() > item.getBasePrice()) {
+        if (cargoList.size() < player.getMaxItems() && player.getCredit() > item.getBasePrice()) {
             player.editCredit(0 - item.getBasePrice());
             cargoList.add(item);
+            Log.d("BUUUUUYYYYYYYYYYYY", "true");
             return true;
         }
+        Log.d("BBBBUUYUYUUYUYUY", "" + player.getCredit());
+        Log.d("BUUUUYYYYYYYYY", "false");
         return false;
+    }
+
+    public boolean sellMockItem(MockItem item) {
+        cargoList.remove(item);
+        player.editCredit(item.getBasePrice());
+        Log.d("BBBBUUYUYUUYUYUY", "" + player.getCredit());
+        return true;
     }
 
     /**

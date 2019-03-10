@@ -23,8 +23,12 @@ public class MarketInteractor extends Interactor {
         getRepository().buyItem(item, 1);
     }
 
-    public void buyMockItem(MockItem item) {
-        getRepository().buyMockItem(item);
+    public boolean buyMockItem(MockItem item) {
+        return getRepository().buyMockItem(item);
+    }
+
+    public boolean sellMockItem(MockItem item) {
+        return getRepository().sellMockItem(item);
     }
 
     /**
