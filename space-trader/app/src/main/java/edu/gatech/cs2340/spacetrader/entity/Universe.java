@@ -68,7 +68,7 @@ public class Universe {
      * @param shipRange Radius to search in
      * @return HashMap of SolarSystems; key is the distance, value is the SolarSystem
      */
-    HashMap<Double, SolarSystem> getSystemsInRange(SolarSystem currrentSystem, double shipRange) {
+    public HashMap<Double, SolarSystem> getSystemsInRange(SolarSystem currrentSystem, double shipRange) {
         TreeMap<Double, SolarSystem> distanceOfSystems = new TreeMap<>();
 
         for (SolarSystem s :systems) {
@@ -90,7 +90,7 @@ public class Universe {
      * @param s2 System 2
      * @return Straight ine distance between s1 & s2
      */
-    private double computeSeparation(SolarSystem s1, SolarSystem s2) {
+    private static double computeSeparation(SolarSystem s1, SolarSystem s2) {
         return Math.sqrt(
                 Math.pow(s1.getxCord() - s2.getxCord(), 2)
                         + Math.pow(s1.getyCord() - s2.getyCord(), 2)
