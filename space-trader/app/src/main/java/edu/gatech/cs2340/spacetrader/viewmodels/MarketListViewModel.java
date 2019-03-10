@@ -30,6 +30,14 @@ public class MarketListViewModel extends AndroidViewModel {
         return interactor.getAllItems();
     }
 
+    public List<MockItem> getCargoItems() {
+        return interactor.getCargoItems();
+    }
+
+    public void buyMockItem(MockItem item) {
+        interactor.buyMockItem(item);
+    }
+
     /**
      * lets player buy an item
      * @param item the item the player is buying

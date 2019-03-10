@@ -7,6 +7,8 @@ public class Player extends Character{
     private Spaceship spaceship;
     private Inventory inventory;
     private Planet currPlanet;
+    private final int maxItems = 2;
+    private int cargoTotal = 0;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
@@ -85,6 +87,14 @@ public class Player extends Character{
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public int getCargoTotal() {
+        return cargoTotal;
+    }
+
+    public int getMaxItems() {
+        return maxItems;
     }
 
     /**

@@ -21,6 +21,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     /** a copy of the list of students in the model */
     private List<MockItem> itemList = new ArrayList<>();
 
+    private List<MockItem> cargoList = new ArrayList<>();
+
+    private OnItemClickListener listener;
+
     @NonNull
     @Override
     public MarketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -54,6 +58,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         notifyDataSetChanged();
     }
 
+    public void setCargoList(List<MockItem> items) {
+        cargoList = items;
+        notifyDataSetChanged();
+    }
+
     /**
      * This is a holder for the widgets associated with a single entry in the list of items
      */
@@ -66,7 +75,26 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             super(itemView);
             itemName = itemView.findViewById(R.id.text_Item_Name);
             itemPrice = itemView.findViewById(R.id.text_Item_price);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClicked(itemList.get(position));
+                    }
+                }
+            });
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClicked(MockItem item);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 }

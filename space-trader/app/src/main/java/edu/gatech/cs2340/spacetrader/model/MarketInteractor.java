@@ -23,6 +23,10 @@ public class MarketInteractor extends Interactor {
         getRepository().buyItem(item, 1);
     }
 
+    public void buyMockItem(MockItem item) {
+        getRepository().buyMockItem(item);
+    }
+
     /**
      * sells the item from the players inventory
      * @param item the item to sell
@@ -33,5 +37,9 @@ public class MarketInteractor extends Interactor {
 
     public List<MockItem> getAllItems() {
         return getRepository().getAllItems();
+    }
+
+    public List<MockItem> getCargoItems() {
+        return getRepository().getCargoList();
     }
 }

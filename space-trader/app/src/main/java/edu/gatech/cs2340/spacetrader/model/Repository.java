@@ -29,15 +29,26 @@ public class Repository {
     private DisplayableSeller seller;
 
     private List<MockItem> allItems;
+    private List<MockItem> cargoList;
 
     public Repository() {
         allItems = new ArrayList<>();
+        cargoList = new ArrayList<>();
         loadItems();
+        loadCargo(new MockItem("food", 5));
     }
 
     public void loadItems() {
         addItem(new MockItem("medicine", 10));
         addItem(new MockItem("water", 1));
+    }
+
+    public void loadCargo(MockItem item) {
+        addCargo(item);
+    }
+
+    public void addCargo(MockItem item) {
+        cargoList.add(item);
     }
 
     public void addItem(MockItem item) {
@@ -50,6 +61,10 @@ public class Repository {
      */
     public List<MockItem> getAllItems() {
         return allItems;
+    }
+
+    public List<MockItem> getCargoList() {
+        return cargoList;
     }
 
     /**
@@ -121,6 +136,15 @@ public class Repository {
         } else {
             return false;
         }
+    }
+
+    public boolean buyMockItem(MockItem item) {
+        if (player.getCargoTotal() > player.getMaxItems() && player.getCredit() > item.getBasePrice()) {
+            player.editCredit(0 - item.getBasePrice());
+            cargoList.add(item);
+            return true;
+        }
+        return false;
     }
 
     /**

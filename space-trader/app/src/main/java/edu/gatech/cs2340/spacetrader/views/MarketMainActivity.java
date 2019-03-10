@@ -9,12 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.viewmodels.MarketListViewModel;
 
 public class MarketMainActivity extends AppCompatActivity {
 
     private MarketListViewModel  viewModel;
     private MarketAdapter adapter;
+    private MarketAdapter adapterCargo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +30,15 @@ public class MarketMainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
+        RecyclerView recyclerViewCargo = findViewById(R.id.cargo_list);
+        recyclerViewCargo.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewCargo.setHasFixedSize(true);
+
         // Setup the adapter for this recycler view
         adapter = new MarketAdapter();
         recyclerView.setAdapter(adapter);
+        adapterCargo = new MarketAdapter();
+        recyclerViewCargo.setAdapter(adapterCargo);
 
         //grab our view model instance
         viewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
@@ -42,6 +50,13 @@ public class MarketMainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         adapter.setItemList(viewModel.getMockItems());
+        adapter.setCargoList(viewModel.getCargoItems());
 
+        adapter.setOnItemClickListener(new MarketAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(MockItem item) {
+
+            }
+        });
     }
 }
