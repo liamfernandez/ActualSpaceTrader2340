@@ -19,6 +19,7 @@ public class SignInViewModel extends AndroidViewModel {
 
     public String addPlayer(Player player) {
         interactor.createUniverse();
+        interactor.createMockItems();
         boolean validPoints = validatePlayer(player);
         boolean validName = validatePlayerName(player);
         if (validPoints && validName) {

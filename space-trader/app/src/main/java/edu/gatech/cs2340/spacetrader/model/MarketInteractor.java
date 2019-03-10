@@ -40,6 +40,7 @@ public class MarketInteractor extends Interactor {
     }
 
     public List<MockItem> getAllItems() {
+        getRepository().loadItems();
         return getRepository().getAllItems();
     }
 

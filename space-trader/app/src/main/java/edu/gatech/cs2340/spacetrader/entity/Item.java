@@ -24,17 +24,17 @@ public enum  Item {
             null, null, 3500, 5000);
 
     String name;
-    int MTLP;
-    int MTLU;
-    int TTP;
-    int basePrice;
-    int IPL;
-    int var;
-    Resources IE;
-    Resources CR;
-    Resources ER;
-    int MTL;
-    int MTH;
+        int MTLP;
+        int MTLU;
+        int TTP;
+        int basePrice;
+        int IPL;
+        int var;
+        Resources IE;
+        Resources CR;
+        Resources ER;
+        int MTL;
+        int MTH;
 
     private Item(String name, int MTLP, int MTLU, int TTP, int basePrice,
                  int IPL,

@@ -28,18 +28,31 @@ public class Repository {
     private Universe universe;
     private DisplayableSeller seller;
 
+    private List<MockItem> allGameItems;
     private List<MockItem> allItems;
     private List<MockItem> cargoList;
 
     public Repository() {
         allItems = new ArrayList<>();
         cargoList = new ArrayList<>();
+        allGameItems = new ArrayList<>();
         loadItems();
     }
 
     public void loadItems() {
-        addItem(new MockItem("medicine", 10000));
-        addItem(new MockItem("water", 1));
+        allItems = new ArrayList<>();
+        Log.d("att sad", "starting the loading of items");
+        Log.d("market", "allGameItems" + allGameItems.toString());
+        for (MockItem mockItem : allGameItems) {
+            Log.d("loading", "testing if " + mockItem.getName() + "available on " + player.getCurrPlanet());
+            if (mockItem.isSellable(player.getCurrPlanet())) {
+                Log.d("loading", "adding " + mockItem.getName() + "KKKKKKKKKK");
+                MockItem marketMockItem = mockItem;
+                marketMockItem.setBuyingPrice(mockItem.calcBuyingPrice(player.getCurrPlanet()));
+                marketMockItem.setSellingPrice(mockItem.calcSellingPrice());
+                addItem(marketMockItem);
+            }
+        }
     }
 
     public void loadCargo(MockItem item) {
@@ -92,6 +105,7 @@ public class Repository {
      */
     public void addUniverse(Universe newUniverse) {
         universe = newUniverse;
+        initMockItems();
     }
 
     /**
@@ -138,8 +152,8 @@ public class Repository {
     }
 
     public boolean buyMockItem(MockItem item) {
-        if (cargoList.size() < player.getMaxItems() && player.getCredit() > item.getBasePrice()) {
-            player.editCredit(0 - item.getBasePrice());
+        if (cargoList.size() < player.getMaxItems() && player.getCredit() > item.getSellingPrice()) {
+            player.editCredit(0 - item.getSellingPrice());
             cargoList.add(item);
             Log.d("BUUUUUYYYYYYYYYYYY", "true");
             return true;
@@ -151,7 +165,7 @@ public class Repository {
 
     public boolean sellMockItem(MockItem item) {
         cargoList.remove(item);
-        player.editCredit(item.getBasePrice());
+        player.editCredit(item.getSellingPrice());
         Log.d("BBBBUUYUYUUYUYUY", "" + player.getCredit());
         return true;
     }
@@ -190,5 +204,9 @@ public class Repository {
                 return true;
             }
         }
+    }
+
+    public void initMockItems() {
+        allGameItems = universe.initMockItems();
     }
 }

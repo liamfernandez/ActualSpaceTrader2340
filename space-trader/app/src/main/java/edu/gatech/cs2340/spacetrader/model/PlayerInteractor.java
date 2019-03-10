@@ -28,6 +28,10 @@ public class PlayerInteractor extends Interactor {
         getRepository().addUniverse(newUniverse);
     }
 
+    public void createMockItems() {
+        getRepository().initMockItems();
+    }
+
     public void setSeller() {
         getRepository().setSeller();
     }
