@@ -16,7 +16,7 @@ public class MarketMainActivity extends AppCompatActivity {
 
     private MarketListViewModel  viewModel;
     private MarketAdapter adapter;
-    private MarketAdapter adapterCargo;
+    private CargoAdapter adapterCargo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MarketMainActivity extends AppCompatActivity {
         // Setup the adapter for this recycler view
         adapter = new MarketAdapter();
         recyclerView.setAdapter(adapter);
-        adapterCargo = new MarketAdapter();
+        adapterCargo = new CargoAdapter();
         recyclerViewCargo.setAdapter(adapterCargo);
 
         //grab our view model instance
@@ -50,7 +50,7 @@ public class MarketMainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         adapter.setItemList(viewModel.getMockItems());
-        adapter.setCargoList(viewModel.getCargoItems());
+        adapterCargo.setCargoList(viewModel.getCargoItems());
 
         adapter.setOnItemClickListener(new MarketAdapter.OnItemClickListener() {
             @Override
