@@ -23,7 +23,7 @@ public class MockItem {
     private int MTL;
     private int MTH;
 
-    public MockItem(String name, int MTLP, int MTLU, int TTP,  int basePrice, int IPL, int var, Resources IE, Resources CR, Resources ER, int MTL, int MTH) {
+    public MockItem(String name, int MTLP, int MTLU, int TTP,  int basePrice, int IPL, int var, Resources IE, Resources CR, Resources ER, int MTL, int MTH, int buyingPrice, int sellingPrice) {
         this.name = name;
         this.basePrice = basePrice;
         this.MTLP = MTLP;
@@ -36,9 +36,14 @@ public class MockItem {
         this.ER = ER;
         this.MTL = MTL;
         this.MTH = MTH;
-        this.buyingPrice = basePrice;
-        this.sellingPrice = basePrice;
+        this.buyingPrice = buyingPrice;
+        this.sellingPrice = sellingPrice;
     }
+
+    public MockItem(MockItem item) {
+        this(item.name, item.MTLP, item.MTLU, item.TTP, item.basePrice, item.IPL, item.var, item.IE, item.CR, item.ER, item.MTL, item.MTH, item.buyingPrice, item.sellingPrice);
+    }
+
 
     public boolean isSellable(Planet planet) {
         return planet.getTechLevel().getLevel() >= MTLP;
@@ -143,5 +148,14 @@ public class MockItem {
         double priceAdded = random.nextDouble() * range;
 
         return (int) (min + priceAdded);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        try {
+            return this.name.equals(((MockItem)object).getName());
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 }

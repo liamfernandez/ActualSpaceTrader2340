@@ -41,6 +41,7 @@ public class Repository {
 
     public void loadItems() {
         allItems = new ArrayList<>();
+        List<MockItem> updatedCargo = new ArrayList<>();
         Log.d("att sad", "starting the loading of items");
         Log.d("market", "allGameItems" + allGameItems.toString());
         for (MockItem mockItem : allGameItems) {
@@ -53,6 +54,16 @@ public class Repository {
                 addItem(marketMockItem);
             }
         }
+        for (MockItem item : cargoList) {
+            if (updatedCargo.contains(item)) {
+                MockItem prevItem = updatedCargo.get(updatedCargo.indexOf(item));
+                item.setSellingPrice(prevItem.getSellingPrice());
+            } else {
+                item.setSellingPrice(item.calcSellingPrice());
+            }
+            updatedCargo.add(item);
+        }
+        cargoList = updatedCargo;
     }
 
     public void loadCargo(MockItem item) {
@@ -153,8 +164,15 @@ public class Repository {
 
     public boolean buyMockItem(MockItem item) {
         if (cargoList.size() < player.getMaxItems() && player.getCredit() > item.getSellingPrice()) {
-            player.editCredit(0 - item.getSellingPrice());
-            cargoList.add(item);
+            Log.d("buyItem", "basePrice: " + item.getBasePrice() + ", buyPrice: " + item.getBuyingPrice() + ", sellPrice: " + item.getSellingPrice());
+            player.editCredit(0 - item.getBuyingPrice());
+            for (MockItem mockitem : cargoList) {
+                if (cargoList.contains(item)) {
+                    MockItem prevItem = cargoList.get(cargoList.indexOf(mockitem));
+                    item.setSellingPrice(prevItem.getSellingPrice());
+                }
+            }
+            cargoList.add(new MockItem(item));
             Log.d("BUUUUUYYYYYYYYYYYY", "true");
             return true;
         }
@@ -208,5 +226,9 @@ public class Repository {
 
     public void initMockItems() {
         allGameItems = universe.initMockItems();
+    }
+
+    public int getPlayerCredit() {
+        return (int) player.getCredit();
     }
 }

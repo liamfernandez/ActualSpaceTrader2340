@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
@@ -19,6 +21,7 @@ public class MarketMainActivity extends AppCompatActivity {
     private MarketListViewModel  viewModel;
     private MarketAdapter adapter;
     private CargoAdapter adapterCargo;
+    private TextView credit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,9 @@ public class MarketMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        credit = (TextView) findViewById(R.id.text_money);
+        credit.setText(viewModel.getCredit());
 
         Log.d("APP", viewModel.getMockItems().toString());
     }

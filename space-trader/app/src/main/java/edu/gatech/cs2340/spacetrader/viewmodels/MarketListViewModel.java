@@ -57,4 +57,12 @@ public class MarketListViewModel extends AndroidViewModel {
     public void sellItem(Item item) {
         interactor.sellItem(item);
     }
+
+    public String getCredit() {
+        return "    " + interactor.getPlayerCredit() + "$$";
+    }
+
+    public void refreshMockItems() {
+        interactor.refreshMockItems();
+    }
 }

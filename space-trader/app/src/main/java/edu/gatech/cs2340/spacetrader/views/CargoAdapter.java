@@ -42,7 +42,8 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         Log.d("APP", "Binding: " + position + " " + cargoList.get(position));
 
         holder.itemName.setText(item.getName());
-        holder.itemPrice.setText("" + item.getSellingPrice());
+        String itemSellPrice = "" + item.getSellingPrice();
+        holder.itemPrice.setText(itemSellPrice);
     }
 
     @Override
