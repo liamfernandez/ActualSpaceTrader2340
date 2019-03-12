@@ -63,9 +63,15 @@ public class Inventory {
 
     }
 
+    public MockItem remove(Item item, int quantity) {
+        return remove(new MockItem(item, 0,0), quantity);
+    }
+
     public boolean contains(MockItem i) {
         return map.containsKey(i.getItemType());
     }
+
+    public boolean contains(Item i) { return map.containsKey(i); }
 
     /**
      * Get quantity of item in player's inventory
@@ -74,9 +80,13 @@ public class Inventory {
      * @return
      */
     public int getQuantity(MockItem i) {
-        if (!contains(i)) {
+        return getQuantity(i.getItemType());
+    }
+
+    public int getQuantity(Item item) {
+        if (!contains(item)) {
             return 0;
         }
-        return map.get(i.getItemType());
+        return map.get(item);
     }
 }
