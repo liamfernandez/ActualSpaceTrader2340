@@ -8,45 +8,24 @@ import java.util.Random;
 
 public class MockItem {
 
-    private String name;
     private int sellingPrice;
     private int buyingPrice;
-    private int basePrice;
-    private int MTLP;
-    private int MTLU;
-    private int TTP;
-    private int IPL;
-    private int var;
-    private Resources IE;
-    private Resources CR;
-    private Resources ER;
-    private int MTL;
-    private int MTH;
+    public Item item;
 
-    public MockItem(String name, int MTLP, int MTLU, int TTP,  int basePrice, int IPL, int var, Resources IE, Resources CR, Resources ER, int MTL, int MTH, int buyingPrice, int sellingPrice) {
-        this.name = name;
-        this.basePrice = basePrice;
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.IPL = IPL;
-        this.var = var;
-        this.IE = IE;
-        this.CR = CR;
-        this.ER = ER;
-        this.MTL = MTL;
-        this.MTH = MTH;
+
+    public MockItem(Item item, int buyingPrice, int sellingPrice) {
+        this.item = item;
         this.buyingPrice = buyingPrice;
         this.sellingPrice = sellingPrice;
     }
 
     public MockItem(MockItem item) {
-        this(item.name, item.MTLP, item.MTLU, item.TTP, item.basePrice, item.IPL, item.var, item.IE, item.CR, item.ER, item.MTL, item.MTH, item.buyingPrice, item.sellingPrice);
+        this(item.item, item.buyingPrice, item.sellingPrice);
     }
 
 
     public boolean isSellable(Planet planet) {
-        return planet.getTechLevel().getLevel() >= MTLP;
+        return planet.getTechLevel().getLevel() >= item.getMTLP();
     }
 
     public void setBuyingPrice(int price) {
@@ -56,8 +35,13 @@ public class MockItem {
     public void setSellingPrice(int price) {
         sellingPrice = price;
     }
+
     public String getName() {
-        return name;
+        return item.getName();
+    }
+
+    public Item getItemType() {
+        return item;
     }
 
     public int getSellingPrice() {
@@ -68,79 +52,79 @@ public class MockItem {
         return buyingPrice;
     }
     public int getBasePrice() {
-        return basePrice;
+        return item.getBasePrice();
     }
 
     public int getMTLP() {
-        return MTLP;
+        return item.getMTLP();
     }
 
     public int getMTLU() {
-        return MTLU;
+        return item.getMTLU();
     }
 
     public int getTTP() {
-        return TTP;
+        return item.getTTP();
     }
 
     public int getIPL() {
-        return IPL;
+        return item.getIPL();
     }
 
     public int getVar() {
-        return var;
+        return item.getVar();
     }
 
     public Resources getIE() {
-        return IE;
+        return item.getIE();
     }
 
     public Resources getCR() {
-        return CR;
+        return item.getCR();
     }
 
     public Resources getER() {
-        return ER;
+        return item.getER();
     }
 
     public int getMTL() {
-        return MTL;
+        return item.getMTL();
     }
 
     public int getMTH() {
-        return MTH;
+        return item.MTH;
     }
 
     public int calcBuyingPrice(Planet planet) {
-        double price = basePrice;
+        double price = item.getBasePrice();
 
         Random random = new Random();
 
-        price = price + IPL * planet.getTechLevel().getLevel();
+        price = price + item.getIPL() * planet.getTechLevel().getLevel();
 
 
-        if (IE == planet.getResource()) {
+        if (item.getIE() == planet.getResource()) {
             price *= 3.0;
-        } else if (CR == planet.getResource()) {
+        } else if (item.getCR() == planet.getResource()) {
             price *= 1.0/3.0;
-        } else if (ER == planet.getResource()) {
+        } else if (item.getER() == planet.getResource()) {
             price *= 1.5;
         }
 
-        double randomAdjustmentPercentage = random.nextDouble() * var * (2.0 / 100.00);
-        Log.d("calcInfo", name + " randomadj: " + (randomAdjustmentPercentage));
-        Log.d("calcInfo", name + " price: " + (price));
-        Log.d("calcInfo", name + " base price: " + (basePrice));
+        double randomAdjustmentPercentage = random.nextDouble() * getVar() * (2.0 / 100.00);
+        Log.d("calcInfo", item.getName() + " randomadj: " + (randomAdjustmentPercentage));
+        Log.d("calcInfo", item.getName() + " price: " + (price));
+        Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
 
-        Log.d("calcInfo", name + "calculated to be bought for" + (price * (1+randomAdjustmentPercentage)));
+        Log.d("calcInfo", item.getName() + "calculated to be bought for" + (price * (1+randomAdjustmentPercentage)));
 
         return (int) (price * (1.0 + randomAdjustmentPercentage));
 
     }
 
     public int calcSellingPrice() {
-        double min = MTL;
-        double max = MTH;
+        double min = item.getMTL();
+        double max = item.getMTH();
 
         double range = max - min;
 
@@ -153,7 +137,7 @@ public class MockItem {
     @Override
     public boolean equals(Object object) {
         try {
-            return this.name.equals(((MockItem)object).getName());
+            return this.item == ((MockItem) object).item;
         } catch (NullPointerException e) {
             return false;
         }
