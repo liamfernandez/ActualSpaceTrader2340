@@ -148,26 +148,16 @@ public class Universe {
 
     public List<MockItem> initMockItems() {
         ArrayList<MockItem> mockList = new ArrayList<>();
-        mockList.add(new MockItem("water",0, 0, 2, 30, 3, 4, Resources.DROUGHT,
-                Resources.LOTSOFWATER, Resources.DESERT, 30, 50, 30, 30));
-        mockList.add(new MockItem("furs",0, 0, 0, 250, 10, 10, Resources.COLD,
-                Resources.RICHFAUNA, Resources.LIFELESS, 230, 280, 250,250));
-        mockList.add(new MockItem("food",1, 0, 1, 100, 5, 5, Resources.CROPFAIL,
-                Resources.RICHSOIL ,Resources.POORSOIL, 90, 160, 100, 100));
-        mockList.add(new MockItem("ore",2, 2, 3, 350, 20, 10, Resources.WAR,
-                Resources.MINERALRICH, Resources.MINERALPOOR, 350, 420, 350, 350));
-        mockList.add(new MockItem("games",3, 1, 6, 250, -10, 5, Resources.BOREDOM,
-                Resources.ARTISTIC, null, 160, 270, 250, 250));
-        mockList.add(new MockItem("firearms", 3, 1, 5, 1250, -75, 100, Resources.WAR,
-                Resources.WARLIKE, null, 600, 1100, 1250, 1250));
-        mockList.add(new MockItem("medicine", 4, 1, 6, 650, -20, 10, Resources.PLAGUE,
-                Resources.LOTSOFHERBS, null, 400, 700, 650, 650));
-        mockList.add(new MockItem("machines", 4, 3, 5, 900, -30, 5, Resources.LACKOFWORKERS,
-                null, null, 600, 800, 900, 900));
-        mockList.add(new MockItem("narcotics", 5, 0, 5, 3500, -125, 150, Resources.BOREDOM,
-                Resources.WEIRDMUSHROOMS, null, 2000, 3000, 3500, 3500));
-        mockList.add(new MockItem("robots", 6, 4, 7, 5000, -150, 100, Resources.LACKOFWORKERS,
-                null, null, 3500, 5000, 5000, 5000));
+        mockList.add(new MockItem(Item.WATER, 30, 30));
+        mockList.add(new MockItem(Item.FURS, 250,250));
+        mockList.add(new MockItem(Item.FOOD, 100, 100));
+        mockList.add(new MockItem(Item.ORE, 350, 350));
+        mockList.add(new MockItem(Item.GAMES, 250, 250));
+        mockList.add(new MockItem(Item.FIREARMS, 1250, 1250));
+        mockList.add(new MockItem(Item.MEDICINE, 650, 650));
+        mockList.add(new MockItem(Item.MACHINES, 900, 900));
+        mockList.add(new MockItem(Item.NARCOTICS, 3500, 3500));
+        mockList.add(new MockItem(Item.ROBOTS, 5000, 5000));
         return mockList;
     }
 }
