@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Inventory {
     private HashMap<Item, Integer> map;
@@ -12,8 +13,17 @@ public class Inventory {
      * Add item to inventory
      *
      * @param item
-     * @param quantity how many items?
      */
+    public void add(MockItem item) {
+        add(item);
+    }
+
+    public void add(List<MockItem> itemsToAdd) {
+        for (MockItem item : itemsToAdd) {
+            add(item);
+        }
+    }
+
     public void add(Item item, int quantity) {
         int currQuantity = 0;
         if (map.containsKey(item)) {
@@ -32,24 +42,29 @@ public class Inventory {
      * @param quantity Quantity of item to remove
      * @return null if no removal occurred
      */
-    public Item remove(Item item, int quantity) {
+    public MockItem remove(MockItem item, int quantity) {
+        //MockItem toReturn = new MockItem(item.getItemType(), item.getBuyingPrice(), item.getSellingPrice());
         int currQuantity = 0;
-        if (map.containsKey(item)) {
-            currQuantity = map.get(item);
+        if (map.containsKey(item.getItemType())) {
+            currQuantity = map.get(item.getItemType());
         } else {
             return null;
         }
         if (currQuantity - quantity < 0) {
             return null;
-        } else {
-            map.put(item, currQuantity - quantity);
+        } else if (currQuantity - quantity == 0) {
+            map.remove(item.getItemType());
             return item;
+        } else {
+            map.put(item.getItemType(), currQuantity - quantity);
+            return item;
+            //return toReturn;
         }
 
     }
 
-    public boolean contains(Item i) {
-        return map.containsKey(i);
+    public boolean contains(MockItem i) {
+        return map.containsKey(i.getItemType());
     }
 
     /**
@@ -58,10 +73,10 @@ public class Inventory {
      * @param i item
      * @return
      */
-    public int getQuantity(Item i) {
+    public int getQuantity(MockItem i) {
         if (!contains(i)) {
             return 0;
         }
-        return map.get(i);
+        return map.get(i.getItemType());
     }
 }

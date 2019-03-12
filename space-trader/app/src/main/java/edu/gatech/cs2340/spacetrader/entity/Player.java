@@ -128,7 +128,7 @@ public class Player extends Character{
      * adds an item to the user inventory
      * @param item the item to add to inventory
      */
-    public void addItem(Item item) {
-        inventory.add(item, 1);
+    public void addItem(MockItem item) {
+        inventory.add(item);
     }
 }
