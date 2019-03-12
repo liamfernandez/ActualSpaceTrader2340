@@ -184,7 +184,7 @@ public class Repository {
     public boolean sellMockItem(MockItem item) {
         cargoList.remove(item);
         player.editCredit(item.getSellingPrice());
-        Log.d("BBBBUUYUYUUYUYUY", "" + player.getCredit());
+        Log.d("SEEEELLLLLLLLLELLEL", "" + player.getCredit());
         return true;
     }
 
