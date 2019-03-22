@@ -73,7 +73,7 @@ public class MySQLTalker {
 
         System.out.println("Initializing MySQL Talker");
 
-        conn = new Connection("172.0.50.109", "root", "bobwaters", 42424, "space_trader_test", new IConnectionInterface() {
+        conn = new Connection("172.0.50.109", "root", "bobwaters", 42424, "spacetrader", new IConnectionInterface() {
 
             @Override
             public void actionCompleted() {
