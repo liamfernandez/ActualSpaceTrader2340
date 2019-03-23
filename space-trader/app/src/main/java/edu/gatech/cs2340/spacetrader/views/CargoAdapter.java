@@ -16,8 +16,6 @@ import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
 public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHolder>{
 
-    /** a copy of the list of students in the model */
-
     private List<MockItem> cargoList = new ArrayList<>();
 
     private CargoAdapter.OnItemClickListener listener;
@@ -26,7 +24,6 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     @Override
     public CargoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        // hook up to the view for a single student in the system
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.market_item, parent, false);
 
@@ -36,7 +33,6 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     @Override
     public void onBindViewHolder(@NonNull CargoAdapter.CargoViewHolder holder, int position) {
 
-        //bind the student data for one student
         MockItem item = cargoList.get(position);
 
         Log.d("APP", "Binding: " + position + " " + cargoList.get(position));

@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
@@ -29,6 +31,7 @@ public class PlanetActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
+
         // Setup the adapter for this recycler view
         adapter = new PlanetAdapter();
         recyclerView.setAdapter(adapter);
@@ -44,6 +47,8 @@ public class PlanetActivity extends AppCompatActivity {
             }
         });
 
+        TextView textView =  findViewById(R.id.currentPlanet);
+        textView.setText(viewModel.getCurrentPlanet().getName());
 
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
@@ -59,6 +64,9 @@ public class PlanetActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(SolarSystem solarSystem) {
                 viewModel.travelToSolarSystem(solarSystem);
+                Intent intent = new Intent(PlanetActivity.this, SolarSystemActivity.class);
+                finish();
+                startActivity(intent);
             }
         });
     }

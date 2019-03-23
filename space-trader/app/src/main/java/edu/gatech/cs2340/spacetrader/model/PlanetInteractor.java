@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 import edu.gatech.cs2340.spacetrader.entity.Universe;
 
@@ -15,7 +16,7 @@ public class PlanetInteractor extends Interactor {
 
     public void travelToSolarSystem(SolarSystem solarSystem) {
         getRepository().getPlayer().setCurrSolarSystem(solarSystem);
-        getRepository().getPlayer().setFuel((int) solarSystem.getDistance());
+        getRepository().getPlayer().subtractFuel((int) solarSystem.getDistance());
     }
 
     public List<SolarSystem> getInRangeSolarSystems() {
@@ -29,7 +30,9 @@ public class PlanetInteractor extends Interactor {
 
         if (getRepository().getPlayer().getCurrSolarSystem() == null) {
             solarSystem = universe.getStartingSolarSystem();
+            Planet startingPlanet = solarSystem.getPlanet(1);
             getRepository().getPlayer().setCurrSolarSystem(solarSystem);
+            getRepository().getPlayer().setCurrPlanet(startingPlanet);
         } else {
             solarSystem = getRepository().getPlayer().getCurrSolarSystem();
         }
@@ -47,5 +50,18 @@ public class PlanetInteractor extends Interactor {
         }
 
         return inRangeSolarSystems;
+    }
+
+    public Planet getCurrentPlanet() {
+        SolarSystem solarSystem;
+        Universe universe = getRepository().getUniverse();
+
+        if (getRepository().getPlayer().getCurrPlanet() == null) {
+            solarSystem = universe.getStartingSolarSystem();
+            Planet startingPlanet = solarSystem.getPlanet(1);
+            getRepository().getPlayer().setCurrPlanet(startingPlanet);
+
+        }
+        return getRepository().getPlayer().getCurrPlanet();
     }
 }

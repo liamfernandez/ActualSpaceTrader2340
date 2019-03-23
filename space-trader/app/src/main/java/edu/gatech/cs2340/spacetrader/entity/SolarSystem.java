@@ -2,7 +2,9 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SolarSystem {
@@ -76,6 +78,14 @@ public class SolarSystem {
 
     public double getDistance() {
         return distance;
+    }
+
+    public List<Planet> getPlanets() {
+        List<Planet> planetList = new ArrayList<>();
+        for (int i : planets.keySet()) {
+            planetList.add(planets.get(i));
+        }
+        return planetList;
     }
     /**
      * the tostring method

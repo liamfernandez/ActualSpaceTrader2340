@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSystemViewHolder> {
@@ -24,10 +25,8 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSyste
     @Override
     public SolarSystemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        // hook up to the view for a single student in the system
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.solar_system_item, parent, false);
-
 
         return new SolarSystemViewHolder(itemView);
     }
@@ -35,13 +34,13 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSyste
     @Override
     public void onBindViewHolder(@NonNull SolarSystemViewHolder holder, int position) {
 
-        //bind the student data for one student
         SolarSystem solarSystem = solarSystemsList.get(position);
 
         Log.d("APP", "Binding: " + position + " " + solarSystemsList.get(position));
 
         holder.solarSystemName.setText(solarSystem.getName());
         holder.distance.setText("" + (int) solarSystem.getDistance());
+
     }
 
     @Override
@@ -53,7 +52,6 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSyste
         solarSystemsList = solarSystems;
         notifyDataSetChanged();
     }
-
 
     /**
      * This is a holder for the widgets associated with a single entry in the list of items

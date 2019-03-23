@@ -92,7 +92,7 @@ public class Repository {
 
     /**
      * get all the players
-     * @return list of all students
+     * @return player
      */
     public Player getPlayer() {
         return player;

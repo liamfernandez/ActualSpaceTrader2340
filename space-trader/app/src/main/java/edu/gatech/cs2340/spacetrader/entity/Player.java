@@ -147,7 +147,7 @@ public class Player extends Character{
         return fuel;
     }
 
-    public void setFuel(double subtract) {
+    public void subtractFuel(double subtract) {
         this.fuel = fuel - subtract;
     }
 }
