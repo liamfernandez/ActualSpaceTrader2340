@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class PlanetInteractor extends Interactor {
             inRangeSolarSystems.add(s);
         }
 
+        Collections.sort(inRangeSolarSystems, (a, b) -> (int) a.getDistance() - (int) b.getDistance());
         return inRangeSolarSystems;
     }
 

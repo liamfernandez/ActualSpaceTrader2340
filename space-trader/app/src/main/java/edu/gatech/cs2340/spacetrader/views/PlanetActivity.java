@@ -48,7 +48,7 @@ public class PlanetActivity extends AppCompatActivity {
         });
 
         TextView textView =  findViewById(R.id.currentPlanet);
-        textView.setText(viewModel.getCurrentPlanet().getName());
+        textView.setText("Planet " + viewModel.getCurrentPlanet().getName());
 
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
