@@ -18,7 +18,6 @@ import edu.gatech.cs2340.spacetrader.entity.MockItem;
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketViewHolder>{
 
 
-    /** a copy of the list of students in the model */
     private List<MockItem> itemList = new ArrayList<>();
 
     private OnItemClickListener listener;
@@ -27,7 +26,6 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     @Override
     public MarketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        // hook up to the view for a single student in the system
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.market_item, parent, false);
 
@@ -38,7 +36,6 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     @Override
     public void onBindViewHolder(@NonNull MarketViewHolder holder, int position) {
 
-        //bind the student data for one student
         MockItem item = itemList.get(position);
 
         Log.d("APP", "Binding: " + position + " " + itemList.get(position));
@@ -56,7 +53,6 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         itemList = items;
         notifyDataSetChanged();
     }
-
 
     /**
      * This is a holder for the widgets associated with a single entry in the list of items

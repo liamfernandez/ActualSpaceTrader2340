@@ -45,4 +45,8 @@ public class Planet {
     public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
+
+    public String getName() {
+        return name;
+    }
 }

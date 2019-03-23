@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetrader.R;
@@ -29,7 +28,7 @@ public class MarketMainActivity extends AppCompatActivity {
         setContentView(R.layout.market_main);
 
         /*
-         Set up our recycler view by grabbing the layout for a single item
+         Set up our recycler view by grabbing the layout for items
          */
         RecyclerView recyclerView = findViewById(R.id.item_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,7 +51,7 @@ public class MarketMainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MarketMainActivity.this, InitialSolarActivity.class);
+                Intent intent = new Intent(MarketMainActivity.this, PlanetActivity.class);
                 startActivity(intent);
             }
         });
