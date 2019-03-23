@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.view.View;
 import android.widget.Toast;
@@ -85,7 +84,7 @@ public class SignInActivity extends AppCompatActivity {
         String response = viewModel.addPlayer(player);
         Toast.makeText(this, "Result: " + response, Toast.LENGTH_LONG).show();
         if (response.equals("Player Created")) {
-            Intent intent = new Intent(SignInActivity.this, InitialSolarActivity.class);
+            Intent intent = new Intent(SignInActivity.this, PlanetActivity.class);
             startActivity(intent);
         }
     }

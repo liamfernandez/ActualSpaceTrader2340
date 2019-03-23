@@ -231,4 +231,12 @@ public class Repository {
     public int getPlayerCredit() {
         return (int) player.getCredit();
     }
+
+    public Universe getUniverse() {
+        return universe;
+    }
+
+    public double getPlayerFuel() {
+        return player.getFuel();
+    }
 }

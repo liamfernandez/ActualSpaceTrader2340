@@ -10,6 +10,7 @@ public class SolarSystem {
     private double yCord;
     private String name;
     private Map<Integer, Planet> planets;
+    private double distance;
 
     /**
      * Constructor for Solar System
@@ -69,6 +70,13 @@ public class SolarSystem {
         this.name = name;
     }
 
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
     /**
      * the tostring method
      * @return the string representation of a Solar System

@@ -146,6 +146,10 @@ public class Universe {
         return systems.get(0).getPlanet(1);
     }
 
+    public SolarSystem getStartingSolarSystem() {
+        return systems.get(0);
+    }
+
     public List<MockItem> initMockItems() {
         ArrayList<MockItem> mockList = new ArrayList<>();
         mockList.add(new MockItem(Item.WATER, 30, 30));
