@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="28"
+    build-mode="FULL"
+    density="420dpi"
+    format="10"
+    plugin-version="3.3.0"
+    timestamp="1553128475557"
+    token="-9056239026119201958"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="1612" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="665" />
+    <task
+        name="verifier"
+        duration="475" />
+
+    <artifact
+        location="/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        type="SPLIT" />
+
+</instant-run>

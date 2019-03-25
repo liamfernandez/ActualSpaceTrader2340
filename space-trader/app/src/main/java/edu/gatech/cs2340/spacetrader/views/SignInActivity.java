@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Player;
+import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
 
@@ -50,7 +51,6 @@ public class SignInActivity extends AppCompatActivity {
         skill4Spinner = findViewById(R.id.spinner_skill_4);
         Button button = findViewById(R.id.button_submit_signIn);
 
-
         Integer[] skillPoints = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
         String[] difficulties = {"Beginner", "Easy", "Normal", "Hard", "Impossible"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, difficulties);
@@ -66,6 +66,8 @@ public class SignInActivity extends AppCompatActivity {
 
         player = new Player("name", 0, 0, 0, 0);
         viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
+
+        MySQLTalker.initialize();
     }
 
     /**
