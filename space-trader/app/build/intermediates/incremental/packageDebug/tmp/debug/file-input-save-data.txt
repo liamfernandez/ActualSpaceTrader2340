@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Wed Mar 20 22:17:51 EDT 2019
+1.base=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/dex/debug/mergeProjectDexDebug/out
+1.path=classes.dex

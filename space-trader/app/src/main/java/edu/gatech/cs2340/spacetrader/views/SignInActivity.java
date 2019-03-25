@@ -86,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
         String response = viewModel.addPlayer(player);
         Toast.makeText(this, "Result: " + response, Toast.LENGTH_LONG).show();
         if (response.equals("Player Created")) {
-            Intent intent = new Intent(SignInActivity.this, InitialSolarActivity.class);
+            Intent intent = new Intent(SignInActivity.this, PlanetActivity.class);
             startActivity(intent);
         }
     }

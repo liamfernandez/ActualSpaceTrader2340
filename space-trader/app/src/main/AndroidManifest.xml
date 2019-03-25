@@ -18,7 +18,12 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".views.InitialSolarActivity"
+            android:name=".views.PlanetActivity"
+            android:label="Space Trader"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".views.SolarSystemActivity"
             android:label="Space Trader"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

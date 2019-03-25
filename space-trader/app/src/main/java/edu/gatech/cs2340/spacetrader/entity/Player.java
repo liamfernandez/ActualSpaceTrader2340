@@ -7,8 +7,10 @@ public class Player extends Character{
     private Spaceship spaceship;
     private Inventory inventory;
     private Planet currPlanet;
+    private SolarSystem currSolarSystem;
     private final int maxItems = 2;
     private int cargoTotal = 0;
+    private double fuel = 100000;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
@@ -20,6 +22,7 @@ public class Player extends Character{
         credit = 1000;
         spaceship = Spaceship.Gnat;
         inventory = new Inventory();
+        //solarSystem = new SolarSystem(null, 0, 0,"initial");
     }
 
     @Override
@@ -97,6 +100,14 @@ public class Player extends Character{
         return maxItems;
     }
 
+    public SolarSystem getCurrSolarSystem() {
+        return currSolarSystem;
+    }
+
+    public void setCurrSolarSystem(SolarSystem solarSystem) {
+        this.currSolarSystem = solarSystem;
+    }
+
     /**
      * Edits the value of the player's credit
      *
@@ -113,7 +124,7 @@ public class Player extends Character{
      * @return Player's credit
      */
     public double getCredit() {
-        return this.credit;
+        return credit;
     }
 
     /**
@@ -130,5 +141,13 @@ public class Player extends Character{
      */
     public void addItem(MockItem item) {
         inventory.add(item);
+    }
+
+    public double getFuel() {
+        return fuel;
+    }
+
+    public void subtractFuel(double subtract) {
+        this.fuel = fuel - subtract;
     }
 }
