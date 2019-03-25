@@ -53,7 +53,6 @@ public class PlanetActivity extends AppCompatActivity {
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
         marketViewModel.refreshMockItems();
-
     }
 
     @Override
@@ -70,4 +69,6 @@ public class PlanetActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

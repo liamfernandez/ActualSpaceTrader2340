@@ -8,7 +8,7 @@ public abstract class Interactor {
         myRepository = repo;
     }
 
-    protected Repository getRepository() {
+    public Repository getRepository() {
         return myRepository;
     }
 
