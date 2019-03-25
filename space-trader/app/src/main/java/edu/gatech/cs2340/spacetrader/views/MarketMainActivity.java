@@ -47,6 +47,16 @@ public class MarketMainActivity extends AppCompatActivity {
         //grab our view model instance
         viewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
 
+        Button miniGame = findViewById(R.id.mini);
+        miniGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MarketMainActivity.this, MiniGameActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         Button start = findViewById(R.id.backButton);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
