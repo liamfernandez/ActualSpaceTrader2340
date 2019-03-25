@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: __local_aars__:/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/libs/mysql-connector-java-8.0.15.jar:unspecified@jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/mysql-connector-java-8.0.15.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
