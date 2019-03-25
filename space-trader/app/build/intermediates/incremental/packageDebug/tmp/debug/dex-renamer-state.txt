@@ -1,7 +1,7 @@
-#Fri Mar 22 17:57:11 EDT 2019
-base.0=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/dex/debug/mergeProjectDexDebug/out
+#Mon Mar 25 18:02:05 EDT 2019
+base.0=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/transforms/dexMerger/debug/1
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+base.1=/Users/mckaymoore/Documents/FirstYear/Spring2019/CS2340/SpaceTraderClone/ActualSpaceTrader2340/space-trader/app/build/intermediates/transforms/dexMerger/debug/0

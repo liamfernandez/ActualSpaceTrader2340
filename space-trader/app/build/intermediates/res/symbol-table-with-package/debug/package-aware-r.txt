@@ -1080,6 +1080,7 @@ id container
 id content
 id contentPanel
 id coordinator
+id currentPlanet
 id custom
 id customPanel
 id decor_content_parent
@@ -1093,6 +1094,7 @@ id difficultySpinner
 id dimensions
 id direct
 id disableHome
+id distance
 id editText_name
 id edit_query
 id end
@@ -1152,6 +1154,7 @@ id parentPanel
 id parent_matrix
 id percent
 id pin
+id planetName
 id progress_circular
 id progress_horizontal
 id radio
@@ -1188,6 +1191,8 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id solarSystemList
+id solar_system_name
 id spacer
 id spinner_skill_1
 id spinner_skill_2
@@ -1316,7 +1321,6 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
-layout initial_solar_main
 layout market_item
 layout market_main
 layout mtrl_layout_snackbar
@@ -1327,10 +1331,13 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout planet_item
 layout planet_main
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout solar_system_item
+layout solar_system_main
 layout support_simple_spinner_dropdown_item
 menu menu_main
 mipmap ic_launcher

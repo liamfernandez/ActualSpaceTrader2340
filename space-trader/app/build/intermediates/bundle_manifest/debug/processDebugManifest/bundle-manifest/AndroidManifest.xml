@@ -28,7 +28,12 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="edu.gatech.cs2340.spacetrader.views.InitialSolarActivity"
+            android:name="edu.gatech.cs2340.spacetrader.views.PlanetActivity"
+            android:label="Space Trader"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name="edu.gatech.cs2340.spacetrader.views.SolarSystemActivity"
             android:label="Space Trader"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
