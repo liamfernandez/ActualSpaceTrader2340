@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
@@ -16,6 +18,7 @@ public class SolarSystemActivity extends AppCompatActivity {
 
     private SolarSystemViewModel viewModel;
     private SolarSystemAdapter adapter;
+    Button toVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,15 @@ public class SolarSystemActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         viewModel = ViewModelProviders.of(this).get(SolarSystemViewModel.class);
+
+        toVideo = (Button) findViewById(R.id.toVideo);
+        toVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
