@@ -32,4 +32,8 @@ public class PlanetViewModel extends AndroidViewModel {
         interactor.travelToSolarSystem(solarSystem);
     }
 
+    public int getFuel() {
+        return interactor.getFuel();
+    }
+
 }
