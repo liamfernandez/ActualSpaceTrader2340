@@ -98,6 +98,14 @@ public class Universe {
     }
 
     /**
+     *
+     * @return systems
+     */
+    public List<SolarSystem> getAllSystems() {
+        return systems;
+    }
+
+    /**
      * Adds a SolarSystem to the Universe
      *
      * @param s Solar System to add
