@@ -21,8 +21,6 @@ public class PlanetInteractor extends Interactor {
     }
 
     public List<SolarSystem> getInRangeSolarSystems() {
-        int x;
-        int y;
         double fuel;
         SolarSystem solarSystem;
 
@@ -65,5 +63,9 @@ public class PlanetInteractor extends Interactor {
 
         }
         return getRepository().getPlayer().getCurrPlanet();
+    }
+
+    public int getFuel() {
+        return (int) getRepository().getPlayer().getFuel();
     }
 }

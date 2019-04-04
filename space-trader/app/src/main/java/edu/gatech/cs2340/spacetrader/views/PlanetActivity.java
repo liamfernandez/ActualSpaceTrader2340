@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
+import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.viewmodels.MarketListViewModel;
 import edu.gatech.cs2340.spacetrader.viewmodels.PlanetViewModel;
 
@@ -49,6 +50,9 @@ public class PlanetActivity extends AppCompatActivity {
 
         TextView textView =  findViewById(R.id.currentPlanet);
         textView.setText("Planet " + viewModel.getCurrentPlanet().getName());
+
+        TextView fuelRemaining = findViewById(R.id.fuel);
+        fuelRemaining.setText("" + viewModel.getFuel());
 
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 import edu.gatech.cs2340.spacetrader.entity.Inventory;
 import edu.gatech.cs2340.spacetrader.entity.Item;
@@ -161,6 +163,10 @@ public class Repository {
         addCargo(item);
     }
 
+    public void removeCargo(MockItem item) {
+        cargoList.remove(item);
+    }
+
     public void addCargo(MockItem item) {
         cargoList.add(item);
     }
@@ -278,6 +284,14 @@ public class Repository {
         player.editCredit(item.getSellingPrice());
         Log.d("SEEEELLLLLLLLLELLEL", "" + player.getCredit());
         return true;
+    }
+
+    public MockItem getRandomItem() {
+        if (cargoList.size() == 0) {
+            return null;
+        }
+        int random = new Random().nextInt(cargoList.size());
+        return cargoList.get(random);
     }
 
     /**

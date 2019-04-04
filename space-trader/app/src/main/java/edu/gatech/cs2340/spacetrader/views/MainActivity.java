@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //startService(new Intent(MainActivity.this, SoundService.class));
     }
 
     @Override
