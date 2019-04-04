@@ -14,6 +14,9 @@ import java.util.List;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
+/**
+ *
+ */
 public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHolder>{
 
     private List<MockItem> cargoList = new ArrayList<>();
@@ -47,7 +50,10 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         return cargoList.size();
     }
 
-
+    /**
+     * setter
+     * @param items the items to set the cargo list as
+     */
     public void setCargoList(List<MockItem> items) {
         cargoList = items;
         notifyDataSetChanged();
@@ -81,9 +87,17 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     }
 
     public interface OnItemClickListener {
+        /**
+         *
+         * @param item the item clicked on
+         */
         void onItemClicked(MockItem item);
     }
 
+    /**
+     *
+     * @param listener the listener from the private class
+     */
     public void setOnItemClickListener(CargoAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
