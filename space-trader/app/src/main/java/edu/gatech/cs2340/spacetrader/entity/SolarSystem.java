@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * solar system class
+ */
 public class SolarSystem {
     private double xCord;
     private double yCord;
@@ -48,38 +51,74 @@ public class SolarSystem {
         planets.put(positionFromStar, p);
     }
 
+    /**
+     *
+     * @return xcord
+     */
     public double getxCord() {
         return xCord;
     }
 
+    /**
+     *
+     * @param xCord
+     */
     public void setxCord(double xCord) {
         this.xCord = xCord;
     }
 
+    /**
+     *
+     * @return ycord
+     */
     public double getyCord() {
         return yCord;
     }
 
+    /**
+     *
+     * @param yCord ycord
+     */
     public void setyCord(double yCord) {
         this.yCord = yCord;
     }
 
+    /**
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @param distance distance
+     */
     public void setDistance(double distance) {
         this.distance = distance;
     }
 
+    /**
+     *
+     * @return distance
+     */
     public double getDistance() {
         return distance;
     }
 
+    /**
+     *
+     * @return list of planets
+     */
     public List<Planet> getPlanets() {
         List<Planet> planetList = new ArrayList<>();
         for (int i : planets.keySet()) {
