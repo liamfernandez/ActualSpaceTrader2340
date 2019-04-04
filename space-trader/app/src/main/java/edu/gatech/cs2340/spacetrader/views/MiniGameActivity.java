@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.views;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.Model;
@@ -19,6 +22,7 @@ public class MiniGameActivity extends AppCompatActivity {
     private int status = 0;
     private int clicks = 0;
     private Handler hand = new Handler();
+    MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,15 @@ public class MiniGameActivity extends AppCompatActivity {
 
         congrats = (TextView) findViewById(R.id.congrats);
         pb = (ProgressBar) findViewById(R.id.progressBar);
+
+        int random = new Random().nextInt(10);
+
+        if (random < 5) {
+            player = MediaPlayer.create(this, R.raw.mi);
+        } else {
+            player = MediaPlayer.create(this, R.raw.golden);
+        }
+        player.start();
 
 
         new Thread (new Runnable() {
@@ -66,6 +79,7 @@ public class MiniGameActivity extends AppCompatActivity {
              @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MiniGameActivity.this, MarketMainActivity.class);
+                player.stop();
                 startActivity(intent);
             }
         });

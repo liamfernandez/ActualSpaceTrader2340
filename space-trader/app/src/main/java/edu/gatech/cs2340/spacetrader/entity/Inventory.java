@@ -1,7 +1,13 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
+import android.widget.ArrayAdapter;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 public class Inventory {
     private HashMap<Item, Integer> map;
@@ -88,5 +94,8 @@ public class Inventory {
             return 0;
         }
         return map.get(item);
+    }
+    public HashMap<Item, Integer> getMap() {
+        return map;
     }
 }
