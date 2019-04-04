@@ -55,7 +55,7 @@ public class Repository {
     }
 
     public void uploadNewPlayer(Player p) {
-        String query = "INSERT INTO players (credit, difficulty, currPlanet, skill_fighter, skill_trader, skill_pilot, skill_engineer, name, inventory, fuel) \n" +
+        String query = "INSERT INTO players (credit, difficulty, currPlanet, skill_fighter, skill_trader, skill_pilot, skill_engineer, name, inventory, fuel, currSystem) \n" +
                 "values (";
         query += p.getCredit() + ", ";
         query += 0 + ", ";
@@ -70,9 +70,14 @@ public class Repository {
             query += "<" + curr.getName() + ">";
         }
         query += "', ";
-        query += p.getFuel();
+        query += p.getFuel() + ", ";
+        query += "'" + p.getCurrSolarSystem().getName() + "'";
         query += ")";
         MySQLTalker.executeNonReturningQuery(query);
+    }
+
+    public void updateExistingPlayer(Player p) {
+
     }
 
     public Player downloadPlayer(String name) throws PlayerNotFoundException {
@@ -95,12 +100,13 @@ public class Repository {
         if (mySQLRow == null) {
             throw new PlayerNotFoundException("Player " + name + " does not exist!");
         }
-        
+
         Player p;
         try {
             double credit = mySQLRow.getDouble("credit");
             int difficulty = mySQLRow.getInt("difficulty");
             String currPlanet = mySQLRow.getString("currPlanet");
+            String currSystem = mySQLRow.getString("currSystem");
             int skill1 = mySQLRow.getInt("skill_fighter");
             int skill2 = mySQLRow.getInt("skill_trader");
             int skill3 = mySQLRow.getInt("skill_pilot");
@@ -111,6 +117,7 @@ public class Repository {
             p = new Player(name, skill1, skill2, skill3, skill4);
             p.setCredit(credit);
             p.setFuel(credit);
+            setPlayerLocation(currSystem, currPlanet, p);
         } catch (SQLColumnNotFoundException ex) {
             System.out.println(ex);
             p = null;
@@ -133,6 +140,21 @@ public class Repository {
             inventory = inventory.substring(endIndex);
             cargoList.add(item);
         }
+    }
+
+    private void setPlayerLocation(String systemName, String planetName, Player player) {
+        HashMap<String, SolarSystem> systems =  new HashMap<>();
+        for (SolarSystem s : universe.getAllSystems()) {
+            systems.put(s.getName(), s);
+        }
+        SolarSystem currSystem = systems.get(systemName);
+        HashMap<String, Planet> planets = new HashMap<>();
+        for (Planet p : currSystem.getPlanets()) {
+            planets.put(p.getName(), p);
+        }
+        Planet currPlanet = planets.get(planetName);
+        player.setCurrSolarSystem(currSystem);
+        player.setCurrPlanet(currPlanet);
     }
 
     public void loadItems() {
