@@ -16,7 +16,9 @@ import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
-
+/**
+ *
+ */
 public class SignInActivity extends AppCompatActivity {
 
     private SignInViewModel viewModel;
@@ -40,9 +42,9 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        /**
-         * Grab the dialog widgets so we can get info for later
-         */
+
+//        Grab the dialog widgets so we can get info for later
+
         nameField =  findViewById(R.id.editText_name);
         difficultySpinner = findViewById(R.id.difficultySpinner);
         skill1Spinner = (Spinner) findViewById(R.id.spinner_skill_1);

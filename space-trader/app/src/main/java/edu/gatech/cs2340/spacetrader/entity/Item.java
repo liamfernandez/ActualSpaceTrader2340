@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
+/**
+ * item enum
+ */
 public enum  Item {
 
     WATER("water",0, 0, 2, 30, 3, 4, Resources.DROUGHT,
@@ -36,6 +39,21 @@ public enum  Item {
         int MTL;
         int MTH;
 
+    /**
+     * Item Constructor
+     * @param name name
+     * @param MTLP MTLP
+     * @param MTLU MTLU
+     * @param TTP TTP
+     * @param basePrice basePrice
+     * @param IPL IPL
+     * @param var var
+     * @param IE IE
+     * @param CR CR
+     * @param ER ER
+     * @param MTL MTL
+     * @param MTH MTH
+     */
     private Item(String name, int MTLP, int MTLU, int TTP, int basePrice,
                  int IPL,
                  int var
@@ -54,94 +72,186 @@ public enum  Item {
         this.MTH = MTH;
     }
 
+    /**
+     *
+     * @return mtlp
+     */
     public int getMTLP() {
         return MTLP;
     }
 
+    /**
+     * setter
+     * @param MTLP mtlp
+     */
     public void setMTLP(int MTLP) {
         this.MTLP = MTLP;
     }
 
+    /**
+     *
+     * @return mtlu
+     */
     public int getMTLU() {
         return MTLU;
     }
 
+    /**
+     *
+     * @param MTLU mtlu
+     */
     public void setMTLU(int MTLU) {
         this.MTLU = MTLU;
     }
 
+    /**
+     *
+     * @return ttp
+     */
     public int getTTP() {
         return TTP;
     }
 
+    /**
+     *
+     * @param TTP TTp
+     */
     public void setTTP(int TTP) {
         this.TTP = TTP;
     }
 
+    /**
+     *
+     * @return basePrice
+     */
     public int getBasePrice() {
         return basePrice;
     }
 
+    /**
+     *
+     * @param basePrice basePrice
+     */
     public void setBasePrice(int basePrice) {
         this.basePrice = basePrice;
     }
 
+    /**
+     *
+     * @return IPL
+     */
     public int getIPL() {
         return IPL;
     }
 
+    /**
+     *
+     * @param IPL IPL
+     */
     public void setIPL(int IPL) {
         this.IPL = IPL;
     }
 
+    /**
+     *
+     * @return var
+     */
     public int getVar() {
         return var;
     }
 
+    /**
+     *
+     * @param var var
+     */
     public void setVar(int var) {
         this.var = var;
     }
 
+    /**
+     *
+     * @return IE
+     */
     public Resources getIE() {
         return IE;
     }
 
+    /**
+     *
+     * @param IE ie
+     */
     public void setIE(Resources IE) {
         this.IE = IE;
     }
 
+    /**
+     *
+     * @return CR
+     */
     public Resources getCR() {
         return CR;
     }
 
+    /**
+     *
+     * @param CR cr
+     */
     public void setCR(Resources CR) {
         this.CR = CR;
     }
 
+    /**
+     *
+     * @return ER
+     */
     public Resources getER() {
         return ER;
     }
 
+    /**
+     *
+     * @param ER ER
+     */
     public void setER(Resources ER) {
         this.ER = ER;
     }
 
+    /**
+     *
+     * @return MTL
+     */
     public int getMTL() {
         return MTL;
     }
 
+    /**
+     *
+     * @param MTL mtl
+     */
     public void setMTL(int MTL) {
         this.MTL = MTL;
     }
 
+    /**
+     *
+     * @return MTH
+     */
     public int getMTH() {
         return MTH;
     }
 
+    /**
+     *
+     * @param MTH mth
+     */
     public void setMTH(int MTH) {
         this.MTH = MTH;
     }
 
+    /**
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }

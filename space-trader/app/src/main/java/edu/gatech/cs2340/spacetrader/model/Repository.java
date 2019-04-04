@@ -18,6 +18,11 @@ import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 import edu.gatech.cs2340.spacetrader.entity.Universe;
 
+import com.BoardiesITSolutions.AndroidMySQLConnector.Exceptions.SQLColumnNotFoundException;
+import com.BoardiesITSolutions.AndroidMySQLConnector.MySQLRow;
+import com.BoardiesITSolutions.AndroidMySQLConnector.ResultSet;
+
+
 public class Repository {
     private static int next_id = 1;
 
@@ -34,11 +39,100 @@ public class Repository {
     private List<MockItem> allItems;
     private List<MockItem> cargoList;
 
+    private class PlayerNotFoundException extends Exception {
+
+        PlayerNotFoundException(String message) {
+            super(message);
+        }
+
+    }
+
     public Repository() {
         allItems = new ArrayList<>();
         cargoList = new ArrayList<>();
         allGameItems = new ArrayList<>();
         loadItems();
+    }
+
+    public void uploadNewPlayer(Player p) {
+        String query = "INSERT INTO players (credit, difficulty, currPlanet, skill_fighter, skill_trader, skill_pilot, skill_engineer, name, inventory, fuel) \n" +
+                "values (";
+        query += p.getCredit() + ", ";
+        query += 0 + ", ";
+        query += "'" + p.getCurrPlanet().getName() + "', ";
+        query += p.getSkill1() + ", ";
+        query += p.getSkill2() + ", ";
+        query += p.getSkill3() + ", ";
+        query += p.getSkill4() + ", ";
+        query += "'" + p.getName() + "',";
+        query += "'";
+        for (MockItem curr : cargoList) {
+            query += "<" + curr.getName() + ">";
+        }
+        query += "', ";
+        query += p.getFuel();
+        query += ")";
+        MySQLTalker.executeNonReturningQuery(query);
+    }
+
+    public Player downloadPlayer(String name) throws PlayerNotFoundException {
+        String query = "SELECT * FROM players WHERE name = '";
+        query += name;
+        query += "'";
+        MySQLTalker.executeReturningQuery(query);
+        int loopCounter = 0;
+        while (MySQLTalker.isQueryInProgress() && loopCounter < 20) {
+            try {
+                Thread.sleep(100);
+            } catch (Exception ex) {
+                System.out.println("Sleep failed!");
+            }
+            loopCounter++;
+        }
+        ResultSet resultSet = MySQLTalker.getResultSet();
+
+        MySQLRow mySQLRow = resultSet.getNextRow();
+        if (mySQLRow == null) {
+            throw new PlayerNotFoundException("Player " + name + " does not exist!");
+        }
+        
+        Player p;
+        try {
+            double credit = mySQLRow.getDouble("credit");
+            int difficulty = mySQLRow.getInt("difficulty");
+            String currPlanet = mySQLRow.getString("currPlanet");
+            int skill1 = mySQLRow.getInt("skill_fighter");
+            int skill2 = mySQLRow.getInt("skill_trader");
+            int skill3 = mySQLRow.getInt("skill_pilot");
+            int skill4 = mySQLRow.getInt("skill_engineer");
+            String inventoryString = mySQLRow.getString("inventory");
+            loadTheCargoList(inventoryString);
+            double fuel = mySQLRow.getDouble("fuel");
+            p = new Player(name, skill1, skill2, skill3, skill4);
+            p.setCredit(credit);
+            p.setFuel(credit);
+        } catch (SQLColumnNotFoundException ex) {
+            System.out.println(ex);
+            p = null;
+        }
+        return p;
+    }
+
+    private void loadTheCargoList(String inventory) {
+        int index;
+        HashMap<String, Item> items = new HashMap<String, Item>();
+        for (Item i : Item.values()) {
+            items.put(i.getName(), i);
+        }
+
+        while ((index = inventory.indexOf('<')) != -1) {
+            inventory = inventory.substring(index + 1);
+            int endIndex = inventory.indexOf('>');
+            String currMockItem = inventory.substring(0, endIndex);
+            MockItem item = new MockItem(items.get(currMockItem), 0, 0);
+            inventory = inventory.substring(endIndex);
+            cargoList.add(item);
+        }
     }
 
     public void loadItems() {
@@ -112,6 +206,7 @@ public class Repository {
         p.setId(Repository.getNextUniqueID());
         p.setCurrPlanet(universe.getStartingPlanet());
         player = p;
+        uploadNewPlayer(player);
         Log.d("APP", "Interactor: added player: " + p);
 
     }
