@@ -177,7 +177,8 @@ public class MySQLTalker {
             @Override
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
-                System.out.println(ex.getStackTrace());
+                System.out.println(ex);
+                System.out.println(query);
             }
 
             @Override
@@ -226,7 +227,7 @@ public class MySQLTalker {
      * @param query Query to be executed. Will obtain result.
      * @throws RuntimeException If connection not established, or another currently query in progress
      */
-    public void executeReturningQuery(String query) throws RuntimeException {
+    public static void executeReturningQuery(String query) throws RuntimeException {
         if (!connected) {
             System.out.println("Database connection not established");
             throw new RuntimeException("Database connection not established");
