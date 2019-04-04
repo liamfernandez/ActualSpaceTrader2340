@@ -95,6 +95,7 @@ public class Repository {
         if (mySQLRow == null) {
             throw new PlayerNotFoundException("Player " + name + " does not exist!");
         }
+        
         Player p;
         try {
             double credit = mySQLRow.getDouble("credit");
@@ -108,6 +109,8 @@ public class Repository {
             loadTheCargoList(inventoryString);
             double fuel = mySQLRow.getDouble("fuel");
             p = new Player(name, skill1, skill2, skill3, skill4);
+            p.setCredit(credit);
+            p.setFuel(credit);
         } catch (SQLColumnNotFoundException ex) {
             System.out.println(ex);
             p = null;
