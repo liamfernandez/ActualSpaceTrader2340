@@ -12,6 +12,14 @@ public class Player extends Character{
     private int cargoTotal = 0;
     private double fuel = 100000;
 
+    /**
+     * Constructor
+     * @param n the name
+     * @param s1 skill 1 value
+     * @param s2 skill 2 value
+     * @param s3 skill 3 value
+     * @param s4 skill 4 value
+     */
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
         name = n;
