@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
+/**
+ * @author squad
+ * @version 0.01
+ */
 public class Player extends Character{
     private int id;
     private double credit;
@@ -152,7 +156,7 @@ public class Player extends Character{
 
     /**
      * setter for inventory
-     * @param inventory
+     * @param inventory the inventory
      */
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
