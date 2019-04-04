@@ -6,6 +6,10 @@ import android.util.Pair;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * @author squad
+ * @version 0.01
+ */
 public class MockItem {
 
     private int sellingPrice;
