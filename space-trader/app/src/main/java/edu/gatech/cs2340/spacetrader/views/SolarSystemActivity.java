@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
@@ -54,7 +56,13 @@ public class SolarSystemActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(Planet planet) {
                 viewModel.travelToPlanet(planet);
-                Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                int random = new Random().nextInt(10);
+                Intent intent;
+                if (random < 4) {
+                    intent = new Intent(SolarSystemActivity.this, EncounterActivity.class);
+                } else {
+                    intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                }
                 finish();
                 startActivity(intent);
             }

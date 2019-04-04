@@ -8,9 +8,10 @@ public class Player extends Character{
     private Inventory inventory;
     private Planet currPlanet;
     private SolarSystem currSolarSystem;
-    private final int maxItems = 2;
+    private final int maxItems = 10;
     private int cargoTotal = 0;
     private double fuel = 100000;
+    private boolean hasMercenary;
 
     public Player(String n, int s1, int s2, int s3, int s4) {
         super(n,s1, s2, s3, s4);
@@ -149,5 +150,9 @@ public class Player extends Character{
 
     public void subtractFuel(double subtract) {
         this.fuel = fuel - subtract;
+    }
+
+    public void setHasMercenary(boolean bool) {
+        hasMercenary = bool;
     }
 }
