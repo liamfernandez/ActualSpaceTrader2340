@@ -66,6 +66,21 @@ public class Player extends Character{
         this.name = name;
     }
 
+    /**
+     * sets the player's credit
+     * @param credit the credit to set
+     */
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    /**
+     * sets the player's fuel
+     * @param fuel the fuel to set
+     */
+    public void setFuel(double fuel) {
+        this.fuel = fuel;
+    }
 
     /**
      * Set skill 1
