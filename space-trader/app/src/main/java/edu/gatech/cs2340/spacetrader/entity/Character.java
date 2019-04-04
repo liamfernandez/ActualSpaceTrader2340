@@ -2,8 +2,8 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 public abstract class Character {
     String name;
-    int age;
-    boolean evil;
+//    int age;
+//    boolean evil;
     int skill1;
     int skill2;
     int skill3;
@@ -17,21 +17,13 @@ public abstract class Character {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public boolean isEvil() {
-        return evil;
-    }
-
-    public void setEvil(boolean evil) {
-        this.evil = evil;
-    }
+//    public boolean isEvil() {
+//        return evil;
+//    }
+//
+//    public void setEvil(boolean evil) {
+//        this.evil = evil;
+//    }
 
     public int getSkill1() {
         return skill1;
@@ -65,16 +57,12 @@ public abstract class Character {
         this.skill4 = skill4;
     }
 
-    public Character(String name, boolean evil, int skill1, int skill2, int skill3, int skill4, int age) {
+    public Character(String name, int skill1, int skill2, int skill3, int skill4) {
         this.name = name;
-        this.age = age;
-        this.evil = evil;
+        //this.evil = evil;
         this.skill1 = skill1;
         this.skill2 = skill2;
         this.skill3 = skill3;
         this.skill4 = skill4;
-    }
-    public Character(String name, int skill1, int skill2, int skill3, int skill4) {
-        this(name, false, skill1, skill2, skill3, skill4, 50);
     }
 }
