@@ -22,6 +22,9 @@ import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.model.Model;
 
+/**
+ * encounter class
+ */
 public class EncounterActivity extends YouTubeBaseActivity {
 
     MediaPlayer player;

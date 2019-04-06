@@ -5,6 +5,9 @@ import java.util.HashMap;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import android.util.Pair;
 
+/**
+ * Abstract seller
+ */
 public abstract class DisplayableSeller {
     protected HashMap<Item, Pair<Integer, Double>> itemsMarketSells;
 
