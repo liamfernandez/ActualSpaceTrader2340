@@ -236,7 +236,11 @@ public class Player extends Character{
     public void setCurrPlanet(Planet newCurrPlanet) {
         currPlanet = newCurrPlanet;
     }
-//
+// <<<<<<< Paul
+// //
+// =======
+
+// >>>>>>> Dev
 //    /**
 //     * adds an item to the user inventory
 //     * @param item the item to add to inventory
