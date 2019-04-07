@@ -12,7 +12,6 @@ import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
-import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
 
 public class MarketListViewModel extends AndroidViewModel {
     private MarketInteractor interactor;

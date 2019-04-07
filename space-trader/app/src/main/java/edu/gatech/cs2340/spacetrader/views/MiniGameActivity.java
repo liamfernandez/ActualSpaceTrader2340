@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
 
 public class MiniGameActivity extends AppCompatActivity {
@@ -32,8 +33,8 @@ public class MiniGameActivity extends AppCompatActivity {
         Button money = findViewById(R.id.button);
         Button back = findViewById(R.id.back);
 
-        congrats = (TextView) findViewById(R.id.congrats);
-        pb = (ProgressBar) findViewById(R.id.progressBar);
+        congrats = findViewById(R.id.congrats);
+        pb = findViewById(R.id.progressBar);
 
         int random = new Random().nextInt(10);
 
@@ -62,26 +63,21 @@ public class MiniGameActivity extends AppCompatActivity {
                         congrats.setVisibility(View.VISIBLE);
                         money.setVisibility(View.INVISIBLE);
                         back.setVisibility(View.VISIBLE);
-                        Model.getInstance().getMarketInteractor().getRepository().getPlayer().editCredit(clicks);
+                        MarketInteractor m = Model.getInstance().getMarketInteractor();
+                        m.getRepository().getPlayer().editCredit(clicks);
                     }
                 });
             }
         }).start();
 
-        money.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        money.setOnClickListener(e -> {
                 clicks++;
-            }
         });
 
-         back.setOnClickListener(new View.OnClickListener() {
-             @Override
-            public void onClick(View v) {
+         back.setOnClickListener(e -> {
                 Intent intent = new Intent(MiniGameActivity.this, MarketMainActivity.class);
                 player.stop();
                 startActivity(intent);
-            }
         });
     }
 

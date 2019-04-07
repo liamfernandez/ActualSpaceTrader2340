@@ -2,7 +2,6 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 import android.support.annotation.NonNull;
 
-import java.util.Random;
 
 public class Planet {
     private String name;
@@ -34,17 +33,17 @@ public class Planet {
         return resources;
     }
 
-    public void setResource(Resources resource) {
-        this.resources = resource;
-    }
+//    public void setResource(Resources resource) {
+//        this.resources = resource;
+//    }
 
     public TechLevel getTechLevel(){
         return techLevel;
     }
 
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
+//    public void setTechLevel(TechLevel techLevel) {
+//        this.techLevel = techLevel;
+//    }
 
     public String getName() {
         return name;

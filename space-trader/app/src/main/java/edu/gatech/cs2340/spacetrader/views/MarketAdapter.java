@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketViewHolder>{
@@ -67,16 +66,12 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             itemName = itemView.findViewById(R.id.text_Item_Name);
             itemPrice = itemView.findViewById(R.id.text_Item_price);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
+            itemView.setOnClickListener(e -> {
                     int position = getAdapterPosition();
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onItemClicked(itemList.get(position));
                     }
-                }
             });
         }
     }

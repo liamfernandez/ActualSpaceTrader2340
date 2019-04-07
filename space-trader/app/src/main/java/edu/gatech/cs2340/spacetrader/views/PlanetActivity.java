@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
-import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.viewmodels.MarketListViewModel;
 import edu.gatech.cs2340.spacetrader.viewmodels.PlanetViewModel;
 
@@ -63,14 +61,11 @@ public class PlanetActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         adapter.setSolarSystemsList(viewModel.getInRangeSolarSystems());
-        adapter.setOnItemClickListener(new PlanetAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(SolarSystem solarSystem) {
-                viewModel.travelToSolarSystem(solarSystem);
+        adapter.setOnItemClickListener(e -> {
+                viewModel.travelToSolarSystem(e);
                 Intent intent = new Intent(PlanetActivity.this, SolarSystemActivity.class);
                 finish();
                 startActivity(intent);
-            }
         });
     }
 

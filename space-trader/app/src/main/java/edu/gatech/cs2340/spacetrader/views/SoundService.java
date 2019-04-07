@@ -7,6 +7,9 @@ import android.os.IBinder;
 
 import edu.gatech.cs2340.spacetrader.R;
 
+/**
+ * allows the game to play music
+ */
 public class SoundService extends Service {
 
     MediaPlayer player;

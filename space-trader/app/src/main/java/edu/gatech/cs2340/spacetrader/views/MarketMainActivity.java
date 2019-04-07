@@ -48,25 +48,19 @@ public class MarketMainActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
 
         Button miniGame = findViewById(R.id.mini);
-        miniGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        miniGame.setOnClickListener(e -> {
                 Intent intent = new Intent(MarketMainActivity.this, MiniGameActivity.class);
                 startActivity(intent);
-            }
         });
 
 
         Button start = findViewById(R.id.backButton);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        start.setOnClickListener(e -> {
                 Intent intent = new Intent(MarketMainActivity.this, PlanetActivity.class);
                 startActivity(intent);
-            }
         });
 
-        credit = (TextView) findViewById(R.id.text_money);
+        credit = findViewById(R.id.text_money);
         credit.setText(viewModel.getCredit());
 
         Log.d("APP", viewModel.getMockItems().toString());
@@ -78,24 +72,18 @@ public class MarketMainActivity extends AppCompatActivity {
         adapter.setItemList(viewModel.getMockItems());
         adapterCargo.setCargoList(viewModel.getCargoItems());
 
-        adapter.setOnItemClickListener(new MarketAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(MockItem item) {
-                boolean flag = viewModel.buyMockItem(item);
+        adapter.setOnItemClickListener(e -> {
+                boolean flag = viewModel.buyMockItem(e);
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);
-            }
         });
 
-        adapterCargo.setOnItemClickListener(new CargoAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(MockItem item) {
-                boolean flag = viewModel.sellMockItem(item);
+        adapterCargo.setOnItemClickListener(e -> {
+                boolean flag = viewModel.sellMockItem(e);
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);
-            }
         });
 
     }

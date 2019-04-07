@@ -11,9 +11,9 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 import edu.gatech.cs2340.spacetrader.model.Model;
 
+@SuppressWarnings({"ALL", "SpellCheckingInspection"})
 public class VideoActivity extends YouTubeBaseActivity {
 
     YouTubePlayerView youTubePlayerView;

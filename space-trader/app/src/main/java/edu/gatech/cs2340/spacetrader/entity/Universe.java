@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Class defines the Game's Universe
+ */
 public class Universe {
     private List<SolarSystem> systems;
 
@@ -68,7 +71,8 @@ public class Universe {
      * @param shipRange Radius to search in
      * @return HashMap of SolarSystems; key is the distance, value is the SolarSystem
      */
-    public HashMap<Double, SolarSystem> getSystemsInRange(SolarSystem currrentSystem, double shipRange) {
+    public HashMap<Double, SolarSystem> getSystemsInRange(SolarSystem currrentSystem,
+                                                          double shipRange) {
         TreeMap<Double, SolarSystem> distanceOfSystems = new TreeMap<>();
 
         for (SolarSystem s :systems) {
@@ -149,15 +153,24 @@ public class Universe {
 
     /**
      * gets the starting planet
+     * @return Planet the starting planet for the game
      */
     public Planet getStartingPlanet() {
         return systems.get(0).getPlanet(1);
     }
 
+    /**
+     * Returns the starting solar system to begin the game
+     * @return the solar system
+     */
     public SolarSystem getStartingSolarSystem() {
         return systems.get(0);
     }
 
+    /**
+     * creates the mock items
+     * @return the list of mock items
+     */
     public List<MockItem> initMockItems() {
         ArrayList<MockItem> mockList = new ArrayList<>();
         mockList.add(new MockItem(Item.WATER, 30, 30));

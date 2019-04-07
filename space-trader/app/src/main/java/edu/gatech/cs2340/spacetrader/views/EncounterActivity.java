@@ -3,7 +3,6 @@ package edu.gatech.cs2340.spacetrader.views;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,18 +12,18 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import java.util.List;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.Inventory;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
+import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
 
 /**
  * encounter class
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class EncounterActivity extends YouTubeBaseActivity {
 
     MediaPlayer player;
@@ -45,46 +44,40 @@ public class EncounterActivity extends YouTubeBaseActivity {
         TextView textView =  findViewById(R.id.encounterType);
         TextView tradeTextView = findViewById(R.id.trade);
         int random = new Random().nextInt(20);
-        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_encounter);
-        playButton = (Button) findViewById(R.id.button);
-        next = (Button) findViewById(R.id.nextButton);
-        yes = (Button) findViewById(R.id.yes);
-        no = (Button) findViewById(R.id.no);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(EncounterActivity.this, PlanetActivity.class);
+        youTubePlayerView = findViewById(R.id.youtube_encounter);
+        playButton = findViewById(R.id.button);
+        next = findViewById(R.id.nextButton);
+        yes = findViewById(R.id.yes);
+        no = findViewById(R.id.no);
+        next.setOnClickListener( e -> {
+                Intent intent;
+                intent = new Intent(EncounterActivity.this, PlanetActivity.class);
                 player.stop();
                 startActivity(intent);
-            }
         });
 
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        yes.setOnClickListener(e -> {
                 if (textView.getText() == "Trader Encounter") {
                     tradeTextView.setVisibility(View.VISIBLE);
                     tradeTextView.setText("Thank you for doing business");
                     MockItem item = new MockItem(tradeItem, 0, 0);
                     Model.getInstance().getMarketInteractor().getRepository().loadCargo(item);
-                    Model.getInstance().getMarketInteractor().getRepository().removeCargo(tradedItem);
+                    MarketInteractor m;
+                    m = Model.getInstance().getMarketInteractor();
+                    m.getRepository().removeCargo(tradedItem);
                 } else {
                     tradeTextView.setVisibility(View.VISIBLE);
                     tradeTextView.setText("You have added a mercenary");
                 }
                 yes.setVisibility(View.INVISIBLE);
                 no.setVisibility(View.INVISIBLE);
-            }
         });
 
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        no.setOnClickListener(e -> {
                 tradeTextView.setVisibility(View.VISIBLE);
                 tradeTextView.setText("Maybe next time");
                 yes.setVisibility(View.INVISIBLE);
                 no.setVisibility(View.INVISIBLE);
-            }
         });
 
         if (random < 5) {
@@ -92,16 +85,23 @@ public class EncounterActivity extends YouTubeBaseActivity {
             textView.setText("Police Encounter");
             encounterType = "cop";
             playButton.setVisibility(View.VISIBLE);
-            int currCredit = (int) Model.getInstance().getMarketInteractor().getRepository().getPlayer().getCredit();
-            Model.getInstance().getMarketInteractor().getRepository().getPlayer().editCredit(-.5 * currCredit);
+            int currCredit;
+            MarketInteractor m;
+            m = Model.getInstance().getMarketInteractor();
+            currCredit = (int) m.getRepository().getPlayer().getCredit();
+            double toAdd = -.5 * currCredit;
+            Model.getInstance().getMarketInteractor().getRepository().getPlayer().editCredit(toAdd);
 
         } else if (random < 10) {
             player = MediaPlayer.create(this, R.raw.pirates);
             textView.setText("Pirate Encounter");
             encounterType = "pirate";
             playButton.setVisibility(View.VISIBLE);
-            int currCredit = (int) Model.getInstance().getMarketInteractor().getRepository().getPlayer().getCredit();
-            Model.getInstance().getMarketInteractor().getRepository().getPlayer().editCredit(currCredit);
+            int currCredit;
+            MarketInteractor m;
+            m = Model.getInstance().getMarketInteractor();
+            currCredit = (int) m.getRepository().getPlayer().getCredit();
+            m.getRepository().getPlayer().editCredit(currCredit);
 
         } else if (random < 15) {
             player = MediaPlayer.create(this, R.raw.merc);
@@ -121,7 +121,8 @@ public class EncounterActivity extends YouTubeBaseActivity {
                 int rand = new Random().nextInt(Item.values().length);
                 tradeItem = Item.values()[rand];
                 String tradeItemName = Item.values()[rand].getName();
-                tradeTextView.setText("Would you like to trade a " + tradedItem.getName() + " for a " + tradeItemName + "?");
+                tradeTextView.setText("Would you like to trade a " + tradedItem.getName()
+                        + " for a " + tradeItemName + "?");
                 yes.setVisibility(View.VISIBLE);
                 no.setVisibility(View.VISIBLE);
             }
@@ -131,7 +132,8 @@ public class EncounterActivity extends YouTubeBaseActivity {
         onInitializedListener = new YouTubePlayer.OnInitializedListener(){
 
             @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+            public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                YouTubePlayer youTubePlayer, boolean b) {
 
                 String youTubeVideo;
                 if (encounterType.equals("pirate")) {
@@ -146,18 +148,16 @@ public class EncounterActivity extends YouTubeBaseActivity {
             }
 
             @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+            public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                YouTubeInitializationResult result) {
 
             }
         };
 
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        playButton.setOnClickListener(e -> {
                 player.stop();
                 youTubePlayerView.setVisibility(View.VISIBLE);
                 youTubePlayerView.initialize(PlayerConfig.API_KEY,onInitializedListener);
-            }
         });
     }
 

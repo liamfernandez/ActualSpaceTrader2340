@@ -18,12 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button start = findViewById(R.id.PlayGameBtn);
-        start.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        start.setOnClickListener(e -> {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
-            }
         });
         //startService(new Intent(MainActivity.this, SoundService.class));
     }

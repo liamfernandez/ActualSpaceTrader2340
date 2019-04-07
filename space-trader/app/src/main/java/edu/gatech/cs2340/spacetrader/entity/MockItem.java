@@ -1,9 +1,7 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
 import android.util.Log;
-import android.util.Pair;
 
-import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -104,37 +102,24 @@ public class MockItem {
         return item.getBasePrice();
     }
 
-    /**
-     *
-     * @return the minimum tech level required
-     */
-    public int getMTLP() {
-        return item.getMTLP();
-    }
 
-    /**
-     *
-     * @return the MTLU
-     */
-    public int getMTLU() {
-        return item.getMTLU();
-    }
+//    public int getMTLP() {
+//        return item.getMTLP();
+//    }
 
-    /**
-     *
-     * @return the TTP
-     */
-    public int getTTP() {
-        return item.getTTP();
-    }
+//    public int getMTLU() {
+//        return item.getMTLU();
+//    }
 
-    /**
-     *
-     * @return the IPL
-     */
-    public int getIPL() {
-        return item.getIPL();
-    }
+
+//    public int getTTP() {
+//        return item.getTTP();
+//    }
+
+
+//    public int getIPL() {
+//        return item.getIPL();
+//    }
 
     /**
      *
@@ -144,45 +129,30 @@ public class MockItem {
         return item.getVar();
     }
 
-    /**
-     *
-     * @return the IE
-     */
-    public Resources getIE() {
-        return item.getIE();
-    }
 
-    /**
-     *
-     * @return the CR
-     */
-    public Resources getCR() {
-        return item.getCR();
-    }
+//    public Resources getIE() {
+//        return item.getIE();
+//    }
 
-    /**
-     *
-     * @return the ER
-     */
-    public Resources getER() {
-        return item.getER();
-    }
 
-    /**
-     *
-     * @return the MTL
-     */
-    public int getMTL() {
-        return item.getMTL();
-    }
+//    public Resources getCR() {
+//        return item.getCR();
+//    }
 
-    /**
-     *
-     * @return the MTH
-     */
-    public int getMTH() {
-        return item.MTH;
-    }
+
+//    public Resources getER() {
+//        return item.getER();
+//    }
+
+
+//    public int getMTL() {
+//        return item.getMTL();
+//    }
+
+
+//    public int getMTH() {
+//        return item.MTH;
+//    }
 
     /**
      *
@@ -210,7 +180,8 @@ public class MockItem {
         Log.d("calcInfo", item.getName() + " price: " + (price));
         Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
 
-        Log.d("calcInfo", item.getName() + "calculated to be bought for" + (price * (1+randomAdjustmentPercentage)));
+        Log.d("calcInfo", item.getName() + "calculated to be bought for"
+                + (price * (1+randomAdjustmentPercentage)));
 
         return (int) (price * (1.0 + randomAdjustmentPercentage));
 
@@ -239,10 +210,6 @@ public class MockItem {
      */
     @Override
     public boolean equals(Object object) {
-        try {
-            return this.item == ((MockItem) object).item;
-        } catch (NullPointerException e) {
-            return false;
-        }
+        return this.item == ((MockItem) object).item;
     }
 }

@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Button;
 
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.Planet;
-import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 import edu.gatech.cs2340.spacetrader.viewmodels.SolarSystemViewModel;
 
+/**
+ * determines what will be done when the solar system screen is presented to the user
+ */
 public class SolarSystemActivity extends AppCompatActivity {
 
     private SolarSystemViewModel viewModel;
@@ -37,13 +37,10 @@ public class SolarSystemActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(SolarSystemViewModel.class);
 
-        toVideo = (Button) findViewById(R.id.toVideo);
-        toVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        toVideo = findViewById(R.id.toVideo);
+        toVideo.setOnClickListener(e -> {
                 Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
                 startActivity(intent);
-            }
         });
     }
 
@@ -52,10 +49,8 @@ public class SolarSystemActivity extends AppCompatActivity {
         super.onResume();
         adapter.setPlanetList(viewModel.getPlanetsInSolarSystem());
 
-        adapter.setOnItemClickListener(new SolarSystemAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(Planet planet) {
-                viewModel.travelToPlanet(planet);
+        adapter.setOnItemClickListener(e -> {
+                viewModel.travelToPlanet(e);
                 int random = new Random().nextInt(10);
                 Intent intent;
                 if (random < 4) {
@@ -65,7 +60,6 @@ public class SolarSystemActivity extends AppCompatActivity {
                 }
                 finish();
                 startActivity(intent);
-            }
         });
 
     }

@@ -8,10 +8,11 @@ import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Resources;
-import java.util.List;
-import java.util.ArrayList;
 
 
+/**
+ * Where the trading is happenign
+ */
 public class Store {
 
     private static Item[] allItems = Item.values();
@@ -38,7 +39,7 @@ public class Store {
         Resources CR = item.getCR();
         Resources ER = item.getER();
 
-        price = price + IPL * planet.getTechLevel().getLevel();
+        price = price + (IPL * planet.getTechLevel().getLevel());
 
 
         if (IE == planet.getResource()) {
@@ -49,7 +50,7 @@ public class Store {
             price *= 1.5;
         }
 
-        double randomAdjustmentPercentage = random.nextDouble() * var * 2.0 / 100.00;
+        double randomAdjustmentPercentage = ((random.nextDouble() * var) * 2.0) / 100.00;
         randomAdjustmentPercentage = randomAdjustmentPercentage - var;
 
         return price * (1.0 + randomAdjustmentPercentage);
@@ -64,7 +65,7 @@ public class Store {
         HashMap<Item, Pair<Integer, Double>> tradeItems = new HashMap<>();
         for(Item x : allItems) {
             int amountToAdd = 2;
-            tradeItems.put(x, new Pair<Integer, Double>(amountToAdd, getSpaceTradePrice(x)));
+            tradeItems.put(x, new Pair<>(amountToAdd, getSpaceTradePrice(x)));
         }
         return tradeItems;
     }
@@ -85,7 +86,9 @@ public class Store {
                 if (techLevel == x.getTTP()) {
                     amountToAdd = 8; //if TTP is matched then double the amount to add
                 }
-                marketSupply.put(x, new Pair<Integer, Double>(amountToAdd, getMarketPrice(x, planet)));
+                Pair<Integer, Double> temp = new Pair<>(amountToAdd,
+                        getMarketPrice(x, planet));
+                marketSupply.put(x, temp);
             }
         }
         return marketSupply;

@@ -54,7 +54,7 @@ public enum  Item {
      * @param MTL MTL
      * @param MTH MTH
      */
-    private Item(String name, int MTLP, int MTLU, int TTP, int basePrice,
+    Item(String name, int MTLP, int MTLU, int TTP, int basePrice,
                  int IPL,
                  int var
             , Resources IE, Resources CR, Resources ER, int MTL, int MTH) {
@@ -80,13 +80,10 @@ public enum  Item {
         return MTLP;
     }
 
-    /**
-     * setter
-     * @param MTLP mtlp
-     */
-    public void setMTLP(int MTLP) {
-        this.MTLP = MTLP;
-    }
+
+//    public void setMTLP(int MTLP) {
+//        this.MTLP = MTLP;
+//    }
 
     /**
      *
@@ -96,13 +93,10 @@ public enum  Item {
         return MTLU;
     }
 
-    /**
-     *
-     * @param MTLU mtlu
-     */
-    public void setMTLU(int MTLU) {
-        this.MTLU = MTLU;
-    }
+
+//    public void setMTLU(int MTLU) {
+//        this.MTLU = MTLU;
+//    }
 
     /**
      *
@@ -112,13 +106,10 @@ public enum  Item {
         return TTP;
     }
 
-    /**
-     *
-     * @param TTP TTp
-     */
-    public void setTTP(int TTP) {
-        this.TTP = TTP;
-    }
+
+//    public void setTTP(int TTP) {
+//        this.TTP = TTP;
+//    }
 
     /**
      *
@@ -128,13 +119,10 @@ public enum  Item {
         return basePrice;
     }
 
-    /**
-     *
-     * @param basePrice basePrice
-     */
-    public void setBasePrice(int basePrice) {
-        this.basePrice = basePrice;
-    }
+
+//    public void setBasePrice(int basePrice) {
+//        this.basePrice = basePrice;
+//    }
 
     /**
      *
@@ -144,13 +132,10 @@ public enum  Item {
         return IPL;
     }
 
-    /**
-     *
-     * @param IPL IPL
-     */
-    public void setIPL(int IPL) {
-        this.IPL = IPL;
-    }
+
+//    public void setIPL(int IPL) {
+//        this.IPL = IPL;
+//    }
 
     /**
      *
@@ -160,13 +145,9 @@ public enum  Item {
         return var;
     }
 
-    /**
-     *
-     * @param var var
-     */
-    public void setVar(int var) {
-        this.var = var;
-    }
+//    public void setVar(int var) {
+//        this.var = var;
+//    }
 
     /**
      *
@@ -176,13 +157,9 @@ public enum  Item {
         return IE;
     }
 
-    /**
-     *
-     * @param IE ie
-     */
-    public void setIE(Resources IE) {
-        this.IE = IE;
-    }
+//    public void setIE(Resources IE) {
+//        this.IE = IE;
+//    }
 
     /**
      *
@@ -192,13 +169,9 @@ public enum  Item {
         return CR;
     }
 
-    /**
-     *
-     * @param CR cr
-     */
-    public void setCR(Resources CR) {
-        this.CR = CR;
-    }
+//    public void setCR(Resources CR) {
+//        this.CR = CR;
+//    }
 
     /**
      *
@@ -208,13 +181,10 @@ public enum  Item {
         return ER;
     }
 
-    /**
-     *
-     * @param ER ER
-     */
-    public void setER(Resources ER) {
-        this.ER = ER;
-    }
+
+   // public void setER(Resources ER) {
+//        this.ER = ER;
+//    }
 
     /**
      *
@@ -224,32 +194,24 @@ public enum  Item {
         return MTL;
     }
 
-    /**
-     *
-     * @param MTL mtl
-     */
-    public void setMTL(int MTL) {
-        this.MTL = MTL;
-    }
+//    public void setMTL(int MTL) {
+//        this.MTL = MTL;
+//    }
 
     /**
-     *
+     * gets the MTH
      * @return MTH
      */
     public int getMTH() {
         return MTH;
     }
 
-    /**
-     *
-     * @param MTH mth
-     */
-    public void setMTH(int MTH) {
-        this.MTH = MTH;
-    }
+    //public void setMTH(int MTH) {
+//        this.MTH = MTH;
+//    }
 
     /**
-     *
+     * gets the name
      * @return name
      */
     public String getName() {

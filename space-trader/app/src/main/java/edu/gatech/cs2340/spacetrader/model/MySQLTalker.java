@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.spacetrader.model;
 
-import android.service.autofill.Dataset;
 
-import com.BoardiesITSolutions.AndroidMySQLConnector.ColumnDefinition;
 import com.BoardiesITSolutions.AndroidMySQLConnector.Connection;
 import com.BoardiesITSolutions.AndroidMySQLConnector.IResultInterface;
 import com.BoardiesITSolutions.AndroidMySQLConnector.ResultSet;
@@ -13,7 +11,7 @@ import com.BoardiesITSolutions.AndroidMySQLConnector.Exceptions.MySQLException;
 import com.BoardiesITSolutions.AndroidMySQLConnector.IConnectionInterface;
 
 import java.io.IOException;
-import java.util.List;
+
 
 public class MySQLTalker {
 
@@ -27,7 +25,8 @@ public class MySQLTalker {
     }
 
     private static void setConnected(boolean connected) {
-        System.out.println("CONNECTED TO SERVER! Server on MySQL Version " + conn.getServerVersion());
+        System.out.println("CONNECTED TO SERVER! Server on MySQL Version "
+                + conn.getServerVersion());
         MySQLTalker.connected = connected;
     }
 
@@ -73,7 +72,8 @@ public class MySQLTalker {
 
         System.out.println("Initializing MySQL Talker");
 
-        conn = new Connection("172.0.50.109", "root", "bobwaters", 42424, "spacetrader", new IConnectionInterface() {
+        conn = new Connection("172.0.50.109", "root", "bobwaters",
+                42424, "spacetrader", new IConnectionInterface() {
 
             @Override
             public void actionCompleted() {
@@ -84,19 +84,19 @@ public class MySQLTalker {
             @Override
             public void handleInvalidSQLPacketException(InvalidSQLPacketException ex) {
                 System.out.println("Invalid SQL Packet Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleIOException(IOException ex) {
                 System.out.println("IO Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
@@ -108,13 +108,14 @@ public class MySQLTalker {
             @Override
             public void handleException(Exception exception) {
                 System.out.println("Exception");
-                System.out.println(exception.getStackTrace());
+                //System.out.println(exception.getStackTrace());
             }
         });
 
 
 
-        //System.out.println("HERE'S THE CONNECTION OBJECT! Memory Address: " + mysqlConnection.toString());
+        //System.out.println("HERE'S THE CONNECTION OBJECT! Memory Address: "
+        // +mysqlConnection.toString());
         /*try {
             //System.out.println("Sleeping to allow connection establishment");
             Thread.sleep(2000);
@@ -140,7 +141,8 @@ public class MySQLTalker {
         } while (conn.getServerVersion() == null);*/
 
         if (connected) {
-            System.out.println("Connection Established! Database version MySQL: " + conn.getServerVersion());
+            System.out.println("Connection Established! Database version MySQL: "
+                    + conn.getServerVersion());
         }
     }
 
@@ -148,7 +150,7 @@ public class MySQLTalker {
      * Executes a query which WILL NOT obtain a result.
      *
      * @param query
-     * @throws RuntimeException If connection not established, or another currently query in progress
+     * @throws RuntimeException If connection not established, or another query still in progress
      */
     public static void executeNonReturningQuery(String query) throws RuntimeException {
         if (!connected) {
@@ -171,7 +173,7 @@ public class MySQLTalker {
             @Override
             public void handleInvalidSQLPacketException(InvalidSQLPacketException ex) {
                 System.out.println("Invalid SQL Packet Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
@@ -184,19 +186,19 @@ public class MySQLTalker {
             @Override
             public void handleIOException(IOException ex) {
                 System.out.println("IO Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleMySQLConnException(MySQLConnException ex) {
                 System.out.println("MySQL Connection Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleException(Exception exception) {
                 System.out.println("Exception");
-                System.out.println(exception.getStackTrace());
+                //System.out.println(exception.getStackTrace());
             }
         });
 
@@ -225,7 +227,7 @@ public class MySQLTalker {
      * For the result, call getResult() method.
      *
      * @param query Query to be executed. Will obtain result.
-     * @throws RuntimeException If connection not established, or another currently query in progress
+     * @throws RuntimeException If connection not established, or another query still in progress
      */
     public static void executeReturningQuery(String query) throws RuntimeException {
         if (!connected) {
@@ -250,31 +252,31 @@ public class MySQLTalker {
             @Override
             public void handleInvalidSQLPacketException(InvalidSQLPacketException ex) {
                 System.out.println("Invalid SQL Packet Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleIOException(IOException ex) {
                 System.out.println("IO Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleMySQLConnException(MySQLConnException ex) {
                 System.out.println("MySQL Connection Exception");
-                System.out.println(ex.getStackTrace());
+                //System.out.println(ex.getStackTrace());
             }
 
             @Override
             public void handleException(Exception exception) {
                 System.out.println("Exception");
-                System.out.println(exception.getStackTrace());
+                //System.out.println(exception.getStackTrace());
             }
         });
 

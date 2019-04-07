@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSystemViewHolder> {
@@ -66,16 +65,12 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSyste
             solarSystemName = itemView.findViewById(R.id.solar_system_name);
             distance = itemView.findViewById(R.id.distance);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
+            itemView.setOnClickListener(e -> {
                     int position = getAdapterPosition();
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onItemClicked(solarSystemsList.get(position));
                     }
-                }
             });
         }
     }

@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+/**
+ * This is the constructor for a trader seller
+ */
+
 public class TraderSeller extends DisplayableSeller {
 
     /**

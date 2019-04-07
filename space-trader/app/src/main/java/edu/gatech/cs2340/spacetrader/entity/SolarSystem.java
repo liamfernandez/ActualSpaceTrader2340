@@ -3,7 +3,6 @@ package edu.gatech.cs2340.spacetrader.entity;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +43,7 @@ public class SolarSystem {
     /**
      * Adds a planet to the SolarSystem
      *
-     * @param positionFromStar
+     * @param positionFromStar the position away from the star
      * @param p Planet object
      */
     public void addPlanet(int positionFromStar, Planet p) {
@@ -61,7 +60,7 @@ public class SolarSystem {
 
     /**
      *
-     * @param xCord
+     * @param xCord sets where the x cord is
      */
     public void setxCord(double xCord) {
         this.xCord = xCord;

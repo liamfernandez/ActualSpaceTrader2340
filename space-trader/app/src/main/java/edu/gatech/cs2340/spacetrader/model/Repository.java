@@ -1,14 +1,11 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import android.util.Log;
-import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import edu.gatech.cs2340.spacetrader.entity.Inventory;
 import edu.gatech.cs2340.spacetrader.entity.Item;
@@ -22,10 +19,16 @@ import com.BoardiesITSolutions.AndroidMySQLConnector.Exceptions.SQLColumnNotFoun
 import com.BoardiesITSolutions.AndroidMySQLConnector.MySQLRow;
 import com.BoardiesITSolutions.AndroidMySQLConnector.ResultSet;
 
-
+/**
+ * keeps track of distances and fuel
+ */
 public class Repository {
     private static int next_id = 1;
 
+    /**
+     * looks for next id
+     * @return the id
+     */
     private static int getNextUniqueID() {
         return next_id++;
     }
@@ -39,6 +42,9 @@ public class Repository {
     private List<MockItem> allItems;
     private List<MockItem> cargoList;
 
+    /**
+     * the exception when a player does not exist
+     */
     private class PlayerNotFoundException extends Exception {
 
         PlayerNotFoundException(String message) {
@@ -47,6 +53,9 @@ public class Repository {
 
     }
 
+    /**
+     * creates an instance of the repository class
+     */
     public Repository() {
         allItems = new ArrayList<>();
         cargoList = new ArrayList<>();
@@ -54,8 +63,13 @@ public class Repository {
         loadItems();
     }
 
+    /**
+     * upload a new player
+     * @param p the player to upload
+     */
     public void uploadNewPlayer(Player p) {
-        String query = "INSERT INTO players (credit, difficulty, currPlanet, skill_fighter, skill_trader, skill_pilot, skill_engineer, name, inventory, fuel, currSystem) \n" +
+        String query = "INSERT INTO players (credit, difficulty, currPlanet, skill_fighter, " +
+                "skill_trader, skill_pilot, skill_engineer, name, inventory, fuel, currSystem) \n" +
                 "values (";
         query += p.getCredit() + ", ";
         query += 0 + ", ";
@@ -76,10 +90,13 @@ public class Repository {
         MySQLTalker.executeNonReturningQuery(query);
     }
 
-    public void updateExistingPlayer(Player p) {
 
-    }
-
+    /**
+     * downloads the player
+     * @param name the name of the player
+     * @return the player to download
+     * @throws PlayerNotFoundException if the player does not exist or cannot be found
+     */
     public Player downloadPlayer(String name) throws PlayerNotFoundException {
         String query = "SELECT * FROM players WHERE name = '";
         query += name;
@@ -125,9 +142,13 @@ public class Repository {
         return p;
     }
 
+    /**
+     * loads the cargo list
+     * @param inventory the string inventory
+     */
     private void loadTheCargoList(String inventory) {
         int index;
-        HashMap<String, Item> items = new HashMap<String, Item>();
+        HashMap<String, Item> items = new HashMap<>();
         for (Item i : Item.values()) {
             items.put(i.getName(), i);
         }
@@ -142,6 +163,12 @@ public class Repository {
         }
     }
 
+    /**
+     * sets the player's location to calculate things in motion and gas money
+     * @param systemName the name of solar system
+     * @param planetName the name of  planet
+     * @param player the player to set location
+     */
     private void setPlayerLocation(String systemName, String planetName, Player player) {
         HashMap<String, SolarSystem> systems =  new HashMap<>();
         for (SolarSystem s : universe.getAllSystems()) {
@@ -149,21 +176,27 @@ public class Repository {
         }
         SolarSystem currSystem = systems.get(systemName);
         HashMap<String, Planet> planets = new HashMap<>();
-        for (Planet p : currSystem.getPlanets()) {
-            planets.put(p.getName(), p);
+        if (currSystem != null) {
+            for (Planet p : currSystem.getPlanets()) {
+                planets.put(p.getName(), p);
+            }
         }
         Planet currPlanet = planets.get(planetName);
         player.setCurrSolarSystem(currSystem);
         player.setCurrPlanet(currPlanet);
     }
 
+    /**
+     * loads items
+     */
     public void loadItems() {
         allItems = new ArrayList<>();
         List<MockItem> updatedCargo = new ArrayList<>();
         Log.d("att sad", "starting the loading of items");
         Log.d("market", "allGameItems" + allGameItems.toString());
         for (MockItem mockItem : allGameItems) {
-            Log.d("loading", "testing if " + mockItem.getName() + "available on " + player.getCurrPlanet());
+            Log.d("loading", "testing if " + mockItem.getName() + "available on "
+                    + player.getCurrPlanet());
             if (mockItem.isSellable(player.getCurrPlanet())) {
                 Log.d("loading", "adding " + mockItem.getName() + "KKKKKKKKKK");
                 MockItem marketMockItem = mockItem;
@@ -184,18 +217,34 @@ public class Repository {
         cargoList = updatedCargo;
     }
 
+    /**
+     * loads the cargo
+     * @param item item to load to cargo
+     */
     public void loadCargo(MockItem item) {
         addCargo(item);
     }
 
+    /**
+     * removes a cargo item from list
+     * @param item items to remove
+     */
     public void removeCargo(MockItem item) {
         cargoList.remove(item);
     }
 
+    /**
+     * adds a cargo to cargo list
+     * @param item the item to add
+     */
     public void addCargo(MockItem item) {
         cargoList.add(item);
     }
 
+    /**
+     * adds an item
+     * @param item item to add
+     */
     public void addItem(MockItem item) {
         allItems.add(item);
     }
@@ -208,6 +257,10 @@ public class Repository {
         return allItems;
     }
 
+    /**
+     * gets the list of cargo
+     * @return the list of items in cargo
+     */
     public List<MockItem> getCargoList() {
         return cargoList;
     }
@@ -285,9 +338,16 @@ public class Repository {
         }
     }
 
+    /**
+     * buys the mock items
+     * @param item the item to buy
+     * @return true if it worked or not
+     */
     public boolean buyMockItem(MockItem item) {
-        if (cargoList.size() < player.getMaxItems() && player.getCredit() > item.getSellingPrice()) {
-            Log.d("buyItem", "basePrice: " + item.getBasePrice() + ", buyPrice: " + item.getBuyingPrice() + ", sellPrice: " + item.getSellingPrice());
+        if (cargoList.size() < player.getMaxItems()
+                && player.getCredit() > item.getSellingPrice()) {
+            Log.d("buyItem", "basePrice: " + item.getBasePrice() + ", buyPrice: "
+                    + item.getBuyingPrice() + ", sellPrice: " + item.getSellingPrice());
             player.editCredit(0 - item.getBuyingPrice());
             for (MockItem mockitem : cargoList) {
                 if (cargoList.contains(item)) {
@@ -304,6 +364,11 @@ public class Repository {
         return false;
     }
 
+    /**
+     * sells items
+     * @param item the item to sell
+     * @return true if it works
+     */
     public boolean sellMockItem(MockItem item) {
         cargoList.remove(item);
         player.editCredit(item.getSellingPrice());
@@ -311,8 +376,12 @@ public class Repository {
         return true;
     }
 
+    /**
+     * gets a mock item at random
+     * @return the mock item that is random
+     */
     public MockItem getRandomItem() {
-        if (cargoList.size() == 0) {
+        if (cargoList.isEmpty()) {
             return null;
         }
         int random = new Random().nextInt(cargoList.size());
@@ -355,18 +424,32 @@ public class Repository {
         }
     }
 
+    /**
+     * initializes the list of mock items
+     */
     public void initMockItems() {
         allGameItems = universe.initMockItems();
     }
 
+    /**
+     * gets the player's money
+     * @return the amount of money the player has
+     */
     public int getPlayerCredit() {
         return (int) player.getCredit();
     }
 
+    /**
+     * gets the universe
+     */
     public Universe getUniverse() {
         return universe;
     }
 
+    /**
+     * gets the player's fuel
+     * @return the amount of fuel
+     */
     public double getPlayerFuel() {
         return player.getFuel();
     }

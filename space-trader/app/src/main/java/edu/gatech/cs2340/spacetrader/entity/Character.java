@@ -108,7 +108,7 @@ public abstract class Character {
      * @param skill3 skill 3
      * @param skill4 skill 4
      */
-    public Character(String name, int skill1, int skill2, int skill3, int skill4) {
+    protected Character(String name, int skill1, int skill2, int skill3, int skill4) {
         this.name = name;
         //this.evil = evil;
         this.skill1 = skill1;

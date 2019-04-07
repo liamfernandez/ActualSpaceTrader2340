@@ -44,11 +44,14 @@ public class PlanetInteractor extends Interactor {
         for (Double key : map.keySet()) {
 
             SolarSystem s = map.get(key);
-            s.setDistance(key);
+            if (s != null) {
+                s.setDistance(key);
+            }
             inRangeSolarSystems.add(s);
         }
 
-        Collections.sort(inRangeSolarSystems, (a, b) -> (int) a.getDistance() - (int) b.getDistance());
+        Collections.sort(inRangeSolarSystems, (a, b) ->
+                (int) a.getDistance() - (int) b.getDistance());
         return inRangeSolarSystems;
     }
 

@@ -14,6 +14,9 @@ import java.util.List;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 
+/**
+ * adapts the solar system to the view
+ */
 public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.PlanetViewHolder> {
 
     private List<Planet> planetList = new ArrayList<>();
@@ -45,6 +48,10 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
         return planetList.size();
     }
 
+    /**
+     * sets the list of planets
+     * @param planets the planets to set to the new list of planets
+     */
     public void setPlanetList(List<Planet> planets) {
         planetList = planets;
         notifyDataSetChanged();
@@ -61,24 +68,28 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
             super(itemView);
             planetName = itemView.findViewById(R.id.planetName);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(e -> {
 
-                @Override
-                public void onClick(View view) {
                     int position = getAdapterPosition();
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onItemClicked(planetList.get(position));
                     }
-                }
             });
         }
     }
 
+    /**
+     * when an item is clicked goes here
+     */
     public interface OnItemClickListener {
         void onItemClicked(Planet planet);
     }
 
+    /**
+     * listens for a click to the solar system
+     * @param listener the button
+     */
     public void setOnItemClickListener(SolarSystemAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }

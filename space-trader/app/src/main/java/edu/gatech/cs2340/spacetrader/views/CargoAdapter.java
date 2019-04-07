@@ -72,16 +72,12 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
             itemName = itemView.findViewById(R.id.text_Item_Name);
             itemPrice = itemView.findViewById(R.id.text_Item_price);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
+            itemView.setOnClickListener(e -> {
                     int position = getAdapterPosition();
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onItemClicked(cargoList.get(position));
                     }
-                }
             });
         }
     }
