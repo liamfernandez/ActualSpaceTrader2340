@@ -31,10 +31,24 @@ public class Model {
 
     private void registerInteractors() {
         interactorMap.put("Player", new PlayerInteractor(myRepository));
+        interactorMap.put("Market", new MarketInteractor(myRepository));
+        interactorMap.put("Planet", new PlanetInteractor(myRepository));
+        interactorMap.put("SolarSystem", new SolarSystemInteractor(myRepository));
     }
 
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Player");
     }
 
+    public MarketInteractor getMarketInteractor() {
+        return (MarketInteractor) interactorMap.get("Market");
+    }
+
+    public PlanetInteractor getPlanetInteractor() {
+        return (PlanetInteractor) interactorMap.get("Planet");
+    }
+
+    public SolarSystemInteractor getSolarSystemInteractor() {
+        return (SolarSystemInteractor) interactorMap.get("SolarSystem");
+    }
 }

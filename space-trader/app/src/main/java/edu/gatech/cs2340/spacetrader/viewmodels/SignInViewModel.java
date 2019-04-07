@@ -8,20 +8,34 @@ import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
 
-
+/**
+ * adapts the sign in from the model to the view
+ */
 public class SignInViewModel extends AndroidViewModel {
     private PlayerInteractor interactor;
 
+    /**
+     * creates an instance of the class
+     * @param application the application to assign the assistance to
+     */
     public SignInViewModel(@NonNull Application application) {
         super(application);
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
+    /**
+     * adds a player to the game
+     * @param player the player to add to the game
+     * @return the string version of the player
+     */
     public String addPlayer(Player player) {
+        interactor.createUniverse();
+        interactor.createMockItems();
         boolean validPoints = validatePlayer(player);
         boolean validName = validatePlayerName(player);
         if (validPoints && validName) {
             interactor.addPlayerToBackEnd(player);
+            interactor.setSeller();
             return "Player Created";
         } else if (validName) {
             return "Need 16 total skill points.";

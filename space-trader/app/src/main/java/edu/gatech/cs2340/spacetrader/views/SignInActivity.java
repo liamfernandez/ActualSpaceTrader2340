@@ -1,21 +1,24 @@
 package edu.gatech.cs2340.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.view.View;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Player;
+import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
-
+/**
+ *
+ */
 public class SignInActivity extends AppCompatActivity {
 
     private SignInViewModel viewModel;
@@ -39,25 +42,26 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        /**
-         * Grab the dialog widgets so we can get info for later
-         */
+
+//        Grab the dialog widgets so we can get info for later
+
         nameField =  findViewById(R.id.editText_name);
         difficultySpinner = findViewById(R.id.difficultySpinner);
-        skill1Spinner = (Spinner) findViewById(R.id.spinner_skill_1);
+        skill1Spinner = findViewById(R.id.spinner_skill_1);
         skill2Spinner = findViewById(R.id.spinner_skill_2);
         skill3Spinner = findViewById(R.id.spinner_skill_3);
         skill4Spinner = findViewById(R.id.spinner_skill_4);
         Button button = findViewById(R.id.button_submit_signIn);
 
-
         Integer[] skillPoints = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
         String[] difficulties = {"Beginner", "Easy", "Normal", "Hard", "Impossible"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, difficulties);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, difficulties);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
         difficultySpinner.setAdapter(adapter1);
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, skillPoints);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, skillPoints);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         skill1Spinner.setAdapter(adapter);
         skill2Spinner.setAdapter(adapter);
@@ -66,6 +70,8 @@ public class SignInActivity extends AppCompatActivity {
 
         player = new Player("name", 0, 0, 0, 0);
         viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
+
+        MySQLTalker.initialize();
     }
 
     /**
@@ -83,7 +89,10 @@ public class SignInActivity extends AppCompatActivity {
 
         String response = viewModel.addPlayer(player);
         Toast.makeText(this, "Result: " + response, Toast.LENGTH_LONG).show();
-
+        if (response.equals("Player Created")) {
+            Intent intent = new Intent(SignInActivity.this, PlanetActivity.class);
+            startActivity(intent);
+        }
     }
 
     /**
