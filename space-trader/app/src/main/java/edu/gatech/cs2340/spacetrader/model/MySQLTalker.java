@@ -178,7 +178,7 @@ public class MySQLTalker {
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
                 System.out.println(ex);
-                System.out.println(query);
+                //System.out.println(query);
             }
 
             @Override
