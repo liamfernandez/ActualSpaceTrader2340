@@ -47,6 +47,9 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     private boolean validatePlayer(Player player) {
+        if (player == null) {
+            throw new NullPointerException("Player is null");
+        }
         int sumSkills = 0;
         sumSkills += player.getSkill1();
         sumSkills += player.getSkill2();

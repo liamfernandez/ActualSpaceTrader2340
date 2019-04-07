@@ -38,7 +38,13 @@ public class SolarSystemActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(SolarSystemViewModel.class);
 
         toVideo = findViewById(R.id.toVideo);
+<<<<<<< HEAD
         toVideo.setOnClickListener(e -> {
+=======
+        toVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+>>>>>>> Dev
                 Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
                 startActivity(intent);
         });

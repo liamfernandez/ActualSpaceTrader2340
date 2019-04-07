@@ -8,6 +8,17 @@ public class Inventory {
     public Inventory() {
         map = new HashMap<>();
     }
+<<<<<<< HEAD
+=======
+    /**
+     * Add item to inventory
+     *
+     * @param item
+     */
+    private void add(MockItem item) {
+        add(item);
+    }
+>>>>>>> Dev
 
 //    public void add(MockItem item) {
 //        add(item);
