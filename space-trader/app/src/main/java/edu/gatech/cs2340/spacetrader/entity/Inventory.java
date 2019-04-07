@@ -12,7 +12,7 @@ import java.util.Set;
 public class Inventory {
     private HashMap<Item, Integer> map;
 
-    public Inventory() {
+    private Inventory() {
         map = new HashMap<>();
     }
     /**
@@ -20,7 +20,7 @@ public class Inventory {
      *
      * @param item
      */
-    public void add(MockItem item) {
+    private void add(MockItem item) {
         add(item);
     }
 
