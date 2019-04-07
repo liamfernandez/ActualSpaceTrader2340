@@ -58,6 +58,15 @@ public class SignInViewModel extends AndroidViewModel {
         return false;
     }
 
+    /**
+     * lauren made this to be able to test the private method above
+     * @param p player to test
+     * @return true or false if it is valid or not
+     */
+    public boolean validateTest(Player p) {
+        return validatePlayer(p);
+    }
+
     private boolean validatePlayerName(Player player) {
         return !(player.getName().equals(""));
     }
