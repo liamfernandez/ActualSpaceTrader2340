@@ -19,8 +19,10 @@ public class PlayerInteractor extends Interactor {
     }
 
     /**
-     * Returns player object based on
-     * data in the back end
+     * Returns player object based on data in the back end.
+     * Make sure to check if player exists before calling
+     *
+     * Returns null if player doesn't exist
      *
      * @param name Name of player to get from back end
      * @return The player object with data loaded
@@ -33,6 +35,12 @@ public class PlayerInteractor extends Interactor {
         }
     }
 
+    /**
+     * Checks if a player exists in the database
+     *
+     * @param name Name of player to check
+     * @return true if the player exists
+     */
     public boolean doesPlayerNameExist(String name) {
         return getRepository().doesPlayerExist(name);
     }
