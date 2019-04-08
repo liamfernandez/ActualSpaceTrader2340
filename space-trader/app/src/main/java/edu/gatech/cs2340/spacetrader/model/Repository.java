@@ -280,6 +280,7 @@ public class Repository {
     public void addPlayer(Player p) {
         p.setId(Repository.getNextUniqueID());
         p.setCurrPlanet(universe.getStartingPlanet());
+        p.setCurrSolarSystem(universe.getStartingSolarSystem());
         player = p;
         uploadNewPlayer(player);
         Log.d("APP", "Interactor: added player: " + p);
