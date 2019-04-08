@@ -18,6 +18,21 @@ public class PlayerInteractor extends Interactor {
 
     }
 
+    /**
+     * Returns player object based on
+     * data in the back end
+     *
+     * @param name Name of player to get from back end
+     * @return The player object with data loaded
+     */
+    public Player loadExistingPlayer(String name) {
+        try {
+            return getRepository().downloadPlayer(name);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
     public boolean doesPlayerNameExist(String name) {
         return getRepository().doesPlayerExist(name);
     }
