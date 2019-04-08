@@ -39,6 +39,7 @@ public class SolarSystemActivity extends AppCompatActivity {
 
         toVideo = findViewById(R.id.toVideo);
 <<<<<<< HEAD
+<<<<<<< HEAD
         toVideo.setOnClickListener(e -> {
 =======
         toVideo.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +48,12 @@ public class SolarSystemActivity extends AppCompatActivity {
 >>>>>>> Dev
                 Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
                 startActivity(intent);
+=======
+
+        toVideo.setOnClickListener(e -> {
+        Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
+        startActivity(intent);
+>>>>>>> bda04617178e8104783d403c4e6bfe6f4ebcf41a
         });
     }
 

@@ -9,6 +9,7 @@ public class Inventory {
         map = new HashMap<>();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /**
      * Add item to inventory
@@ -19,6 +20,19 @@ public class Inventory {
         add(item);
     }
 >>>>>>> Dev
+=======
+// <<<<<<< Paul
+// // =======
+// //     /**
+// //      * Add item to inventory
+// //      *
+// //      * @param item
+// //      */
+// //     private void add(MockItem item) {
+// //         add(item);
+// //     }
+// >>>>>>> Dev
+>>>>>>> bda04617178e8104783d403c4e6bfe6f4ebcf41a
 
 //    public void add(MockItem item) {
 //        add(item);
