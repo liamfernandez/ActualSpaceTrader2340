@@ -142,6 +142,36 @@ public class Repository {
         return p;
     }
 
+    public void updateExistingPlayer(Player p) {
+        String query = "UPDATE player SET ";
+        String credit = p.getCredit() + "";
+        String difficulty = "0";
+        String planet = p.getCurrPlanet().getName();
+        String skill1 = p.getSkill1() + "";
+        String skill2 = p.getSkill2() + "";
+        String skill3 = p.getSkill3() + "";
+        String skill4 = p.getSkill4() + "";
+        String items = "";
+        for (MockItem curr : cargoList) {
+            items += "<" + curr.getName() + ">";
+        }
+        String fuel = p.getFuel() + "";
+        String system = p.getCurrSolarSystem().getName();
+        query += "credit = " + credit + ", "
+                + "difficulty = " + difficulty + ", "
+                + "currPlanet = '" + planet + "', "
+                + "currSystem = '" + system + "', "
+                + "skill_fighter = " + skill1 + ", "
+                + "skill_trader = " + skill2 + ", "
+                + "skill_pilot = " + skill3 + ", "
+                + "skill_engineer = " + skill4 + ", "
+                + "inventory = '" + items + "', "
+                + "fuel = " + fuel + " ";
+        query += "WHERE name = " + p.getName() + ";";
+        System.out.println(query);
+        //MySQLTalker.executeNonReturningQuery(query);
+    }
+
     /**
      * loads the cargo list
      * @param inventory the string inventory
@@ -164,7 +194,7 @@ public class Repository {
     }
 
     /**
-     * sets the player's location to calculate things in motion and gas money
+     * sets the player's location based on string planet and system names
      * @param systemName the name of solar system
      * @param planetName the name of  planet
      * @param player the player to set location
