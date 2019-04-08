@@ -142,6 +142,13 @@ public class Repository {
         return p;
     }
 
+    /**
+     * Updates database player to match Player object
+     * This method should only be called if it's
+     * known that the player exists in the database
+     *
+     * @param p Player to update
+     */
     public void updateExistingPlayer(Player p) {
         String query = "UPDATE player SET ";
         String credit = p.getCredit() + "";
@@ -170,6 +177,20 @@ public class Repository {
         query += "WHERE name = " + p.getName() + ";";
         System.out.println(query);
         //MySQLTalker.executeNonReturningQuery(query);
+    }
+
+    /**
+     *
+     * @param p Player name to check existence of in database
+     * @return True if the player exists
+     */
+    public boolean doesPlayerExist(String player) {
+        try {
+            downloadPlayer(player);
+            return true;
+        } catch (PlayerNotFoundException p) {
+            return false;
+        }
     }
 
     /**
