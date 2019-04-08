@@ -18,6 +18,10 @@ public class PlayerInteractor extends Interactor {
 
     }
 
+    public boolean doesPlayerNameExist(String name) {
+        return getRepository().doesPlayerExist(name);
+    }
+
     public void createUniverse() {
         Universe newUniverse = new Universe();
         getRepository().addUniverse(newUniverse);
