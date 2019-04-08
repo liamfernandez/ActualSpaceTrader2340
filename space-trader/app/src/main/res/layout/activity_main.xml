@@ -20,17 +20,38 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout android:id="@+id/RelativeLayout01"
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="fill_parent">
 
         <Button
             android:id="@+id/PlayGameBtn"
             android:layout_width="141dp"
             android:layout_height="144dp"
-            android:layout_centerInParent="true"
-            android:text="Start a New game"></Button>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="133dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="454dp"
+            android:text="New Player"></Button>
+
+        <Button
+            android:id="@+id/returningPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="162dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="451dp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginBottom="118dp"
+            android:text="Returning Player" />
 
     </RelativeLayout>
 

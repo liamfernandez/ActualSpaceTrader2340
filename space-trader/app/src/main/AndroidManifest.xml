@@ -47,6 +47,11 @@
             android:label="Space Trader"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".views.ReturningPlayerSignInActivity"
+            android:label="Space Trader"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <service android:name=".views.SoundService" android:enabled="true"></service>
         <activity
             android:name=".views.MainActivity"

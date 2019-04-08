@@ -8,21 +8,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button start = findViewById(R.id.PlayGameBtn);
+        Button returningPlayer = findViewById(R.id.returningPlayer);
+
+        MySQLTalker.initialize();
+
         start.setOnClickListener(e -> {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
         });
         //startService(new Intent(MainActivity.this, SoundService.class));
+
+        returningPlayer.setOnClickListener(e -> {
+            Intent intent = new Intent(MainActivity.this, ReturningPlayerSignInActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

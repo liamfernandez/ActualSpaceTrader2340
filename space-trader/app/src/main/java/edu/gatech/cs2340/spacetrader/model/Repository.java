@@ -150,8 +150,9 @@ public class Repository {
      *
      * @param p Player to update
      */
-    public void updateExistingPlayer(Player p) {
-        String query = "UPDATE player SET ";
+    public void updateExistingPlayer() {
+        Player p = player;
+        String query = "UPDATE players SET ";
         String credit = p.getCredit() + "";
         String difficulty = "0";
         String planet = p.getCurrPlanet().getName();
@@ -175,9 +176,9 @@ public class Repository {
                 + "skill_engineer = " + skill4 + ", "
                 + "inventory = '" + items + "', "
                 + "fuel = " + fuel + " ";
-        query += "WHERE name = " + p.getName() + ";";
+        query += "WHERE name = '" + p.getName() + "';";
         System.out.println(query);
-        //MySQLTalker.executeNonReturningQuery(query);
+        MySQLTalker.executeNonReturningQuery(query);
     }
 
     /**

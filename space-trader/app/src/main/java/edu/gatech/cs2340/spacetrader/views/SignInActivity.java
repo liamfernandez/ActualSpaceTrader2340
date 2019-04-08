@@ -70,8 +70,6 @@ public class SignInActivity extends AppCompatActivity {
 
         player = new Player("name", 0, 0, 0, 0);
         viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
-
-        MySQLTalker.initialize();
     }
 
     /**

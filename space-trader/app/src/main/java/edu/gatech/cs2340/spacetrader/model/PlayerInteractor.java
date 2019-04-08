@@ -50,6 +50,10 @@ public class PlayerInteractor extends Interactor {
         getRepository().addUniverse(newUniverse);
     }
 
+    public void updateExistingPlayer() {
+        getRepository().updateExistingPlayer();
+    }
+
     public void createMockItems() {
         getRepository().initMockItems();
     }

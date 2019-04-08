@@ -58,8 +58,8 @@ public class PlanetActivity extends AppCompatActivity {
 
         Button save = findViewById(R.id.save);
         save.setOnClickListener( e -> {
-
-                }
+            viewModel.updateExistingPlayer();
+        }
 
                 );
     }
