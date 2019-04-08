@@ -139,6 +139,7 @@ public class Repository {
             System.out.println(ex);
             p = null;
         }
+        player = p;
         return p;
     }
 
@@ -329,7 +330,6 @@ public class Repository {
      * @param p the player to add
      */
     public void addPlayer(Player p) {
-        p.setId(Repository.getNextUniqueID());
         p.setCurrPlanet(universe.getStartingPlanet());
         p.setCurrSolarSystem(universe.getStartingSolarSystem());
         player = p;
