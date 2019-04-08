@@ -236,26 +236,6 @@ public class Player extends Character{
     public void setCurrPlanet(Planet newCurrPlanet) {
         currPlanet = newCurrPlanet;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-//
-=======
-
->>>>>>> Dev
-=======
-// <<<<<<< Paul
-// //
-// =======
-
-// >>>>>>> Dev
->>>>>>> bda04617178e8104783d403c4e6bfe6f4ebcf41a
-//    /**
-//     * adds an item to the user inventory
-//     * @param item the item to add to inventory
-//     */
-//    public void addItem(MockItem item) {
-//        inventory.add(item);
-//    }
 
     /**
      * Getter for Fuel
