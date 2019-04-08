@@ -40,7 +40,7 @@ public class SignInViewModel extends AndroidViewModel {
         } else if (validName) {
             return "Need 16 total skill points.";
         } else if (validPoints) {
-            return "Need to input a name";
+            return "Need to input a unique name!";
         } else {
             return "Need to input a name as well as assign 16 skill points.";
         }
