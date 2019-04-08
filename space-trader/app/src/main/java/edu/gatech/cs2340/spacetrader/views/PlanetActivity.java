@@ -55,6 +55,13 @@ public class PlanetActivity extends AppCompatActivity {
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
         marketViewModel.refreshMockItems();
+
+        Button save = findViewById(R.id.save);
+        save.setOnClickListener( e -> {
+
+                }
+
+                );
     }
 
     @Override
