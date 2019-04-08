@@ -204,7 +204,7 @@ public class Repository {
             items.put(i.getName(), i);
         }
 
-        while ((index = inventory.indexOf('<')) != -1) {
+        while (inventory != null && ((index = inventory.indexOf('<')) != -1)) {
             inventory = inventory.substring(index + 1);
             int endIndex = inventory.indexOf('>');
             String currMockItem = inventory.substring(0, endIndex);
