@@ -8,41 +8,6 @@ public class Inventory {
     public Inventory() {
         map = new HashMap<>();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    /**
-     * Add item to inventory
-     *
-     * @param item
-     */
-    private void add(MockItem item) {
-        add(item);
-    }
->>>>>>> Dev
-=======
-// <<<<<<< Paul
-// // =======
-// //     /**
-// //      * Add item to inventory
-// //      *
-// //      * @param item
-// //      */
-// //     private void add(MockItem item) {
-// //         add(item);
-// //     }
-// >>>>>>> Dev
->>>>>>> bda04617178e8104783d403c4e6bfe6f4ebcf41a
-
-//    public void add(MockItem item) {
-//        add(item);
-//    }
-//
-//    public void add(List<MockItem> itemsToAdd) {
-//        for (MockItem item : itemsToAdd) {
-//            add(item);
-//        }
-//    }
 
     public void add(Item item, int quantity) {
         int currQuantity = 0;
