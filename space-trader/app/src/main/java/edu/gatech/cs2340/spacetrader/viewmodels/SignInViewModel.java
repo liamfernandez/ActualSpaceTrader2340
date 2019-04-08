@@ -71,6 +71,8 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     private boolean validatePlayerName(Player player) {
-        return !(player.getName().equals(""));
+        return (!(player.getName().equals(""))
+                && !(interactor.doesPlayerNameExist(player.getName()))
+        );
     }
 }
