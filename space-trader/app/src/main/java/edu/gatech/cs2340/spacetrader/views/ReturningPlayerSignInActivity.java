@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.entity.Player;
-import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
 public class ReturningPlayerSignInActivity extends AppCompatActivity {
