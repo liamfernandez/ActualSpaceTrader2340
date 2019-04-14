@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
+import android.support.annotation.NonNull;
+
 /**
  * @author squad
  * @version 0.01
@@ -7,14 +9,13 @@ package edu.gatech.cs2340.spacetrader.entity;
 public class Player extends Character{
     protected int id;
     private double credit;
-    private int dificulty;
     private final Spaceship spaceship;
     private Inventory inventory;
     private Planet currPlanet;
     private SolarSystem currSolarSystem;
     private final int cargoTotal;
     private double fuel = 100000;
-    private boolean hasMercenary;
+    //private boolean hasMercenary;
 
     /**
      * Constructor
@@ -43,6 +44,7 @@ public class Player extends Character{
      * @return the string
      */
     @Override
+    @NonNull
     public String toString() {
         return name + " has " + skill1 + " points in skill 1, " + skill2
                 + " points in skill 2, " + skill3 + " points in skill 3, "
@@ -62,6 +64,7 @@ public class Player extends Character{
      * Setter
      * @param name what to set it to
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -86,6 +89,7 @@ public class Player extends Character{
      * Set skill 1
      * @param skill1 the skill
      */
+    @Override
     public void setSkill1(int skill1) {
         this.skill1 = skill1;
     }
@@ -94,6 +98,7 @@ public class Player extends Character{
      * Set skill 2
      * @param skill2 skill 2 to set it to
      */
+    @Override
     public void setSkill2(int skill2) {
         this.skill2 = skill2;
     }
@@ -102,6 +107,7 @@ public class Player extends Character{
      * setter for skill 3
      * @param skill3 the skill
      */
+    @Override
     public void setSkill3(int skill3) {
         this.skill3 = skill3;
     }
@@ -110,6 +116,7 @@ public class Player extends Character{
      * Setter for skill 4
      * @param skill4 the skill
      */
+    @Override
     public void setSkill4(int skill4) {
         this.skill4 = skill4;
     }
@@ -118,6 +125,7 @@ public class Player extends Character{
      * getter for name
      * @return the name
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -126,6 +134,7 @@ public class Player extends Character{
      * the get skill
      * @return skill 1
      */
+    @Override
     public int getSkill1() {
         return skill1;
     }
@@ -134,6 +143,7 @@ public class Player extends Character{
      * skill 2 getter
      * @return skill 2
      */
+    @Override
     public int getSkill2() {
         return skill2;
     }
@@ -142,6 +152,7 @@ public class Player extends Character{
      *
      * @return skill 3
      */
+    @Override
     public int getSkill3() {
         return skill3;
     }
@@ -150,6 +161,7 @@ public class Player extends Character{
      *
      * @return skill 4
      */
+    @Override
     public int getSkill4() {
         return skill4;
     }
@@ -216,9 +228,8 @@ public class Player extends Character{
      * @param moneyToAdd Will add this amount to credit
      * @return The player's credit after edit
      */
-    public double editCredit(double moneyToAdd) {
+    public void editCredit(double moneyToAdd) {
         credit = credit + moneyToAdd;
-        return credit;
     }
 
     /**
@@ -253,7 +264,7 @@ public class Player extends Character{
         this.fuel = fuel - subtract;
     }
 
-    public void setHasMercenary(boolean bool) {
-        hasMercenary = bool;
-    }
+   // public void setHasMercenary(boolean bool) {
+    //    hasMercenary = bool;
+    //}
 }

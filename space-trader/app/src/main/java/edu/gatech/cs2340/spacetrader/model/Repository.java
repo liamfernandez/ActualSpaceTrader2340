@@ -13,6 +13,7 @@ import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
+import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.entity.Universe;
 
 import com.BoardiesITSolutions.AndroidMySQLConnector.Exceptions.SQLColumnNotFoundException;
@@ -75,7 +76,8 @@ public class Repository {
                 "values (";
         query += p.getCredit() + ", ";
         query += 0 + ", ";
-        query += "'" + p.getCurrPlanet().getName() + "', ";
+        Planet planet = p.getCurrPlanet();
+        query += "'" + planet.getName() + "', ";
         query += p.getSkill1() + ", ";
         query += p.getSkill2() + ", ";
         query += p.getSkill3() + ", ";
@@ -87,7 +89,8 @@ public class Repository {
         }
         query += "', ";
         query += p.getFuel() + ", ";
-        query += "'" + p.getCurrSolarSystem().getName() + "'";
+        SolarSystem s = p.getCurrSolarSystem();
+        query += "'" + s.getName() + "'";
         query += ")";
         MySQLTalker.executeNonReturningQuery(query);
     }
@@ -105,7 +108,7 @@ public class Repository {
         query += "'";
         MySQLTalker.executeReturningQuery(query);
         int loopCounter = 0;
-        while (MySQLTalker.isQueryInProgress() && loopCounter < 20) {
+        while ((MySQLTalker.isQueryInProgress()) && (loopCounter < 20)) {
             try {
                 Thread.sleep(100);
             } catch (Exception ex) {
@@ -150,14 +153,14 @@ public class Repository {
      * This method should only be called if it's
      * known that the player exists in the database
      *
-     * @param p Player to update
      */
     public void updateExistingPlayer() {
         Player p = player;
         String query = "UPDATE players SET ";
         String credit = p.getCredit() + "";
         String difficulty = "0";
-        String planet = p.getCurrPlanet().getName();
+        Planet planet1 = p.getCurrPlanet();
+        String planet = planet1.getName();
         String skill1 = p.getSkill1() + "";
         String skill2 = p.getSkill2() + "";
         String skill3 = p.getSkill3() + "";
@@ -167,7 +170,8 @@ public class Repository {
             items += "<" + curr.getName() + ">";
         }
         String fuel = p.getFuel() + "";
-        String system = p.getCurrSolarSystem().getName();
+        SolarSystem s = p.getCurrSolarSystem();
+        String system = s.getName();
         query += "credit = " + credit + ", "
                 + "difficulty = " + difficulty + ", "
                 + "currPlanet = '" + planet + "', "
@@ -185,8 +189,8 @@ public class Repository {
 
     /**
      *
-     * @param p Player name to check existence of in database
-     * @return True if the player exists
+     * @param player player
+     * @return true or false
      */
     public boolean doesPlayerExist(String player) {
         try {
@@ -208,7 +212,7 @@ public class Repository {
             items.put(i.getName(), i);
         }
 
-        while (inventory != null && ((inventory.indexOf('<')) != -1)) {
+        while ((inventory != null) && ((inventory.indexOf('<')) != -1)) {
             index = inventory.indexOf('<');
             // inventory = inventory.substring(index + 1);
             int endIndex = inventory.indexOf('>');
@@ -360,6 +364,7 @@ public class Repository {
 
     /**
      * gets the current Displayable seller
+     * @return displayableSeller
      */
     public DisplayableSeller getSeller() {
         return seller;
@@ -381,12 +386,13 @@ public class Repository {
      * @return true if purchase executed, false if not
      */
     public boolean buyItem(Item item, int quantity) {
-        if (seller.getQuantityForSale(item) >= quantity
-                && seller.getPrice(item) * quantity <= player.getCredit()) {
+        if ((seller.getQuantityForSale(item) >= quantity)
+                && (seller.getPrice(item) * quantity <= player.getCredit())) {
             for (int i = 0; i < quantity; i++) {
                 seller.remove(item);
             }
-            player.getInventory().add(item, quantity);
+            Inventory i = player.getInventory();
+            i.add(item, quantity);
             player.editCredit(-1 * seller.getPrice(item) * quantity);
             return true;
         } else {
@@ -400,8 +406,8 @@ public class Repository {
      * @return true if it worked or not
      */
     public boolean buyMockItem(MockItem item) {
-        if (cargoList.size() < player.getMaxItems()
-                && player.getCredit() > item.getSellingPrice()) {
+        if ((cargoList.size() < player.getMaxItems())
+                && (player.getCredit() > item.getSellingPrice())){
             Log.d("buyItem", "basePrice: " + item.getBasePrice() + ", buyPrice: "
                     + item.getBuyingPrice() + ", sellPrice: " + item.getSellingPrice());
             player.editCredit(0 - item.getBuyingPrice());
@@ -425,11 +431,10 @@ public class Repository {
      * @param item the item to sell
      * @return true if it works
      */
-    public boolean sellMockItem(MockItem item) {
+    public void sellMockItem(MockItem item) {
         cargoList.remove(item);
         player.editCredit(item.getSellingPrice());
         Log.d("SEEEELLLLLLLLLELLEL", "" + player.getCredit());
-        return true;
     }
 
     /**
@@ -440,7 +445,8 @@ public class Repository {
         if (cargoList.isEmpty()) {
             return null;
         }
-        int random = new Random().nextInt(cargoList.size());
+        Random rand = new Random();
+        int random = rand.nextInt(cargoList.size());
         return cargoList.get(random);
     }
 
@@ -460,7 +466,8 @@ public class Repository {
 
     public boolean sellItem(Item item, int quantity) {
         Planet planet = player.getCurrPlanet();
-        if (planet != null && planet.getTechLevel().getLevel() < item.getMTLP()) {
+        TechLevel t = planet.getTechLevel();
+        if ((planet != null) && (t.getLevel()) < item.getMTLP()) {
             return false;
         }
         Inventory inventory = player.getInventory();
@@ -497,6 +504,7 @@ public class Repository {
 
     /**
      * gets the universe
+     * @return universe
      */
     public Universe getUniverse() {
         return universe;

@@ -20,51 +20,52 @@ public class Universe {
      * creates the default solar system
      */
     public Universe() {
-        List<SolarSystem> universe = new ArrayList<>();
+        systems = new ArrayList<>();
         Map<Integer, Planet> s1Map = new HashMap<>();
         s1Map.put(1, new Planet("Drake", TechLevel.PreAgriculture, Resources.POORSOIL));
         s1Map.put(2, new Planet("Josh", TechLevel.Agriculture, Resources.MINERALPOOR));
-        universe.add(new SolarSystem(s1Map, 1, 1, "Meganville"));
+        systems.add(new SolarSystem(s1Map, 1, 1, "Meganville"));
         Map<Integer, Planet> s2Map = new HashMap<>();
         s2Map.put(1, new Planet("Bert", TechLevel.Medieval, Resources.RICHFAUNA));
         s2Map.put(2, new Planet("Ernie", TechLevel.Medieval, Resources.RICHSOIL));
-        universe.add(new SolarSystem(s2Map, 10, 3, "The Street"));
+        systems.add(new SolarSystem(s2Map, 10, 3, "The Street"));
         Map<Integer, Planet> s3Map = new HashMap<>();
         s3Map.put(1, new Planet("Carly", TechLevel.Hi_Tech, Resources.LOTSOFWATER));
         s3Map.put(2, new Planet("Sam", TechLevel.Hi_Tech, Resources.DESERT));
-        universe.add(new SolarSystem(s3Map, 20, 7, "iCarly"));
+        systems.add(new SolarSystem(s3Map, 20, 7, "iCarly"));
         Map<Integer, Planet> s4Map = new HashMap<>();
         s4Map.put(1, new Planet("Wiz", TechLevel.Renaissance, Resources.LOTSOFHERBS));
         s4Map.put(2, new Planet("Snoop", TechLevel.Renaissance, Resources.WEIRDMUSHROOMS));
-        universe.add(new SolarSystem(s4Map, 20, 29, "Buddy land"));
+        systems.add(new SolarSystem(s4Map, 20, 29, "Buddy land"));
         Map<Integer, Planet> s5Map = new HashMap<>();
         s5Map.put(1, new Planet("Ariana", TechLevel.Post_Industrial, Resources.LIFELESS));
         s5Map.put(2, new Planet("Pete", TechLevel.Post_Industrial, Resources.ARTISTIC));
-        universe.add(new SolarSystem(s5Map, 30, 30, "Break town"));
-        Map<Integer, Planet> s6Map = new HashMap<>();
-        s6Map.put(1, new Planet("Sparrow", TechLevel.Industrial, Resources.RICHSOIL));
-        s6Map.put(2, new Planet("Blackbeard", TechLevel.Industrial, Resources.MINERALRICH));
-        universe.add(new SolarSystem(s6Map, 45, 35, "Niceopolis"));
-        Map<Integer, Planet> s7Map = new HashMap<>();
-        s7Map.put(1, new Planet("Chesik", TechLevel.PreAgriculture, Resources.LIFELESS));
-        s7Map.put(2, new Planet("Showalter", TechLevel.PreAgriculture, Resources.LIFELESS));
-        universe.add(new SolarSystem(s7Map, 60, 40, "Spiketopia"));
-        Map<Integer, Planet> s8Map = new HashMap<>();
-        s8Map.put(1, new Planet("Cosmoland", TechLevel.Hi_Tech, Resources.LOTSOFHERBS));
-        s8Map.put(2, new Planet("Wandapolis", TechLevel.Industrial, Resources.LOTSOFWATER));
-        universe.add(new SolarSystem(s8Map, 70, 85, "Oddparentia"));
-        Map<Integer, Planet> s9Map = new HashMap<>();
-        s9Map.put(1, new Planet("Garth", TechLevel.Post_Industrial, Resources.WEIRDMUSHROOMS));
-        s9Map.put(2, new Planet("Wayne", TechLevel.Post_Industrial, Resources.LOTSOFHERBS));
-        universe.add(new SolarSystem(s9Map, 90, 45, "Waynes World"));
-        Map<Integer, Planet> s10Map = new HashMap<>();
-        s10Map.put(1, new Planet("Seth", TechLevel.Hi_Tech, Resources.WARLIKE));
-        s10Map.put(2, new Planet("Franco", TechLevel.Hi_Tech, Resources.WARLIKE));
-        universe.add(new SolarSystem(s10Map, 100, 100, "Pineappleappalis"));
-        systems = universe;
+        systems.add(new SolarSystem(s5Map, 30, 30, "Break town"));
         largeLog("APP", this.toString());
     }
 
+    private void universeHelper() {
+        Map<Integer, Planet> s6Map = new HashMap<>();
+        s6Map.put(1, new Planet("Sparrow", TechLevel.Industrial, Resources.RICHSOIL));
+        s6Map.put(2, new Planet("Blackbeard", TechLevel.Industrial, Resources.MINERALRICH));
+        systems.add(new SolarSystem(s6Map, 45, 35, "Niceopolis"));
+        Map<Integer, Planet> s7Map = new HashMap<>();
+        s7Map.put(1, new Planet("Chesik", TechLevel.PreAgriculture, Resources.LIFELESS));
+        s7Map.put(2, new Planet("Showalter", TechLevel.PreAgriculture, Resources.LIFELESS));
+        systems.add(new SolarSystem(s7Map, 60, 40, "Spiketopia"));
+        Map<Integer, Planet> s8Map = new HashMap<>();
+        s8Map.put(1, new Planet("Cosmoland", TechLevel.Hi_Tech, Resources.LOTSOFHERBS));
+        s8Map.put(2, new Planet("Wandapolis", TechLevel.Industrial, Resources.LOTSOFWATER));
+        systems.add(new SolarSystem(s8Map, 70, 85, "Oddparentia"));
+        Map<Integer, Planet> s9Map = new HashMap<>();
+        s9Map.put(1, new Planet("Garth", TechLevel.Post_Industrial, Resources.WEIRDMUSHROOMS));
+        s9Map.put(2, new Planet("Wayne", TechLevel.Post_Industrial, Resources.LOTSOFHERBS));
+        systems.add(new SolarSystem(s9Map, 90, 45, "Waynes World"));
+        Map<Integer, Planet> s10Map = new HashMap<>();
+        s10Map.put(1, new Planet("Seth", TechLevel.Hi_Tech, Resources.WARLIKE));
+        s10Map.put(2, new Planet("Franco", TechLevel.Hi_Tech, Resources.WARLIKE));
+        systems.add(new SolarSystem(s10Map, 100, 100, "Pineappleappalis"));
+    }
     /**
      * Returns a HashMap of all systems in range
      *
@@ -157,7 +158,8 @@ public class Universe {
      * @return Planet the starting planet for the game
      */
     public Planet getStartingPlanet() {
-        return systems.get(0).getPlanet(1);
+        SolarSystem s = systems.get(0);
+        return s.getPlanet(1);
     }
 
     /**

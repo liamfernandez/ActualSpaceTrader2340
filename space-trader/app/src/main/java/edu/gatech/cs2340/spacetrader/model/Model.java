@@ -3,6 +3,9 @@ package edu.gatech.cs2340.spacetrader.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public final class Model {
 
     /** the data repository */
@@ -17,10 +20,17 @@ public final class Model {
      */
     private static  final Model instance = new Model();
 
+    /**
+     *
+     * @return model
+     */
     public static Model getInstance() {
         return instance;
     }
 
+    /**
+     *
+     */
     private Model() {
         myRepository = new Repository();
         interactorMap = new HashMap<>();
@@ -36,18 +46,34 @@ public final class Model {
         interactorMap.put("SolarSystem", new SolarSystemInteractor(myRepository));
     }
 
+    /**
+     *
+     * @return playerInteractor
+     */
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Player");
     }
 
+    /**
+     *
+     * @return marketInteractor
+     */
     public MarketInteractor getMarketInteractor() {
         return (MarketInteractor) interactorMap.get("Market");
     }
 
+    /**
+     *
+     * @return planetInteractor
+     */
     public PlanetInteractor getPlanetInteractor() {
         return (PlanetInteractor) interactorMap.get("Planet");
     }
 
+    /**
+     *
+     * @return solarSystemInteractor
+     */
     public SolarSystemInteractor getSolarSystemInteractor() {
         return (SolarSystemInteractor) interactorMap.get("SolarSystem");
     }

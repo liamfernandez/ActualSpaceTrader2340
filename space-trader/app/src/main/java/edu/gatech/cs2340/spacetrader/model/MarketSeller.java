@@ -4,6 +4,9 @@ import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.model.DisplayableSeller;
 import edu.gatech.cs2340.spacetrader.model.Store;
 
+/**
+ *
+ */
 public class MarketSeller extends DisplayableSeller {
      //private Planet planet;
 

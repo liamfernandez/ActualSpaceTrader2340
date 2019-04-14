@@ -3,18 +3,35 @@ package edu.gatech.cs2340.spacetrader.model;
 import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.Universe;
 
+/**
+ *
+ */
 public class PlayerInteractor extends Interactor {
 
+    /**
+     *
+     * @param repo repository
+     */
     public PlayerInteractor(Repository repo) {
         super(repo);
     }
 
+    /**
+     *
+     * @return player
+     */
     public Player getPlayer() {
-        return getRepository().getPlayer();
+        Repository r = getRepository();
+        return r.getPlayer();
     }
 
+    /**
+     *
+     * @param p player
+     */
     public void addPlayerToBackEnd (Player p) {
-        getRepository().addPlayer(p);
+        Repository r = getRepository();
+        r.addPlayer(p);
 
     }
 
@@ -29,7 +46,8 @@ public class PlayerInteractor extends Interactor {
      */
     public Player loadExistingPlayer(String name) {
         try {
-            return getRepository().downloadPlayer(name);
+            Repository r = getRepository();
+            return r.downloadPlayer(name);
         } catch (Exception ex) {
             return null;
         }
@@ -42,23 +60,40 @@ public class PlayerInteractor extends Interactor {
      * @return true if the player exists
      */
     public boolean doesPlayerNameExist(String name) {
-        return getRepository().doesPlayerExist(name);
+        Repository r = getRepository();
+        return r.doesPlayerExist(name);
     }
 
+    /**
+     *
+     */
     public void createUniverse() {
         Universe newUniverse = new Universe();
-        getRepository().addUniverse(newUniverse);
+        Repository r = getRepository();
+        r.addUniverse(newUniverse);
     }
 
+    /**
+     *
+     */
     public void updateExistingPlayer() {
-        getRepository().updateExistingPlayer();
+        Repository r = getRepository();
+        r.updateExistingPlayer();
     }
 
+    /**
+     *
+     */
     public void createMockItems() {
-        getRepository().initMockItems();
+        Repository r = getRepository();
+        r.initMockItems();
     }
 
+    /**
+     *
+     */
     public void setSeller() {
-        getRepository().setSeller();
+        Repository r = getRepository();
+        r.setSeller();
     }
 }

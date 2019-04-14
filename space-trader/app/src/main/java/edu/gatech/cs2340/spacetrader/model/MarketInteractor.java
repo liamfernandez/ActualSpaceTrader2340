@@ -5,12 +5,23 @@ import java.util.List;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
+/**
+ *
+ */
 public class MarketInteractor extends Interactor {
 
+    /**
+     *
+     * @param repo repository
+     */
     public MarketInteractor(Repository repo) {
         super(repo);
     }
 
+    /**
+     *
+     * @return displayableseller
+     */
     public DisplayableSeller getSeller() {
         Repository r = getRepository();
         return r.getSeller();
@@ -25,13 +36,24 @@ public class MarketInteractor extends Interactor {
         r.buyItem(item, 1);
     }
 
+    /**
+     *
+     * @param item item
+     * @return true or false
+     */
     public boolean buyMockItem(MockItem item) {
         Repository r = getRepository();
         return r.buyMockItem(item);
     }
 
-    public boolean sellMockItem(MockItem item) {
-        return getRepository().sellMockItem(item);
+    /**
+     *
+     * @param item item
+     * @return true or false
+     */
+    public void sellMockItem(MockItem item) {
+        Repository r = getRepository();
+        r.sellMockItem(item);
     }
 
     /**
@@ -39,22 +61,42 @@ public class MarketInteractor extends Interactor {
      * @param item the item to sell
      */
     public void sellItem(Item item) {
-        getRepository().sellItem(item, 1);
+        Repository r = getRepository();
+        r.sellItem(item, 1);
     }
 
+    /**
+     *
+     * @return list of mockItems
+     */
     public List<MockItem> getAllItems() {
-        return getRepository().getAllItems();
+        Repository r = getRepository();
+        return r.getAllItems();
     }
 
+    /**
+     *
+     */
     public void refreshMockItems() {
-        getRepository().loadItems();
+        Repository r = getRepository();
+        r.loadItems();
     }
 
+    /**
+     *
+     * @return list of mock items
+     */
     public List<MockItem> getCargoItems() {
-        return getRepository().getCargoList();
+        Repository r = getRepository();
+        return r.getCargoList();
     }
 
+    /**
+     *
+     * @return credit
+     */
     public int getPlayerCredit() {
-        return getRepository().getPlayerCredit();
+        Repository r = getRepository();
+        return r.getPlayerCredit();
     }
 }
