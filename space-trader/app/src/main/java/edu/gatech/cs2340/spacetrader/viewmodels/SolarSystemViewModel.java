@@ -15,7 +15,7 @@ import edu.gatech.cs2340.spacetrader.model.SolarSystemInteractor;
  */
 public class SolarSystemViewModel extends AndroidViewModel {
 
-    private SolarSystemInteractor interactor;
+    private final SolarSystemInteractor interactor;
 
     /**
      * creates an instance of the class

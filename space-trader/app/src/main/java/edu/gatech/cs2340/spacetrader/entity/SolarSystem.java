@@ -13,7 +13,7 @@ public class SolarSystem {
     private double xCord;
     private double yCord;
     private String name;
-    private Map<Integer, Planet> planets;
+    private final Map<Integer, Planet> planets;
     private double distance;
 
     /**

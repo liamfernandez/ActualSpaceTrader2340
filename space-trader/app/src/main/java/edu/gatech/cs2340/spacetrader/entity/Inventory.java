@@ -3,7 +3,7 @@ package edu.gatech.cs2340.spacetrader.entity;
 import java.util.HashMap;
 
 public class Inventory {
-    private HashMap<Item, Integer> map;
+    private final HashMap<Item, Integer> map;
 
     public Inventory() {
         map = new HashMap<>();

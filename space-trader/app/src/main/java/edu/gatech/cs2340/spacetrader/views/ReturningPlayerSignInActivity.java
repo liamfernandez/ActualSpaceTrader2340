@@ -12,12 +12,12 @@ import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
 public class ReturningPlayerSignInActivity extends AppCompatActivity {
 
-    private Button signIn;
     private EditText userName;
     private SignInViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button signIn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.returning_main);
 

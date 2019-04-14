@@ -15,7 +15,7 @@ import edu.gatech.cs2340.spacetrader.entity.Resources;
  */
 public class Store {
 
-    private static Item[] allItems = Item.values();
+    private static final Item[] allItems = Item.values();
 
     /**
      * Utility class for getting the market

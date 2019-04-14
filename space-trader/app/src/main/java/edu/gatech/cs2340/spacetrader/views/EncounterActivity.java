@@ -17,13 +17,14 @@ import java.util.Random;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
+import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
+import edu.gatech.cs2340.spacetrader.model.Repository;
 
 /**
  * encounter class
  */
-@SuppressWarnings("SpellCheckingInspection")
 public class EncounterActivity extends YouTubeBaseActivity {
 
     MediaPlayer player;
@@ -43,7 +44,8 @@ public class EncounterActivity extends YouTubeBaseActivity {
         setContentView(R.layout.encounter_main);
         TextView textView =  findViewById(R.id.encounterType);
         TextView tradeTextView = findViewById(R.id.trade);
-        int random = new Random().nextInt(20);
+        Random rand = new Random();
+        int random = rand.nextInt(20);
         youTubePlayerView = findViewById(R.id.youtube_encounter);
         playButton = findViewById(R.id.button);
         next = findViewById(R.id.nextButton);
@@ -61,10 +63,11 @@ public class EncounterActivity extends YouTubeBaseActivity {
                     tradeTextView.setVisibility(View.VISIBLE);
                     tradeTextView.setText("Thank you for doing business");
                     MockItem item = new MockItem(tradeItem, 0, 0);
-                    Model.getInstance().getMarketInteractor().getRepository().loadCargo(item);
-                    MarketInteractor m;
-                    m = Model.getInstance().getMarketInteractor();
-                    m.getRepository().removeCargo(tradedItem);
+                    Model ma = Model.getInstance();
+                    MarketInteractor mI = ma.getMarketInteractor();
+                    Repository r = mI.getRepository();
+                    r.loadCargo(item);
+                    r.removeCargo(tradedItem);
                 } else {
                     tradeTextView.setVisibility(View.VISIBLE);
                     tradeTextView.setText("You have added a mercenary");
@@ -86,11 +89,13 @@ public class EncounterActivity extends YouTubeBaseActivity {
             encounterType = "cop";
             playButton.setVisibility(View.VISIBLE);
             int currCredit;
-            MarketInteractor m;
-            m = Model.getInstance().getMarketInteractor();
-            currCredit = (int) m.getRepository().getPlayer().getCredit();
+            Model model = Model.getInstance();
+            MarketInteractor m = model.getMarketInteractor();
+            Repository r = m.getRepository();
+            Player p = r.getPlayer();
+            currCredit = (int) p.getCredit();
             double toAdd = -.5 * currCredit;
-            Model.getInstance().getMarketInteractor().getRepository().getPlayer().editCredit(toAdd);
+            p.editCredit(toAdd);
 
         } else if (random < 10) {
             player = MediaPlayer.create(this, R.raw.pirates);
@@ -98,10 +103,12 @@ public class EncounterActivity extends YouTubeBaseActivity {
             encounterType = "pirate";
             playButton.setVisibility(View.VISIBLE);
             int currCredit;
-            MarketInteractor m;
-            m = Model.getInstance().getMarketInteractor();
-            currCredit = (int) m.getRepository().getPlayer().getCredit();
-            m.getRepository().getPlayer().editCredit(currCredit);
+            Model model = Model.getInstance();
+            MarketInteractor m =model.getMarketInteractor();
+            Repository r = m.getRepository();
+            Player p = r.getPlayer();
+            currCredit = (int) p.getCredit();
+            p.editCredit(currCredit);
 
         } else if (random < 15) {
             player = MediaPlayer.create(this, R.raw.merc);
@@ -114,13 +121,17 @@ public class EncounterActivity extends YouTubeBaseActivity {
             player = MediaPlayer.create(this, R.raw.deal);
             textView.setText("Trader Encounter");
             tradeTextView.setVisibility(View.VISIBLE);
-            tradedItem = Model.getInstance().getMarketInteractor().getRepository().getRandomItem();
+            Model m = Model.getInstance();
+            MarketInteractor mi = m.getMarketInteractor();
+            Repository r = mi.getRepository();
+            tradedItem = r.getRandomItem();
             if (tradedItem == null) {
                 tradeTextView.setText("Sorry you do not have cargo to trade");
             } else {
-                int rand = new Random().nextInt(Item.values().length);
-                tradeItem = Item.values()[rand];
-                String tradeItemName = Item.values()[rand].getName();
+                Random randoGen = new Random();
+                int rando = randoGen.nextInt(Item.values().length);
+                tradeItem = Item.values()[rando];
+                String tradeItemName = Item.values()[rando].getName();
                 tradeTextView.setText("Would you like to trade a " + tradedItem.getName()
                         + " for a " + tradeItemName + "?");
                 yes.setVisibility(View.VISIBLE);

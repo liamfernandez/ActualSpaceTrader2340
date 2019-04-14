@@ -5,15 +5,14 @@ package edu.gatech.cs2340.spacetrader.entity;
  * @version 0.01
  */
 public class Player extends Character{
-    private int id;
+    protected int id;
     private double credit;
     private int dificulty;
-    private Spaceship spaceship;
+    private final Spaceship spaceship;
     private Inventory inventory;
     private Planet currPlanet;
     private SolarSystem currSolarSystem;
-    private final int maxItems = 10;
-    private int cargoTotal = 0;
+    private final int cargoTotal;
     private double fuel = 100000;
     private boolean hasMercenary;
 
@@ -35,6 +34,7 @@ public class Player extends Character{
         credit = 1000;
         spaceship = Spaceship.Gnat;
         inventory = new Inventory();
+        cargoTotal = 0;
         //solarSystem = new SolarSystem(null, 0, 0,"initial");
     }
 
@@ -191,7 +191,7 @@ public class Player extends Character{
      * @return the max items
      */
     public int getMaxItems() {
-        return maxItems;
+        return 10;
     }
 
     /**

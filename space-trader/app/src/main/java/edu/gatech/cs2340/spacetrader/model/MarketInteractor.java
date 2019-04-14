@@ -12,7 +12,8 @@ public class MarketInteractor extends Interactor {
     }
 
     public DisplayableSeller getSeller() {
-        return getRepository().getSeller();
+        Repository r = getRepository();
+        return r.getSeller();
     }
 
     /**
@@ -20,11 +21,13 @@ public class MarketInteractor extends Interactor {
      * @param item the item the player is buying
      */
     public void buyItem(Item item) {
-        getRepository().buyItem(item, 1);
+        Repository r = getRepository();
+        r.buyItem(item, 1);
     }
 
     public boolean buyMockItem(MockItem item) {
-        return getRepository().buyMockItem(item);
+        Repository r = getRepository();
+        return r.buyMockItem(item);
     }
 
     public boolean sellMockItem(MockItem item) {

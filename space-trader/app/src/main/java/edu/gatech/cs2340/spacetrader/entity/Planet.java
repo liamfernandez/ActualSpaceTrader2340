@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 
 
 public class Planet {
-    private String name;
-    private TechLevel techLevel;
-    private Resources resources;
+    private final String name;
+    private final TechLevel techLevel;
+    private final Resources resources;
     /**
      * creates the planet object
      * @param name the name of the planet

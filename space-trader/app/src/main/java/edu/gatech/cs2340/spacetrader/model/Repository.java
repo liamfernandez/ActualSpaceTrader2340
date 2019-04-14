@@ -30,7 +30,9 @@ public class Repository {
      * @return the id
      */
     private static int getNextUniqueID() {
-        return next_id++;
+        int temp = next_id;
+        next_id++;
+        return temp;
     }
 
     /** all the Players known in the application */
@@ -136,7 +138,7 @@ public class Repository {
             p.setFuel(credit);
             setPlayerLocation(currSystem, currPlanet, p);
         } catch (SQLColumnNotFoundException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
             p = null;
         }
         player = p;
@@ -206,12 +208,13 @@ public class Repository {
             items.put(i.getName(), i);
         }
 
-        while (inventory != null && ((index = inventory.indexOf('<')) != -1)) {
-            inventory = inventory.substring(index + 1);
+        while (inventory != null && ((inventory.indexOf('<')) != -1)) {
+            index = inventory.indexOf('<');
+            // inventory = inventory.substring(index + 1);
             int endIndex = inventory.indexOf('>');
-            String currMockItem = inventory.substring(0, endIndex);
+            String currMockItem = inventory.substring(index + 1, endIndex);
             MockItem item = new MockItem(items.get(currMockItem), 0, 0);
-            inventory = inventory.substring(endIndex);
+            //inventory = inventory.substring(endIndex);
             cargoList.add(item);
         }
     }

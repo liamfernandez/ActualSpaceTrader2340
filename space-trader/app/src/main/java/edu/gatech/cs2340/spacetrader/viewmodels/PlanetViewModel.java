@@ -16,8 +16,8 @@ import edu.gatech.cs2340.spacetrader.views.MainActivity;
 
 public class PlanetViewModel extends AndroidViewModel {
 
-    private PlanetInteractor interactor;
-    private PlayerInteractor playerInteractor;
+    private final PlanetInteractor interactor;
+    private final PlayerInteractor playerInteractor;
 
     public PlanetViewModel(@NonNull Application application) {
         super(application);

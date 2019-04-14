@@ -13,7 +13,7 @@ import com.BoardiesITSolutions.AndroidMySQLConnector.IConnectionInterface;
 import java.io.IOException;
 
 
-public class MySQLTalker {
+public class  MySQLTalker {
 
     private static Connection conn;
     private static boolean connected = false;
@@ -179,7 +179,7 @@ public class MySQLTalker {
             @Override
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
-                System.out.println(ex);
+                //System.out.println(ex);
                 ////System.out.println(query);
             }
 

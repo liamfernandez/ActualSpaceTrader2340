@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
  * Class defines the Game's Universe
  */
 public class Universe {
-    private List<SolarSystem> systems;
+    private final List<SolarSystem> systems;
 
     /**
      * creates the default solar system
@@ -73,7 +74,7 @@ public class Universe {
      */
     public HashMap<Double, SolarSystem> getSystemsInRange(SolarSystem currrentSystem,
                                                           double shipRange) {
-        TreeMap<Double, SolarSystem> distanceOfSystems = new TreeMap<>();
+        SortedMap<Double, SolarSystem> distanceOfSystems = new TreeMap<>();
 
         for (SolarSystem s :systems) {
             distanceOfSystems.put(computeSeparation(currrentSystem, s), s);
@@ -172,7 +173,7 @@ public class Universe {
      * @return the list of mock items
      */
     public List<MockItem> initMockItems() {
-        ArrayList<MockItem> mockList = new ArrayList<>();
+        List<MockItem> mockList = new ArrayList<>();
         mockList.add(new MockItem(Item.WATER, 30, 30));
         mockList.add(new MockItem(Item.FURS, 250,250));
         mockList.add(new MockItem(Item.FOOD, 100, 100));
