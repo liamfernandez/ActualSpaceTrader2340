@@ -10,7 +10,6 @@ public class Player extends Character{
     protected int id;
     private double credit;
     private final Spaceship spaceship;
-    private Inventory inventory;
     private Planet currPlanet;
     private SolarSystem currSolarSystem;
     private final int cargoTotal;
@@ -34,7 +33,6 @@ public class Player extends Character{
         skill4 = s4;
         credit = 1000;
         spaceship = Spaceship.Gnat;
-        inventory = new Inventory();
         cargoTotal = 0;
         //solarSystem = new SolarSystem(null, 0, 0,"initial");
     }
@@ -172,22 +170,6 @@ public class Player extends Character{
      */
     public Planet getCurrPlanet() {
         return currPlanet;
-    }
-
-    /**
-     *
-     * @return the inventory object of the player
-     */
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    /**
-     * setter for inventory
-     * @param inventory the inventory
-     */
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
     }
 
     /**
