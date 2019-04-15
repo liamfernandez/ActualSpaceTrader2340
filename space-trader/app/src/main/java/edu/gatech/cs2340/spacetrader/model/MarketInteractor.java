@@ -47,6 +47,16 @@ public class MarketInteractor extends Interactor {
     }
 
     /**
+     * Liam made this Overloaded method so that i could test it for J unit
+     * @param item item being bought
+     * @param r repository created in J unit
+     * @return
+     */
+    public boolean buyMockItem(MockItem item, Repository r) {
+        return r.buyMockItem(item);
+    }
+
+    /**
      *
      * @param item item
      * @return true or false
