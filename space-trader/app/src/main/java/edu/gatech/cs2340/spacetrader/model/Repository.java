@@ -217,7 +217,7 @@ public class Repository {
      * loads the cargo list
      * @param inventory the string inventory
      */
-    private void loadTheCargoList(String inventory) {
+    public void loadTheCargoList(String inventory) {
         int index;
         HashMap<String, Item> items = new HashMap<>();
         for (Item i : Item.values()) {
@@ -350,12 +350,15 @@ public class Repository {
      * @param p the player to add
      */
     public void addPlayer(Player p) {
+        addPlayerTestable(p, true);
+        uploadNewPlayer(player);
+        //Log.d("APP", "Interactor: added player: " + p);
+    }
+
+    public void addPlayerTestable(Player p, boolean useDatabase) {
         p.setCurrPlanet(universe.getStartingPlanet());
         p.setCurrSolarSystem(universe.getStartingSolarSystem());
         player = p;
-        uploadNewPlayer(player);
-        //Log.d("APP", "Interactor: added player: " + p);
-
     }
 
     /**
@@ -380,36 +383,6 @@ public class Repository {
      */
     public DisplayableSeller getSeller() {
         return seller;
-    }
-
-    /**
-     * Method to make player purchase an item.
-     * Will confirm the player has sufficient funds, and
-     * the seller actually has enough in stock. Purchase executed by:
-     * 1) Removing item(s) from seller
-     * 2) Adding item(s) to player inventory
-     * 3) Adjusting player credit accordingly
-     *
-     * If seller has insufficient stock, sale will not
-     * go through.
-     *
-     * @param item Item they are purchasing
-     * @param quantity quantity that the player is buying
-     * @return true if purchase executed, false if not
-     */
-    public boolean buyItem(Item item, int quantity) {
-        if ((seller.getQuantityForSale(item) >= quantity)
-                && (seller.getPrice(item) * quantity <= player.getCredit())) {
-            for (int i = 0; i < quantity; i++) {
-                seller.remove(item);
-            }
-            Inventory i = player.getInventory();
-            i.add(item, quantity);
-            player.editCredit(-1 * seller.getPrice(item) * quantity);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -460,43 +433,6 @@ public class Repository {
         Random rand = new Random();
         int random = rand.nextInt(cargoList.size());
         return cargoList.get(random);
-    }
-
-    /**
-     * Method to make a player sell and item. Will first check
-     * if they're able to, and if so, execute the sale by
-     * 1) removing item(s) from players inventory
-     * 2) adding the value of them to player's price
-     *
-     * Players are unable to sell if MLTP of item isn't good
-     * or if they have insufficient quantity
-     *
-     * @param item Item to be sold
-     * @param quantity Quantity of Item to be sold
-     * @return true if sale executed, false if sale invalid
-     */
-
-    public boolean sellItem(Item item, int quantity) {
-        Planet planet = player.getCurrPlanet();
-        TechLevel t = planet.getTechLevel();
-        if ((planet != null) && (t.getLevel()) < item.getMTLP()) {
-            return false;
-        }
-        Inventory inventory = player.getInventory();
-        if (!inventory.contains(item)) {
-            return false;
-        } else if (inventory.getQuantity(item) < quantity) {
-            return false;
-        } else {
-            inventory.remove(item, quantity);
-            if (planet == null) {
-                player.editCredit(Store.getSpaceTradePrice(item));
-                return true;
-            } else {
-                player.editCredit(Store.getMarketPrice(item, planet) * quantity);
-                return true;
-            }
-        }
     }
 
     /**
