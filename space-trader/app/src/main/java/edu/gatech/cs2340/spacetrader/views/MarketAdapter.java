@@ -14,6 +14,9 @@ import java.util.List;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 
+/**
+ *
+ */
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketViewHolder>{
 
 
@@ -48,6 +51,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return itemList.size();
     }
 
+    /**
+     * Set method
+     * @param items things to set
+     */
     public void setItemList(List<MockItem> items) {
         itemList = items;
         notifyDataSetChanged();
@@ -77,9 +84,17 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     }
 
     public interface OnItemClickListener {
+        /**
+         * lambda ish
+         * @param item the item
+         */
         void onItemClicked(MockItem item);
     }
 
+    /**
+     * SMall method
+     * @param listener the listener
+     */
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }

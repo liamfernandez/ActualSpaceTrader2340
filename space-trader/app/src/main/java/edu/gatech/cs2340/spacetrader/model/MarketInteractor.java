@@ -50,7 +50,7 @@ public class MarketInteractor extends Interactor {
      * Liam made this Overloaded method so that i could test it for J unit
      * @param item item being bought
      * @param r repository created in J unit
-     * @return
+     * @return returns a boolean
      */
     public boolean buyMockItem(MockItem item, Repository r) {
         return r.buyMockItem(item);
@@ -73,6 +73,7 @@ public class MarketInteractor extends Interactor {
     /**
      * sells the item from the players inventory
      * @param item the item to sell
+     * @return a boolean
      */
     public boolean sellItem(Item item) {
         if (item == null) {
@@ -121,6 +122,7 @@ public class MarketInteractor extends Interactor {
     /**
      * Solely for Liam's J unit purposes
      * @param item item
+     * @param i integer
      * @return true or false
      */
     public boolean buyMockItem(MockItem item, int i) {

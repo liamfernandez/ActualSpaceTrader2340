@@ -14,6 +14,9 @@ import android.widget.EditText;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
 

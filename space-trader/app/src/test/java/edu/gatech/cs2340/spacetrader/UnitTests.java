@@ -91,7 +91,7 @@ public class UnitTests {
         List<MockItem> tooMany = new ArrayList<>();
         Item[] f = Item.values();
         Player defaultPlayer = new Player("TestGuy", 0, 0, 0, 16);
-        Repository spaceInCargoAndProperMoney = new Repository(defaultPlayer, new ArrayList<MockItem>());
+        Repository spaceInCargoAndProperMoney = new Repository(defaultPlayer, new ArrayList<>());
         MockItem testItemToBuy = new MockItem(f[0], 100, 0);
         for (int i = 0; i <= 11; i++) {
             MockItem toAdd = new MockItem(f[i % 10], 0, 0);
