@@ -75,7 +75,7 @@ public class Repository {
         cargoList = improvCargo;
         allGameItems = new ArrayList<>();
         player = p;
-        loadItems();
+        //loadItems();
     }
 
     /**
