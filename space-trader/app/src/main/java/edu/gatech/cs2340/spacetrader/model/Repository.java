@@ -48,7 +48,7 @@ public class Repository {
     /**
      * the exception when a player does not exist
      */
-    private class PlayerNotFoundException extends Exception {
+    public class PlayerNotFoundException extends Exception {
 
         PlayerNotFoundException(String message) {
             super(message);
