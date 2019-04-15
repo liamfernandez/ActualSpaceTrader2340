@@ -35,7 +35,7 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.SolarSyste
 
         SolarSystem solarSystem = solarSystemsList.get(position);
 
-        Log.d("APP", "Binding: " + position + " " + solarSystemsList.get(position));
+        //Log.d("APP", "Binding: " + position + " " + solarSystemsList.get(position));
 
         holder.solarSystemName.setText(solarSystem.getName());
         holder.distance.setText("" + (int) solarSystem.getDistance());

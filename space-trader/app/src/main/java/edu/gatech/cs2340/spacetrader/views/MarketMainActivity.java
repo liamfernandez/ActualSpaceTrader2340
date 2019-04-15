@@ -63,7 +63,7 @@ public class MarketMainActivity extends AppCompatActivity {
         credit = findViewById(R.id.text_money);
         credit.setText(viewModel.getCredit());
 
-        Log.d("APP", viewModel.getMockItems().toString());
+        //Log.d("APP", viewModel.getMockItems().toString());
     }
 
     @Override
