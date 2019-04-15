@@ -529,4 +529,31 @@ public class Repository {
     public double getPlayerFuel() {
         return player.getFuel();
     }
+
+    /**
+     * SOLELY for Liam J unit purposes
+     * @param item the item to buy
+     * @return true if it worked or not
+     */
+    public boolean buyMockItem(MockItem item, int i) {
+        if ((cargoList.size() < player.getMaxItems())
+                && (player.getCredit() > item.getSellingPrice())){
+            //Log.d("buyItem", "basePrice: " + item.getBasePrice() + ", buyPrice: "
+            //        + item.getBuyingPrice() + ", sellPrice: " + item.getSellingPrice());
+            player.editCredit(0 - item.getBuyingPrice());
+            for (MockItem mockitem : cargoList) {
+                if (cargoList.contains(item)) {
+                    MockItem prevItem = cargoList.get(cargoList.indexOf(mockitem));
+                    item.setSellingPrice(prevItem.getSellingPrice());
+                }
+            }
+            cargoList.add(new MockItem(item));
+            //Log.d("BUUUUUYYYYYYYYYYYY", "true");
+            return true;
+        }
+        //Log.d("BBBBUUYUYUUYUYUY", "" + player.getCredit());
+        //Log.d("BUUUUYYYYYYYYY", "false");
+        return false;
+    }
+
 }
