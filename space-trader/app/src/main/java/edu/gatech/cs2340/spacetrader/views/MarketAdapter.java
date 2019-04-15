@@ -37,7 +37,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
 
         MockItem item = itemList.get(position);
 
-        Log.d("APP", "Binding: " + position + " " + itemList.get(position));
+        //Log.d("APP", "Binding: " + position + " " + itemList.get(position));
 
         holder.itemName.setText(item.getName());
         holder.itemPrice.setText("" + item.getBuyingPrice());

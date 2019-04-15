@@ -178,12 +178,12 @@ public class MockItem {
         }
 
         double randomAdjustmentPercentage = random.nextDouble() * getVar() * (2.0 / 100.00);
-        Log.d("calcInfo", item.getName() + " randomadj: " + (randomAdjustmentPercentage));
-        Log.d("calcInfo", item.getName() + " price: " + (price));
-        Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
+        //Log.d("calcInfo", item.getName() + " randomadj: " + (randomAdjustmentPercentage));
+        //Log.d("calcInfo", item.getName() + " price: " + (price));
+        //Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
 
-        Log.d("calcInfo", item.getName() + "calculated to be bought for"
-                + (price * (1+randomAdjustmentPercentage)));
+        //Log.d("calcInfo", item.getName() + "calculated to be bought for"
+                //+ (price * (1+randomAdjustmentPercentage)));
 
         return (int) (price * (1.0 + randomAdjustmentPercentage));
 

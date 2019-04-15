@@ -117,4 +117,14 @@ public class MarketInteractor extends Interactor {
         Repository r = getRepository();
         return r.getPlayerCredit();
     }
+
+    /**
+     * Solely for Liam's J unit purposes
+     * @param item item
+     * @return true or false
+     */
+    public boolean buyMockItem(MockItem item, int i) {
+        Repository r = getRepository();
+        return r.buyMockItem(item, i);
+    }
 }

@@ -38,7 +38,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
 
         Planet planet = planetList.get(position);
 
-        Log.d("APP", "Binding: " + position + " " + planetList.get(position));
+        //Log.d("APP", "Binding: " + position + " " + planetList.get(position));
 
         holder.planetName.setText(planet.getName());
     }

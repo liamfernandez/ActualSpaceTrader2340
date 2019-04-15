@@ -91,7 +91,7 @@ public class UnitTests {
         List<MockItem> tooMany = new ArrayList<>();
         Item[] f = Item.values();
         Player defaultPlayer = new Player("TestGuy", 0, 0, 0, 16);
-        Repository spaceInCargoAndProperMoney = new Repository(defaultPlayer, tooMany);
+        Repository spaceInCargoAndProperMoney = new Repository(defaultPlayer, new ArrayList<MockItem>());
         MockItem testItemToBuy = new MockItem(f[0], 100, 0);
         for (int i = 0; i <= 11; i++) {
             MockItem toAdd = new MockItem(f[i % 10], 0, 0);
@@ -100,11 +100,12 @@ public class UnitTests {
         Repository tooMuchInCargoToBuy = new Repository(defaultPlayer, tooMany);
         MarketInteractor testOfTooMuchCargo = new MarketInteractor(tooMuchInCargoToBuy);
         MarketInteractor testOfEnoughCargo = new MarketInteractor(spaceInCargoAndProperMoney);
-        assertEquals("Should be false because cargo is at capacity and can't add more", false, testOfTooMuchCargo.buyMockItem(testItemToBuy));
-        assertEquals("Should be true because Cargo has enough space", true, testOfEnoughCargo.buyMockItem(testItemToBuy));
+        assertEquals("Should be false because cargo is at capacity and can't add more", false, testOfTooMuchCargo.buyMockItem(testItemToBuy, 1));
+        assertEquals("Should be true because Cargo has enough space", true, testOfEnoughCargo.buyMockItem(testItemToBuy, 1));
         defaultPlayer.setCredit(0);
-        assertEquals("Should be false because player does not have enough money to buy the item", false, testOfEnoughCargo.buyMockItem(testItemToBuy));
+        assertEquals("Should be false because player does not have enough money to buy the item", false, testOfEnoughCargo.buyMockItem(testItemToBuy, 1));
         defaultPlayer.setCredit(10000);
-        assertEquals("Should be true because Player has enough money and cargo space", true, testOfEnoughCargo.buyMockItem(testItemToBuy));
+        assertEquals("Should be true because Player has enough money and cargo space", true, testOfEnoughCargo.buyMockItem(testItemToBuy, 1));
     }
+
 }
