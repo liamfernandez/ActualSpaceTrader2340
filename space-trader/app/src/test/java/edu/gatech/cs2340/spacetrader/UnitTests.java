@@ -6,15 +6,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.entity.Player;
+import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
+import edu.gatech.cs2340.spacetrader.entity.Universe;
 import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
+import edu.gatech.cs2340.spacetrader.model.MySQLTalker;
 import edu.gatech.cs2340.spacetrader.model.Repository;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
@@ -106,6 +111,43 @@ public class UnitTests {
         assertEquals("Should be false because player does not have enough money to buy the item", false, testOfEnoughCargo.buyMockItem(testItemToBuy, 1));
         defaultPlayer.setCredit(10000);
         assertEquals("Should be true because Player has enough money and cargo space", true, testOfEnoughCargo.buyMockItem(testItemToBuy, 1));
+    }
+
+    @Test
+    public void testGetInRangeSolarSystems() {
+        //test after universe is created
+        Universe universe = new Universe();
+
+        Map<Double, SolarSystem> inRangeSystemsMap = new HashMap<>();
+        List<SolarSystem> inRangeSolarSystems = new ArrayList<>();
+        List<SolarSystem> expectedInRangeSolarSystems = new ArrayList<>();
+        List<SolarSystem> allSolarSystems = universe.getAllSystems();
+
+        //check when can't visit any other solar System
+        inRangeSystemsMap = universe.getSystemsInRange(universe.getStartingSolarSystem(), 0);
+        for (Double key : inRangeSystemsMap.keySet()) {
+            inRangeSolarSystems.add(inRangeSystemsMap.get(key));
+        }
+        expectedInRangeSolarSystems.add(universe.getStartingSolarSystem());
+        assertEquals("message", expectedInRangeSolarSystems, inRangeSolarSystems);
+
+        //check when can only visit the nearest solar system
+        inRangeSolarSystems.clear();
+        inRangeSystemsMap = universe.getSystemsInRange(universe.getStartingSolarSystem(), 12);
+        for (Double key : inRangeSystemsMap.keySet()) {
+            inRangeSolarSystems.add(inRangeSystemsMap.get(key));
+        }
+        expectedInRangeSolarSystems.add(allSolarSystems.get(1));
+        assertEquals("message", expectedInRangeSolarSystems, inRangeSolarSystems);
+
+        //check when can visit all solar systems
+        inRangeSolarSystems.clear();
+        inRangeSystemsMap = universe.getSystemsInRange(universe.getStartingSolarSystem(), 1000000);
+        for (Double key : inRangeSystemsMap.keySet()) {
+            inRangeSolarSystems.add(inRangeSystemsMap.get(key));
+        }
+        expectedInRangeSolarSystems = allSolarSystems;
+        assertEquals("message", expectedInRangeSolarSystems, inRangeSolarSystems);
     }
 
 }
