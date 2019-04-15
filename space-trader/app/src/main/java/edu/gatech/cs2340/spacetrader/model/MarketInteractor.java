@@ -28,15 +28,6 @@ public class MarketInteractor extends Interactor {
     }
 
     /**
-     * lets the player buy the item item
-     * @param item the item the player is buying
-     */
-    public void buyItem(Item item) {
-        Repository r = getRepository();
-        r.buyItem(item, 1);
-    }
-
-    /**
      *
      * @param item item
      * @return true or false
@@ -67,20 +58,6 @@ public class MarketInteractor extends Interactor {
         }
         Repository r = getRepository();
         r.sellMockItem(item);
-        return true;
-    }
-
-    /**
-     * sells the item from the players inventory
-     * @param item the item to sell
-     * @return a boolean
-     */
-    public boolean sellItem(Item item) {
-        if (item == null) {
-            return false;
-        }
-        Repository r = getRepository();
-        r.sellItem(item, 1);
         return true;
     }
 
