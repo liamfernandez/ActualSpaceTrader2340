@@ -67,6 +67,18 @@ public class Repository {
     }
 
     /**
+     * Overloaded constructor made by Liam Solely for J unit purposes
+     * @param p
+     */
+    public Repository(Player p, List<MockItem> improvCargo) {
+        allItems = new ArrayList<>();
+        cargoList = improvCargo;
+        allGameItems = new ArrayList<>();
+        player = p;
+        loadItems();
+    }
+
+    /**
      * upload a new player
      * @param p the player to upload
      */
