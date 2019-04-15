@@ -21,15 +21,16 @@ import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 public class UnitTests {
 
     Repository repository;
+    SignInViewModel s;
 
     @Before
     public void setUp() {
         repository = Model.getInstance().getMarketInteractor().getRepository();
+        s = new SignInViewModel(new Application());
     }
 
     @Test
     public void testValidatePlayer() {
-        SignInViewModel s = new SignInViewModel(new Application());
         Player tooFewSkills = new Player("henry", 0, 0, 0, 0);
         Player tooManySkills = new Player("henry", 16, 16, 16, 16);
         Player justRightSkills = new Player("henry", 16, 0, 0, 0);
