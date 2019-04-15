@@ -226,9 +226,9 @@ public class Repository {
 
         while ((inventory != null) && ((inventory.indexOf('<')) != -1)) {
             index = inventory.indexOf('<');
-            // inventory = inventory.substring(index + 1);
+            inventory = inventory.substring(index + 1);
             int endIndex = inventory.indexOf('>');
-            String currMockItem = inventory.substring(index + 1, endIndex);
+            String currMockItem = inventory.substring(0, endIndex);
             MockItem item = new MockItem(items.get(currMockItem), 0, 0);
             //inventory = inventory.substring(endIndex);
             cargoList.add(item);
