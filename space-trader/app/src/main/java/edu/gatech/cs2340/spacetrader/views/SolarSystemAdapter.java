@@ -62,7 +62,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
      */
     class PlanetViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView planetName;
+        private final TextView planetName;
 
         public PlanetViewHolder(@NonNull View itemView) {
             super(itemView);

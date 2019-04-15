@@ -14,7 +14,7 @@ import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
 
 public class MarketListViewModel extends AndroidViewModel {
-    private MarketInteractor interactor;
+    private final MarketInteractor interactor;
 
     public MarketListViewModel(@NonNull Application application) {
         super(application);

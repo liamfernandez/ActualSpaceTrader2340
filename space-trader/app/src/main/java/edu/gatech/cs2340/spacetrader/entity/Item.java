@@ -26,18 +26,18 @@ public enum  Item {
     ROBOTS("robots", 6, 4, 7, 5000, -150, 100, Resources.LACKOFWORKERS,
             null, null, 3500, 5000);
 
-    String name;
-        int MTLP;
-        int MTLU;
-        int TTP;
-        int basePrice;
-        int IPL;
-        int var;
-        Resources IE;
-        Resources CR;
-        Resources ER;
-        int MTL;
-        int MTH;
+        final String name;
+        final int MTLP;
+        final int MTLU;
+        final int TTP;
+        final int basePrice;
+        final int IPL;
+        final int var;
+        final Resources IE;
+        final Resources CR;
+        final Resources ER;
+        final int MTL;
+        final int MTH;
 
     /**
      * Item Constructor

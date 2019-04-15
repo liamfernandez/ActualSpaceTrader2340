@@ -17,12 +17,12 @@ import edu.gatech.cs2340.spacetrader.viewmodels.PlanetViewModel;
 
 public class PlanetActivity extends AppCompatActivity {
 
-    private MarketListViewModel marketViewModel;
     private PlanetViewModel viewModel;
     private PlanetAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MarketListViewModel marketViewModel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_main);
 

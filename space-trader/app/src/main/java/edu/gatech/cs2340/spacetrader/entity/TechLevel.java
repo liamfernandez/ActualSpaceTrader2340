@@ -8,7 +8,7 @@ public enum TechLevel {
     Industrial(5), Post_Industrial(6),
     Hi_Tech(7);
 
-    private int level;
+    private final int level;
 
     /**
      * creates the tech level

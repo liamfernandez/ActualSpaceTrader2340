@@ -24,9 +24,9 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
     @NonNull
     @Override
     public MarketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        LayoutInflater l = LayoutInflater.from(parent.getContext());
 
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.market_item, parent, false);
+        View itemView = l.inflate(R.layout.market_item, parent, false);
 
 
         return new MarketViewHolder(itemView);
@@ -58,8 +58,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
      */
     class MarketViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView itemName;
-        private TextView itemPrice;
+        private final TextView itemName;
+        private final TextView itemPrice;
 
         public MarketViewHolder(@NonNull View itemView) {
             super(itemView);

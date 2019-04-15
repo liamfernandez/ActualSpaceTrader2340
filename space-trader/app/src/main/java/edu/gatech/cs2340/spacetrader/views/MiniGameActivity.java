@@ -22,7 +22,7 @@ public class MiniGameActivity extends AppCompatActivity {
     private TextView congrats;
     private int status = 0;
     private int clicks = 0;
-    private Handler hand = new Handler();
+    private final Handler hand = new Handler();
     MediaPlayer player;
 
     @Override

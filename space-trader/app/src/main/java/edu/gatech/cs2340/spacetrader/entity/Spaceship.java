@@ -6,6 +6,7 @@ package edu.gatech.cs2340.spacetrader.entity;
 public enum Spaceship {
     Gnat;
 
+    @Override
     public String toString() {
         return this.name() + " spaceship";
     }

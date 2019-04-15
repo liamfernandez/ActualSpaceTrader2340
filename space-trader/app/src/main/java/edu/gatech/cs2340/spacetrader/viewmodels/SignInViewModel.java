@@ -12,7 +12,7 @@ import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
  * adapts the sign in from the model to the view
  */
 public class SignInViewModel extends AndroidViewModel {
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * creates an instance of the class

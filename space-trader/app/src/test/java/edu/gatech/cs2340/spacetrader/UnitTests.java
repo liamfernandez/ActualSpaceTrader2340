@@ -5,10 +5,19 @@ import android.app.Application;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
+import edu.gatech.cs2340.spacetrader.entity.Item;
+import edu.gatech.cs2340.spacetrader.entity.MockItem;
 import edu.gatech.cs2340.spacetrader.entity.Player;
+<<<<<<< HEAD
 import edu.gatech.cs2340.spacetrader.model.Model;
+=======
+import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
+>>>>>>> fad5403592fdb812b367efa939f08e457e8aa73d
 import edu.gatech.cs2340.spacetrader.model.Repository;
 import edu.gatech.cs2340.spacetrader.viewmodels.SignInViewModel;
 
@@ -42,7 +51,29 @@ public class UnitTests {
 
     @Before
     public void testDownloadPlayer() {
-        String[] existingPlayers = {"MATT","p","porter","qwe"};
+        String[] existingPlayers = {"MATT", "p", "porter", "qwe"};
         String[] nonexistantPlayers = {"noPlayer1", "noPlayer2", "noPlayer3", "noPlayer4"};
+    }
+
+    @Test
+    public void testBuyMockItem() {
+        List<MockItem> tooMany = new ArrayList<>();
+        Item[] f = Item.values();
+        Player defaultPlayer = new Player("TestGuy", 0, 0, 0, 16);
+        Repository spaceInCargoAndProperMoney = new Repository(defaultPlayer, tooMany);
+        MockItem testItemToBuy = new MockItem(f[0], 100, 0);
+        for (int i = 0; i <= 11; i++) {
+            MockItem toAdd = new MockItem(f[i % 10], 0, 0);
+            tooMany.add(toAdd);
+        }
+        Repository tooMuchInCargoToBuy = new Repository(defaultPlayer, tooMany);
+        MarketInteractor testOfTooMuchCargo = new MarketInteractor(tooMuchInCargoToBuy);
+        MarketInteractor testOfEnoughCargo = new MarketInteractor(spaceInCargoAndProperMoney);
+        assertEquals("Should be false because cargo is at capacity and can't add more", false, testOfTooMuchCargo.buyMockItem(testItemToBuy));
+        assertEquals("Should be true because Cargo has enough space", true, testOfEnoughCargo.buyMockItem(testItemToBuy));
+        defaultPlayer.setCredit(0);
+        assertEquals("Should be false because player does not have enough money to buy the item", false, testOfEnoughCargo.buyMockItem(testItemToBuy));
+        defaultPlayer.setCredit(10000);
+        assertEquals("Should be true because Player has enough money and cargo space", true, testOfEnoughCargo.buyMockItem(testItemToBuy));
     }
 }
