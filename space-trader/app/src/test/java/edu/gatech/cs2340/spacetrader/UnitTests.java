@@ -32,6 +32,8 @@ public class UnitTests {
     public void setUp() {
         repository = Model.getInstance().getMarketInteractor().getRepository();
         s = new SignInViewModel(new Application());
+        repository.addUniverse(new Universe());
+
     }
 
     @Test
@@ -53,41 +55,24 @@ public class UnitTests {
     }
 
     @Test
-    public void testDownloadPlayer() {
-        String[] existingPlayers = {"MATT", "p", "porter", "qwe"};
-        String[] nonexistantPlayers = {"noPlayer1", "noPlayer2", "noPlayer3", "noPlayer4"};
+    public void testLoadTheCargoList() {
+        String fromDatabase = "<furs><water><games><robots><furs>";
+        repository.getAllItems().clear();
+        repository.addPlayerTestable(new Player("no name", 0, 0,0,0), false);
+        repository.loadTheCargoList(fromDatabase);
+        assertTrue("Player should have 2 furs, 1 water, 1 games, and 1 robots", repository.getCargoList().contains(new MockItem(Item.FURS, 0, 0)));
+        assertTrue("Player should have 2 furs, 1 water, 1 games, and 1 robots", repository.getCargoList().contains(new MockItem(Item.WATER,0,0)));
+        assertTrue("Player should have 2 furs, 1 water, 1 games, and 1 robots", repository.getCargoList().contains(new MockItem(Item.GAMES,0,0)));
+        assertTrue("Player should have 2 furs, 1 water, 1 games, and 1 robots", repository.getCargoList().contains(new MockItem(Item.ROBOTS,0,0)));
+        assertFalse("Player should have 2 furs, 1 water, 1 games, and 1 robots", repository.getCargoList().contains(new MockItem(Item.MEDICINE,0,0)));
 
-        boolean exists = true;
-        try {
-            repository.downloadPlayer(nonexistantPlayers[0]);
-        } catch (Repository.PlayerNotFoundException exception) {
-            assertEquals(existingPlayers[0] + " does not exist!", exception.getMessage());
-            exists = false;
-        }
-        assertFalse(exists);
-
-        Player p = new Player(" ",16,0,0,0);
-        Player dummy;
-
-        try {
-            p = repository.downloadPlayer(existingPlayers[0]);
-            assertEquals(p.getName(), existingPlayers[0]);
-            exists = true;
-        } catch (Repository.PlayerNotFoundException exception) {
-            //assertEquals(existingPlayers[0] + " does not exist!", exception.getMessage());
-        }
-        assertTrue(exists);
-
-        assertEquals(p.getCurrPlanet().getName(), "Ernie");
-        assertEquals((int) p.getCredit(), 662);
-        assertEquals(p.getSkill1(), 16);
-        assertEquals(p.getSkill2(), 0);
-        assertEquals(p.getSkill3(), 0);
-        assertEquals(p.getSkill4(), 0);
-        assertTrue(p.getInventory().contains(Item.FURS));
-        assertTrue(p.getInventory().contains(Item.WATER));
-        assertEquals((int) p.getFuel(), 99991);
-        assertEquals(p.getCurrSolarSystem().getName(), "The Street");
+        /*
+        assertTrue("Player should have 2 furs", repository.getPlayer().getInventory().getQuantity(Item.FURS) == 2);
+        assertTrue("Player should have no medicine",repository.getPlayer().getInventory().getQuantity(Item.MEDICINE) == 0);
+        */
+        repository.getAllItems().clear();
+        repository.loadTheCargoList("");
+        assertTrue("An empty string should not be parsed into any itmes", repository.getAllItems().isEmpty());
 
     }
 
