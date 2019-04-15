@@ -42,8 +42,8 @@ public class UnitTests {
         Player tooManySkills = new Player("henry", 16, 16, 16, 16);
         Player justRightSkills = new Player("henry", 16, 0, 0, 0);
         Player justRightSkills2 = new Player("henry", 0, 16, 0, 0);
-        Player justRightSkills3 = new Player("henry", 16, 0, 16, 0);
-        Player justRightSkills4 = new Player("henry", 16, 0, 0, 16);
+        Player justRightSkills3 = new Player("henry", 0, 0, 16, 0);
+        Player justRightSkills4 = new Player("henry", 0, 0, 0, 16);
         Player justRightSum = new Player("henry:,", 4, 4, 4, 4);
         assertEquals("not checking if it is too few than 16", false, s.validateTest(tooFewSkills));
         assertEquals("not checking if it is more than 16", false, s.validateTest(tooManySkills));
