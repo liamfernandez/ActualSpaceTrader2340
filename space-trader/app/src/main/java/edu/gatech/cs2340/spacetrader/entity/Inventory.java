@@ -40,7 +40,7 @@ public class Inventory {
      * @param quantity Quantity of item to remove
      * @return null if no removal occurred
      */
-    public remove(MockItem item, int quantity) {
+    public void remove(MockItem item, int quantity) {
         //MockItem toReturn =
         // new MockItem(item.getItemType(), item.getBuyingPrice(), item.getSellingPrice());
         int currQuantity = 0;
