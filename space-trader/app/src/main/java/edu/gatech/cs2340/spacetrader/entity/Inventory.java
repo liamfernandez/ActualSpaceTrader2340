@@ -38,7 +38,6 @@ public class Inventory {
      *
      * @param item Item to remove
      * @param quantity Quantity of item to remove
-     * @return null if no removal occurred
      */
     public void remove(MockItem item, int quantity) {
         //MockItem toReturn =
