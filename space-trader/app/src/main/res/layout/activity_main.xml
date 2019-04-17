@@ -33,25 +33,56 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="135dp"
-            android:layout_marginTop="133dp"
-            android:layout_marginEnd="135dp"
-            android:layout_marginBottom="454dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="313dp"
+            android:layout_marginEnd="239dp"
+            android:layout_marginBottom="274dp"
             android:text="New Player"></Button>
+
+        <ImageView
+            android:id="@+id/starbackground1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-114dp"
+            android:src="@drawable/starbackgroundboi" />
+
+        <ImageView
+            android:id="@+id/starbackground2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-114dp"
+            android:src="@drawable/actualstarmirror" />
 
         <Button
             android:id="@+id/returningPlayer"
             android:layout_width="wrap_content"
-            android:layout_height="162dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="132dp"
-            android:layout_marginTop="451dp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginBottom="118dp"
+            android:layout_marginStart="244dp"
+            android:layout_marginTop="313dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="274dp"
             android:text="Returning Player" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView1"
+            android:layout_width="413dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/header"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="413dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/header"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
 
     </RelativeLayout>
 
