@@ -32,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
         Button returningPlayer = findViewById(R.id.returningPlayer);
         final ImageView background1 = findViewById(R.id.appCompatImageView1);
         final ImageView background2 = findViewById(R.id.appCompatImageView2);
+        //If animating star background
+//        final ImageView background1 = findViewById(R.id.starbackground1);
+//        final ImageView background2 = findViewById(R.id.starbackground2);
         final ValueAnimator animate = ValueAnimator.ofFloat(0.0f, 1.0f);
         animate.setRepeatCount(ValueAnimator.INFINITE);
         animate.setInterpolator(new LinearInterpolator());
+        //if animating star background animate.setDuration(25000L);
         animate.setDuration(12500L);
         animate.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
