@@ -12,7 +12,7 @@ import edu.gatech.cs2340.spacetrader.model.PlayerInteractor;
  * adapts the sign in from the model to the view
  */
 public class SignInViewModel extends AndroidViewModel {
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * creates an instance of the class
@@ -40,13 +40,16 @@ public class SignInViewModel extends AndroidViewModel {
         } else if (validName) {
             return "Need 16 total skill points.";
         } else if (validPoints) {
-            return "Need to input a name";
+            return "Need to input a unique name!";
         } else {
             return "Need to input a name as well as assign 16 skill points.";
         }
     }
 
     private boolean validatePlayer(Player player) {
+        if (player == null) {
+            throw new NullPointerException("Player is null");
+        }
         int sumSkills = 0;
         sumSkills += player.getSkill1();
         sumSkills += player.getSkill2();
@@ -58,7 +61,27 @@ public class SignInViewModel extends AndroidViewModel {
         return false;
     }
 
-    private boolean validatePlayerName(Player player) {
-        return !(player.getName().equals(""));
+    /**
+     * lauren made this to be able to test the private method above
+     * @param p player to test
+     * @return true or false if it is valid or not
+     */
+    public boolean validateTest(Player p) {
+        return validatePlayer(p);
+    }
+
+    public boolean validatePlayerName(Player player) {
+        return (!(player.getName().equals(""))
+                && !(interactor.doesPlayerNameExist(player.getName()))
+        );
+    }
+
+    public boolean doesPlayerNameExist(String playerName) {
+        interactor.createUniverse();
+        return interactor.doesPlayerNameExist(playerName);
+    }
+
+    public Player loadExistingPlayer(String playerName) {
+        return interactor.loadExistingPlayer(playerName);
     }
 }

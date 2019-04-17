@@ -26,9 +26,8 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     @NonNull
     @Override
     public CargoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.market_item, parent, false);
+        LayoutInflater temp = LayoutInflater.from(parent.getContext());
+        View itemView = temp.inflate(R.layout.market_item, parent, false);
 
         return new CargoViewHolder(itemView);
     }
@@ -38,7 +37,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
 
         MockItem item = cargoList.get(position);
 
-        Log.d("APP", "Binding: " + position + " " + cargoList.get(position));
+        //Log.d("APP", "Binding: " + position + " " + cargoList.get(position));
 
         holder.itemName.setText(item.getName());
         String itemSellPrice = "" + item.getSellingPrice();
@@ -64,8 +63,8 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      */
     class CargoViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView itemName;
-        private TextView itemPrice;
+        private final TextView itemName;
+        private final TextView itemPrice;
 
         public CargoViewHolder(@NonNull View itemView) {
             super(itemView);

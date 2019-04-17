@@ -39,8 +39,8 @@ public class SolarSystemActivity extends AppCompatActivity {
 
         toVideo = findViewById(R.id.toVideo);
         toVideo.setOnClickListener(e -> {
-                Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(SolarSystemActivity.this, VideoActivity.class);
+            startActivity(intent);
         });
     }
 

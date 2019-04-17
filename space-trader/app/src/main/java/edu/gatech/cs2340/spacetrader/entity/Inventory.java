@@ -2,27 +2,30 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 import java.util.HashMap;
 
+/**
+ *
+ */
 public class Inventory {
-    private HashMap<Item, Integer> map;
+    private final HashMap<Item, Integer> map;
 
+    /**
+     *
+     */
     public Inventory() {
         map = new HashMap<>();
     }
 
-//    public void add(MockItem item) {
-//        add(item);
-//    }
-//
-//    public void add(List<MockItem> itemsToAdd) {
-//        for (MockItem item : itemsToAdd) {
-//            add(item);
-//        }
-//    }
-
+    /**
+     *
+     * @param item item to add
+     * @param quantity amount of item
+     */
     public void add(Item item, int quantity) {
         int currQuantity = 0;
         if (map.containsKey(item)) {
-            currQuantity = map.get(item);
+            if (map.get(item) != null){
+                currQuantity = map.get(item);
+            }
         }
         map.put(item, quantity + currQuantity);
     }
@@ -35,9 +38,8 @@ public class Inventory {
      *
      * @param item Item to remove
      * @param quantity Quantity of item to remove
-     * @return null if no removal occurred
      */
-    public MockItem remove(MockItem item, int quantity) {
+    public void remove(MockItem item, int quantity) {
         //MockItem toReturn =
         // new MockItem(item.getItemType(), item.getBuyingPrice(), item.getSellingPrice());
         int currQuantity = 0;
@@ -46,43 +48,71 @@ public class Inventory {
                 currQuantity = map.get(item.getItemType());
             }
         } else {
-            return null;
+            return;
         }
-        if (currQuantity - quantity < 0) {
-            return null;
-        } else if (currQuantity - quantity == 0) {
+        if ((currQuantity - quantity) < 0) {
+            return;
+        } else if ((currQuantity - quantity) == 0) {
             map.remove(item.getItemType());
-            return item;
+            return;
         } else {
             map.put(item.getItemType(), currQuantity - quantity);
-            return item;
+            return;
             //return toReturn;
         }
 
     }
 
+    /**
+     *
+     * @param item item to remove
+     * @param quantity amount to remove by
+     */
     public void  remove(Item item, int quantity) {
         remove(new MockItem(item, 0,0), quantity);
     }
 
+    /**
+     *
+     * @param i index
+     * @return true or false
+     */
     public boolean contains(MockItem i) {
         return map.containsKey(i.getItemType());
     }
 
+    /**
+     *
+     * @param i index
+     * @return true or false
+     */
     public boolean contains(Item i) { return map.containsKey(i); }
 
-
+    /**
+     *
+     * @param i item to addd
+     * @return amount of item in cargo
+     */
     public int getQuantity(MockItem i) {
         return getQuantity(i.getItemType());
     }
 
-
+    /**
+     *
+     * @param item item
+     * @return amount
+     */
     public Integer getQuantity(Item item) {
-        if (!contains(item)) {
-            return 0;
+        if (contains(item)) {
+            return map.get(item);
         }
-        return map.get(item);
+        return 0;
     }
+
+    /**
+     *
+     * @return map
+     */
     public HashMap<Item, Integer> getMap() {
         return map;
     }

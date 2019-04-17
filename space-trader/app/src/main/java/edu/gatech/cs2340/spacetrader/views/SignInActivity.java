@@ -27,7 +27,6 @@ public class SignInActivity extends AppCompatActivity {
      WIDGETS FOR BINDING AND GETTING INFORMATION
     */
     private EditText nameField;
-    private Spinner difficultySpinner;
     private Spinner skill1Spinner;
     private Spinner skill2Spinner;
     private Spinner skill3Spinner;
@@ -39,6 +38,8 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Spinner difficultySpinner;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
@@ -70,8 +71,6 @@ public class SignInActivity extends AppCompatActivity {
 
         player = new Player("name", 0, 0, 0, 0);
         viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
-
-        MySQLTalker.initialize();
     }
 
     /**

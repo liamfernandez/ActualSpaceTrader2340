@@ -12,7 +12,7 @@ public class MockItem {
 
     private int sellingPrice;
     private int buyingPrice;
-    public Item item;
+    public final Item item;
 
 
     /**
@@ -42,7 +42,8 @@ public class MockItem {
      * @return if the planet has the right tech to sell the item
      */
     public boolean isSellable(Planet planet) {
-        return planet.getTechLevel().getLevel() >= item.getMTLP();
+        TechLevel t = planet.getTechLevel();
+        return t.getLevel() >= item.getMTLP();
     }
 
     /**
@@ -163,8 +164,9 @@ public class MockItem {
         double price = item.getBasePrice();
 
         Random random = new Random();
+        TechLevel t = planet.getTechLevel();
 
-        price = price + item.getIPL() * planet.getTechLevel().getLevel();
+        price = price + (item.getIPL() * t.getLevel());
 
 
         if (item.getIE() == planet.getResource()) {
@@ -176,12 +178,12 @@ public class MockItem {
         }
 
         double randomAdjustmentPercentage = random.nextDouble() * getVar() * (2.0 / 100.00);
-        Log.d("calcInfo", item.getName() + " randomadj: " + (randomAdjustmentPercentage));
-        Log.d("calcInfo", item.getName() + " price: " + (price));
-        Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
+        //Log.d("calcInfo", item.getName() + " randomadj: " + (randomAdjustmentPercentage));
+        //Log.d("calcInfo", item.getName() + " price: " + (price));
+        //Log.d("calcInfo", item.getName() + " base price: " + (item.getBasePrice()));
 
-        Log.d("calcInfo", item.getName() + "calculated to be bought for"
-                + (price * (1+randomAdjustmentPercentage)));
+        //Log.d("calcInfo", item.getName() + "calculated to be bought for"
+                //+ (price * (1+randomAdjustmentPercentage)));
 
         return (int) (price * (1.0 + randomAdjustmentPercentage));
 
@@ -210,6 +212,10 @@ public class MockItem {
      */
     @Override
     public boolean equals(Object object) {
-        return this.item == ((MockItem) object).item;
+        if (object instanceof MockItem) {
+            return this.item == ((MockItem) object).item;
+        } else {
+            return false;
+        }
     }
 }

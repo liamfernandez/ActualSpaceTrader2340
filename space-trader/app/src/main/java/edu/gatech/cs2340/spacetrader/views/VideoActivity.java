@@ -11,9 +11,12 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.entity.Player;
+import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
+import edu.gatech.cs2340.spacetrader.model.MarketInteractor;
 import edu.gatech.cs2340.spacetrader.model.Model;
+import edu.gatech.cs2340.spacetrader.model.Repository;
 
-@SuppressWarnings({"ALL", "SpellCheckingInspection"})
 public class VideoActivity extends YouTubeBaseActivity {
 
     YouTubePlayerView youTubePlayerView;
@@ -45,7 +48,12 @@ public class VideoActivity extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
 
                 String youTubeVideo;
-                String currSolarSystem = Model.getInstance().getMarketInteractor().getRepository().getPlayer().getCurrSolarSystem().getName();
+                Model model = Model.getInstance();
+                MarketInteractor mI = model.getMarketInteractor();
+                Repository r = mI.getRepository();
+                Player p = r.getPlayer();
+                SolarSystem s = p.getCurrSolarSystem();
+                String currSolarSystem = s.getName();
                 if (currSolarSystem == "Meganville") {
                     youTubeVideo = "3XQO7MwmgvM";
                 } else if (currSolarSystem == "The Street") {

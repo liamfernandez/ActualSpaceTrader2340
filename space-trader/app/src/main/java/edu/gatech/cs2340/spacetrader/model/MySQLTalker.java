@@ -12,28 +12,46 @@ import com.BoardiesITSolutions.AndroidMySQLConnector.IConnectionInterface;
 
 import java.io.IOException;
 
-
-public class MySQLTalker {
+/**
+ *
+ */
+public class  MySQLTalker {
 
     private static Connection conn;
-    private static boolean connected = false;
-    private static boolean queryInProgress = false;
-    private static ResultSet resultSet = null;
+    private static boolean connected;
+    private static boolean queryInProgress;
+    private static ResultSet resultSet;
 
+    /**
+     *
+     * @return true or false
+     */
     public static boolean isConnected() {
         return connected;
     }
 
+    /**
+     *
+     * @param connected connected
+     */
     private static void setConnected(boolean connected) {
         System.out.println("CONNECTED TO SERVER! Server on MySQL Version "
                 + conn.getServerVersion());
         MySQLTalker.connected = connected;
     }
 
+    /**
+     *
+     * @return true or false
+     */
     public static boolean isQueryInProgress() {
         return queryInProgress;
     }
 
+    /**
+     *
+     * @param queryInProgress boolean
+     */
     private static void setQueryInProgress(boolean queryInProgress) {
         if (!queryInProgress) {
             System.out.println("QUERY COMPLETED!");
@@ -60,6 +78,10 @@ public class MySQLTalker {
         return temp;
     }
 
+    /**
+     *
+     * @param resultSet idek
+     */
     private static void setResultSet(ResultSet resultSet) {
         MySQLTalker.resultSet = resultSet;
     }
@@ -149,7 +171,7 @@ public class MySQLTalker {
     /**
      * Executes a query which WILL NOT obtain a result.
      *
-     * @param query
+     * @param query query???
      * @throws RuntimeException If connection not established, or another query still in progress
      */
     public static void executeNonReturningQuery(String query) throws RuntimeException {
@@ -179,8 +201,8 @@ public class MySQLTalker {
             @Override
             public void handleMySQLException(MySQLException ex) {
                 System.out.println("MySQL Exception");
-                System.out.println(ex);
-                System.out.println(query);
+                //System.out.println(ex);
+                ////System.out.println(query);
             }
 
             @Override
@@ -298,6 +320,9 @@ public class MySQLTalker {
         } while (queryInProgress);*/
     }
 
+    /**
+     *
+     */
     public static void closeConnection() {
         conn.close();
         conn = null;

@@ -8,6 +8,7 @@ import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.Item;
 import edu.gatech.cs2340.spacetrader.entity.Planet;
 import edu.gatech.cs2340.spacetrader.entity.Resources;
+import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 
 
 /**
@@ -15,7 +16,7 @@ import edu.gatech.cs2340.spacetrader.entity.Resources;
  */
 public class Store {
 
-    private static Item[] allItems = Item.values();
+    private static final Item[] allItems = Item.values();
 
     /**
      * Utility class for getting the market
@@ -38,8 +39,9 @@ public class Store {
         Resources IE = item.getIE();
         Resources CR = item.getCR();
         Resources ER = item.getER();
+        TechLevel t = planet.getTechLevel();
 
-        price = price + (IPL * planet.getTechLevel().getLevel());
+        price = price + (IPL * t.getLevel());
 
 
         if (IE == planet.getResource()) {
@@ -79,7 +81,8 @@ public class Store {
      */
     public static HashMap<Item, Pair<Integer, Double>> getMarketItems(Planet planet) {
         HashMap<Item, Pair<Integer, Double>> marketSupply = new HashMap<>();
-        int techLevel = planet.getTechLevel().getLevel();
+        TechLevel tL = planet.getTechLevel();
+        int techLevel = tL.getLevel();
         for (Item x: allItems) {
             if (techLevel >= x.getMTLP()) {
                 int amountToAdd = 4;

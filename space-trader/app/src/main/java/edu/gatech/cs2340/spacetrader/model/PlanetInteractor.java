@@ -6,34 +6,52 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.entity.Planet;
+import edu.gatech.cs2340.spacetrader.entity.Player;
 import edu.gatech.cs2340.spacetrader.entity.SolarSystem;
 import edu.gatech.cs2340.spacetrader.entity.Universe;
 
+/**
+ *
+ */
 public class PlanetInteractor extends Interactor {
 
+    /**
+     *
+     * @param repo repository
+     */
     public PlanetInteractor(Repository repo) {
         super(repo);
     }
 
+    /**
+     *
+     * @param solarSystem ss
+     */
     public void travelToSolarSystem(SolarSystem solarSystem) {
-        getRepository().getPlayer().setCurrSolarSystem(solarSystem);
-        getRepository().getPlayer().subtractFuel((int) solarSystem.getDistance());
+        Repository r = getRepository();
+        Player p  = r.getPlayer();
+        p.setCurrSolarSystem(solarSystem);
+        p.subtractFuel((int) solarSystem.getDistance());
     }
 
+    /**
+     *
+     * @return list of solar systems
+     */
     public List<SolarSystem> getInRangeSolarSystems() {
         double fuel;
         SolarSystem solarSystem;
-
-        Universe universe = getRepository().getUniverse();
-        fuel = getRepository().getPlayerFuel();
-
-        if (getRepository().getPlayer().getCurrSolarSystem() == null) {
+        Repository r = getRepository();
+        Universe universe = r.getUniverse();
+        fuel = r.getPlayerFuel();
+        Player p = r.getPlayer();
+        if (p.getCurrSolarSystem() == null) {
             solarSystem = universe.getStartingSolarSystem();
             Planet startingPlanet = solarSystem.getPlanet(1);
-            getRepository().getPlayer().setCurrSolarSystem(solarSystem);
-            getRepository().getPlayer().setCurrPlanet(startingPlanet);
+            p.setCurrSolarSystem(solarSystem);
+            p.setCurrPlanet(startingPlanet);
         } else {
-            solarSystem = getRepository().getPlayer().getCurrSolarSystem();
+            solarSystem = p.getCurrSolarSystem();
         }
 
 
@@ -55,20 +73,32 @@ public class PlanetInteractor extends Interactor {
         return inRangeSolarSystems;
     }
 
+    /**
+     *
+     * @return current planet
+     */
     public Planet getCurrentPlanet() {
         SolarSystem solarSystem;
-        Universe universe = getRepository().getUniverse();
+        Repository r = getRepository();
+        Universe universe = r.getUniverse();
+        Player p = r.getPlayer();
 
-        if (getRepository().getPlayer().getCurrPlanet() == null) {
+        if (p.getCurrPlanet() == null) {
             solarSystem = universe.getStartingSolarSystem();
             Planet startingPlanet = solarSystem.getPlanet(1);
-            getRepository().getPlayer().setCurrPlanet(startingPlanet);
+            p.setCurrPlanet(startingPlanet);
 
         }
-        return getRepository().getPlayer().getCurrPlanet();
+        return p.getCurrPlanet();
     }
 
+    /**
+     *
+     * @return fuel
+     */
     public int getFuel() {
-        return (int) getRepository().getPlayer().getFuel();
+        Repository r = getRepository();
+        Player p = r.getPlayer();
+        return (int) p.getFuel();
     }
 }

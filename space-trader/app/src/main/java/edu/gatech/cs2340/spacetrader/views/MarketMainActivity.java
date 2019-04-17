@@ -20,10 +20,10 @@ public class MarketMainActivity extends AppCompatActivity {
     private MarketListViewModel  viewModel;
     private MarketAdapter adapter;
     private CargoAdapter adapterCargo;
-    private TextView credit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TextView credit;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.market_main);
 
@@ -63,7 +63,7 @@ public class MarketMainActivity extends AppCompatActivity {
         credit = findViewById(R.id.text_money);
         credit.setText(viewModel.getCredit());
 
-        Log.d("APP", viewModel.getMockItems().toString());
+        //Log.d("APP", viewModel.getMockItems().toString());
     }
 
     @Override

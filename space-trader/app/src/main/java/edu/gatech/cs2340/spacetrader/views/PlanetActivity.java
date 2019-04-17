@@ -17,12 +17,12 @@ import edu.gatech.cs2340.spacetrader.viewmodels.PlanetViewModel;
 
 public class PlanetActivity extends AppCompatActivity {
 
-    private MarketListViewModel marketViewModel;
     private PlanetViewModel viewModel;
     private PlanetAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MarketListViewModel marketViewModel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_main);
 
@@ -55,6 +55,13 @@ public class PlanetActivity extends AppCompatActivity {
 
         marketViewModel = ViewModelProviders.of(this).get(MarketListViewModel.class);
         marketViewModel.refreshMockItems();
+
+        Button save = findViewById(R.id.save);
+        save.setOnClickListener( e -> {
+            viewModel.updateExistingPlayer();
+        }
+
+                );
     }
 
     @Override
