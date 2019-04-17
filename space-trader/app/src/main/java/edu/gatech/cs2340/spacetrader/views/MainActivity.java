@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         animate.start();
-        //MySQLTalker.initialize();
+        MySQLTalker.initialize();
 
         start.setOnClickListener(e -> {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
